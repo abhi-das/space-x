@@ -11,5 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: action/setup-node@1
+        with:
+          node-version: 12
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
 
 
