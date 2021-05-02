@@ -39,19 +39,24 @@ const LaunchSearch = (props) => {
 
     return <form className={styles.form}>
         <div className="set-year">
-            <label>Years:</label>
-            {FilterOpts.map(opt => <Radio
-                key={opt.id}
-                id={opt.id}
-                label={opt.value}
-                value={opt.value}
-                checked={year}
-                setter={setYear}
-            />)}
+            <h2>Filters</h2>
+            <div className={styles.radioContainer}>
+                <p className={styles.subTitle}>Launch Years</p>
+                <div className={styles.radioBox}>
+                    {FilterOpts.map(opt => <Radio
+                        key={opt.id}
+                        id={opt.id}
+                        label={opt.value}
+                        value={opt.value}
+                        checked={year}
+                        setter={setYear}
+                    />)}
+                </div>
+            </div>
         </div>
-        <div>
-            <p>SuccessFul Launch</p>
-            <div className="radio">
+        <div className={styles.radioContainer}>
+            <p className={styles.subTitle}>SuccessFul Launch</p>
+            <div className={styles.radioBox}>
                 {launchSuccessOpt.map(opt => <Radio
                     key={opt.id}
                     id={opt.id}

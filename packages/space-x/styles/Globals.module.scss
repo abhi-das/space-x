@@ -6,4 +6,10 @@ $color-primary: #0070f3;
 
 .flex {
     display: flex;
+    align-items: flex-start;
+}
+
+.footer {
+    text-align: center;
+    padding: 2em 0;
 }

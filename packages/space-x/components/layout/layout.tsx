@@ -1,9 +1,15 @@
 import React from 'react';
 import MainHeader from './main-header';
-import styles from './layout.module.scss';
 
 const Layout = (props) => {
-    return <div className={styles.layout}>
+    return <div>
+        <style jsx global>{`
+            body {
+                margin: 0;
+                padding: 0;
+                background: #e5e5e5;
+            }
+        `}</style>
         <MainHeader />
         <main>
             {props.children}
