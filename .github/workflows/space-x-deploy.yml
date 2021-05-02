@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'packages/marketing/**'
+      - 'packages/space-x/**'
 
 defaults:
   run:
