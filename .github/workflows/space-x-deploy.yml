@@ -3,10 +3,15 @@ name: spaceX
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'packages/marketing/**'
+
+defaults:
+  run:
+    working-directory: packages/space-x
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
