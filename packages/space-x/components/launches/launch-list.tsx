@@ -7,12 +7,13 @@ const LaunchList = ({ items }) => {
     return <ul className={styles.list}>
         {items.map(launch =>
             <LaunchItem
-                key={launch.id}
-                id={launch.id}
-                title={launch.title}
+                key={launch.mission_id}
+                id={launch.mission_id}
+                title={launch.mission_name}
                 images={launch.image}
-                date={launch.date}
-                location={launch.location}
+                date={launch.launch_year}
+                successFulLaunch={launch.launch_successful.toString()}
+                successFulLanding={launch.landing_successful.toString()}
             />
         )}
     </ul>

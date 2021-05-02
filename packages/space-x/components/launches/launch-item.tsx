@@ -6,29 +6,25 @@ import DateIcon from '../icons/date-icon';
 
 const LaunchItem = (props) => {
 
-    const { title, images, date, location, id } = props;
-    const readableDate = new Date(date).toLocaleDateString('en-us', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    });
+    const { title, images, date, id, successFulLaunch, successFulLanding } = props;
 
     const exploreLink = `/launch/${id}`;
 
     return <li className={styles.item}>
         <img src={'/' + images} alt={title} />
         <div className={styles.content}>
-            <h2>{title}</h2>
+            <h2><Button link={exploreLink}>{title}</Button></h2>
+            <div>
+                <strong>Mission Id:</strong> {id}
+            </div>
             <div className={styles.date}>
-                <DateIcon />
-                <time>{readableDate}</time>
+                <strong>Launch Year:</strong> <DateIcon /> <time>{date}</time>
             </div>
-            <div className={styles.address}>
-                <AddressIcon />
-                <address>{location}</address>
+            <div>
+                <strong>Successful Launch:</strong> {successFulLaunch}
             </div>
-            <div className={styles.actions}>
-                <Button link={exploreLink}>Explore Details</Button>
+            <div>
+                <strong>Successful Landing:</strong>  {successFulLanding}
             </div>
         </div>
     </li>

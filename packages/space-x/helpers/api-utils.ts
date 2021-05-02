@@ -23,15 +23,14 @@ export async function getFeaturedLaunch() {
 export async function getLaunchById(id) {
     // TODO: Id pass year then search by year here
     const allLaunches = await getAllLaunch();
-    return allLaunches.find((launch) => launch.id === id);
+    return allLaunches.find((launch) => launch.mission_id === id);
 }
 
 export async function getFilteredLaunch(dateFilter) {
     const { year, isSuccess } = dateFilter;
     const allLaunches = await getAllLaunch();
     let filteredLaunch = allLaunches.filter((launch) => {
-        const launchDate = new Date(launch.date);
-        return launchDate.getFullYear().toString() === year && launch.isSuccess.toString() === isSuccess;
+        return launch.launch_year === year && launch.launch_successful.toString() === isSuccess;
     });
 
     return filteredLaunch;
