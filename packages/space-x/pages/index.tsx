@@ -8,7 +8,7 @@ import LaunchList from "../components/launches/launch-list";
 const Home = (props) => {
     return (<div>
         <Head>
-            <title>Space-X App Landing</title>
+            <title>Space-X App Landing Page</title>
             <meta name="description" content="space-X launch" />
         </Head>
         <LaunchList items={props.launches} />
