@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const allLaunch = await getFeaturedLaunch();
-    const path = allLaunch.map(launch => ({ params: { launchid: launch.id } }));
+    const path = allLaunch.map(launch => ({ params: { launchid: launch.mission_id } }));
     return {
         paths: path,
         fallback: true
