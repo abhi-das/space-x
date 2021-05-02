@@ -1,5 +1,6 @@
 import React from 'react';
 import Radio from '../ui/radio';
+import styles from './launch-search.module.scss';
 
 const LaunchSearch = (props) => {
     const [year, setYear] = React.useState(undefined);
@@ -36,7 +37,7 @@ const LaunchSearch = (props) => {
         props.onSearch(year, isSuccessFul)
     }
 
-    return <form>
+    return <form className={styles.form}>
         <div className="set-year">
             <label>Years:</label>
             {FilterOpts.map(opt => <Radio

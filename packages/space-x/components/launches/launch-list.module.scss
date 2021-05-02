@@ -1,5 +1,8 @@
 .list {
-    width: 90%;
-    max-width: 40rem;
-    margin: 5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
   }

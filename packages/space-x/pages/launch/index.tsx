@@ -4,6 +4,7 @@ import LaunchSearch from '../../components/launches/launch-search';
 import { getAllLaunch } from '../../helpers/api-utils';
 import { useRouter } from 'next/router';
 import { GetStaticProps } from 'next';
+import styles from '../../styles/Globals.module.scss';
 
 const AllLaunches = (props) => {
 
@@ -21,8 +22,10 @@ const AllLaunches = (props) => {
     }
 
     return <>
-        <LaunchSearch onSearch={onSearch} />
-        <LaunchList items={allLaunches} />
+        <div className={styles.flex}>
+            <LaunchSearch onSearch={onSearch} />
+            <LaunchList items={allLaunches} />
+        </div>
     </>
 }
 
