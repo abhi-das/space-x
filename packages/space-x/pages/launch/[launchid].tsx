@@ -19,7 +19,7 @@ const LaunchDetailPage = (props) => {
     return <>
         <Head>
             <title>{launch.title}</title>
-            <meta name="description" content={launch.description} />
+            <meta name="description" content={launch.details} />
         </Head>
         <section>
             <h1>{launch.title}</h1>
@@ -30,7 +30,7 @@ const LaunchDetailPage = (props) => {
             <p>{launch.location}</p>
         </section>
         <section>
-            <p>{launch.description}</p>
+            <p>{launch.details}</p>
         </section>
     </>
 }
