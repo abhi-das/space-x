@@ -6,9 +6,21 @@ $color-primary: #0070f3;
 
 .flex {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
 }
 
+@media (min-width: 768px) {
+    .flex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+}
+
+  
 .footer {
     text-align: center;
     padding: 2em 0;

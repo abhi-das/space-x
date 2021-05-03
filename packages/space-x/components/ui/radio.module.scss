@@ -1,0 +1,30 @@
+.radioItem {
+  display: inline-block;
+  & input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  & label {
+    text-transform: capitalize;
+    display: inline-block;
+    background-color: #aaf8a5;
+    padding: 0.3em 0.8em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family: sans-serif, Arial;
+    font-size: 0.8em;
+    border: 2px solid rgb(61, 202, 92);
+    border-radius: 4px;
+    &:hover {
+      background-color: #dfd;
+    }
+    &:focus + label {
+      border: 2px dashed #444;
+    }
+    &:checked + label {
+      background-color: #bfb;
+      border-color: rgb(8, 80, 8);
+    }
+  }
+}

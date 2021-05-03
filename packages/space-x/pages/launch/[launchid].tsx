@@ -31,7 +31,10 @@ const LaunchDetailPage = (props) => {
           width={300}
           height={260}
         />
-        <p><strong>Year: </strong>{launch.launch_year}</p>
+        <p>
+          <strong>Year: </strong>
+          {launch.launch_year}
+        </p>
         <p>{launch.details}</p>
       </section>
     </>

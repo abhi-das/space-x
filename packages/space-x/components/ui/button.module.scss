@@ -2,9 +2,8 @@
   text-decoration: none;
   color: rgb(83, 132, 224);
   font-size: 0.8em;
-}
-
-.btn:hover,
-.btn:active {
-  text-decoration: underline;
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
 }

@@ -41,7 +41,7 @@ const LaunchSearch = (props) => {
 
   return (
     <form className={styles.form}>
-      <div className="set-year">
+      <div className={styles.setYear}>
         <h2>Filters</h2>
         <div className={styles.radioContainer}>
           <p className={styles.subTitle}>Launch Years</p>
