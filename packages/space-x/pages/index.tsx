@@ -9,7 +9,7 @@ const Home = (props) => {
   return (
     <div>
       <Head>
-        <title>Space-X App Landing !!</title>
+        <title>Space-X App Landing !</title>
         <meta name="description" content="space-X launch" />
         <meta
           name="viewport"

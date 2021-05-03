@@ -7,9 +7,9 @@
     "start": "next start",
     "build": "next build",
     "format": "prettier --write pages/**/*.{ts,tsx,scss} components/**/*.{ts,tsx,scss} common/**/*.{ts,tsx} helpers/**/*.{ts,tsx} styles/**/*.{scss}",
-    "precommit": "pretty-quick --staged",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "lint": "eslint --ext js,jsx,ts,tsx --color --fix ."
+    "lint": "eslint --ext js,jsx,ts,tsx --color --fix .",
+    "precommit": "pretty-quick --staged && lint"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.22.1",
