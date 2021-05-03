@@ -18,23 +18,20 @@ const LaunchDetailPage = (props) => {
   return (
     <>
       <Head>
-        <title>{launch.title}</title>
+        <title>{launch.mission_name}</title>
         <meta name="description" content={launch.details} />
       </Head>
-      <section>
-        <h1>{launch.title}</h1>
-      </section>
+      <header>
+        <h1>{launch.mission_name}</h1>
+      </header>
       <section>
         <Image
           src={`/${launch.image}`}
           alt={launch.title}
-          width={340}
-          height={160}
+          width={300}
+          height={260}
         />
-        <p>{launch.date}</p>
-        <p>{launch.location}</p>
-      </section>
-      <section>
+        <p><strong>Year: </strong>{launch.launch_year}</p>
         <p>{launch.details}</p>
       </section>
     </>
