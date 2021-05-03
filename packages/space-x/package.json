@@ -11,7 +11,7 @@
     "precommit": "pretty-quick --staged",
     "win-find-port": "netstat -ano | findstr :3000",
     "win-kill-port": "tskill <id>",
-    "localformat": "yarn format & yarn lint"
+    "localbuild": "yarn format & yarn lint & yarn build"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.22.1",

@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .list {
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +11,7 @@
 
 @media (min-width: 700px) {
   .list {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: $baseline;
+    margin-right: $baseline;
   }
 }

@@ -1,12 +1,14 @@
+@import "../../styles/variables.scss";
+
 .form {
   display: flex;
   justify-content: center;
   flex: 0 0 15%;
   align-content: flex-start;
   flex-wrap: wrap;
-  margin-top: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-top: $baseline;
+  margin-left: $baseline;
+  margin-right: $baseline;
 
   background: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
@@ -26,12 +28,12 @@
       text-align: center;
       font-weight: bold;
       border-bottom: 1px solid #c3c3c3;
-      color: #7f7c7c;
+      color: $gray-lgt-2;
       line-height: 1.5em;
     }
   }
   & button {
-    margin-top: 1em;
+    margin-top: $baseline;
   }
 }
 

@@ -21,10 +21,10 @@ const AllLaunches = (props) => {
 
   return (
     <>
-      <div className={styles.flex}>
+      <section className={styles.flex}>
         <LaunchSearch onSearch={onSearch} />
         <LaunchList items={allLaunches} />
-      </div>
+      </section>
     </>
   );
 };

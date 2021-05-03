@@ -7,7 +7,7 @@ import LaunchList from "../components/launches/launch-list";
 
 const Home = (props) => {
   return (
-    <div>
+    <section>
       <Head>
         <title>Space-X App Landing !!</title>
         <meta name="description" content="space-X launch" />
@@ -17,7 +17,7 @@ const Home = (props) => {
         />
       </Head>
       <LaunchList items={props.launches} />
-    </div>
+    </section>
   );
 };
 

@@ -20,8 +20,10 @@ const FilteredLaunchPage = (props) => {
       <Head>
         <title>Filtered Launch</title>
       </Head>
-      <h1>Filtered Launch Page</h1>
-      <LaunchList items={filteredLaunches} />
+      <section>
+        <h2>Filtered Launch Page</h2>
+        <LaunchList items={filteredLaunches} />
+      </section>
     </>
   );
 };
