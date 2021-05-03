@@ -27,6 +27,11 @@ export async function getLaunchById(id) {
   return allLaunches.find((launch) => launch.mission_id === id);
 }
 
+export async function getLaunchByYear(year) {
+  const allLaunches = await getAllLaunch();
+  return allLaunches.find((launch) => launch.launch_year === year);
+}
+
 export async function getFilteredLaunch(dateFilter) {
   const { year, isSuccess } = dateFilter;
   const allLaunches = await getAllLaunch();
