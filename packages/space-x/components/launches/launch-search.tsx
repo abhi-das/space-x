@@ -6,6 +6,10 @@ const LaunchSearch = (props) => {
   const [year, setYear] = React.useState(undefined);
   const [isSuccessFul, setIsSuccessFul] = React.useState("false");
 
+  const searchHandler = () => {
+    props.onSearch(year, isSuccessFul);
+  };
+  
   React.useEffect(() => {
     if (year && isSuccessFul !== undefined) {
       searchHandler();
@@ -35,9 +39,7 @@ const LaunchSearch = (props) => {
     { id: 2, value: "false" },
   ];
 
-  const searchHandler = () => {
-    props.onSearch(year, isSuccessFul);
-  };
+
 
   return (
     <form className={styles.form}>

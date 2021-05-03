@@ -13,7 +13,6 @@ const AllLaunches = (props) => {
   if (!allLaunches) {
     return <p>Loading...</p>;
   }
-  console.log('test--')
 
   const onSearch = (filterKey, success) => {
     // TODO: make second param dynamic in the filterPagePath

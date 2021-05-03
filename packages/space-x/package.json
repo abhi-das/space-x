@@ -6,10 +6,10 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
-    "format": "prettier --write pages/**/*.{ts,tsx,scss} components/**/*.{ts,tsx,scss} common/**/*.{ts,tsx} helpers/**/*.{ts,tsx} styles/**/*.{scss}",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "format": "prettier --write pages/**/*.{ts,tsx,scss} components/**/*.{ts,tsx,scss} common/**/*.{ts,tsx} helpers/**/*.{ts,tsx}",
     "lint": "eslint --ext js,jsx,ts,tsx --color --fix .",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "pages/**/*.{ts,tsx}": "npm run lint"
