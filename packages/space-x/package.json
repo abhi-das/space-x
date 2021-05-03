@@ -12,7 +12,7 @@
     "precommit": "pretty-quick --staged"
   },
   "lint-staged": {
-    "/**/*.{ts,tsx}": "yarn lint"
+    "pages/**/*.{ts,tsx}": "yarn lint"
  },
  "husky": {
     "hooks": {
