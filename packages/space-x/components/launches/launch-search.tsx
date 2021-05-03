@@ -1,21 +1,18 @@
+import Button from "../ui/button";
 import Radio from "../ui/radio";
 import React from "react";
 import styles from "./launch-search.module.scss";
 
 const LaunchSearch = (props) => {
   const [year, setYear] = React.useState(undefined);
-  const [isSuccessFul, setIsSuccessFul] = React.useState("false");
+  const [isSuccessFul, setIsSuccessFul] = React.useState(undefined);
 
-  const searchHandler = () => {
-    props.onSearch(year, isSuccessFul);
-  };
-
-  React.useEffect(() => {
+  const searchHandler = (event) => {
+    event.preventDefault();
     if (year && isSuccessFul !== undefined) {
-      searchHandler();
+      props.onSearch(year, isSuccessFul);
     }
-  }, [year, isSuccessFul]);
-
+  };
   const FilterOpts = [
     { id: 1, value: "2006" },
     { id: 2, value: "2007" },
@@ -40,7 +37,7 @@ const LaunchSearch = (props) => {
   ];
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={searchHandler}>
       <div className={styles.setYear}>
         <h2>Filters</h2>
         <div className={styles.radioContainer}>
@@ -74,6 +71,7 @@ const LaunchSearch = (props) => {
           ))}
         </div>
       </div>
+      <Button onClick={searchHandler}>Apply</Button>
     </form>
   );
 };

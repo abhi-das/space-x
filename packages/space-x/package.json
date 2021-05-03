@@ -10,7 +10,8 @@
     "lint": "eslint --ext js,jsx,ts,tsx --color --fix .",
     "precommit": "pretty-quick --staged",
     "win-find-port": "netstat -ano | findstr :3000",
-    "win-kill-port": "tskill <id> "
+    "win-kill-port": "tskill <id>",
+    "localformat": "yarn format & yarn lint"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.22.1",

@@ -15,7 +15,6 @@ const AllLaunches = (props) => {
   }
 
   const onSearch = (filterKey, success) => {
-    // TODO: make second param dynamic in the filterPagePath
     const filterPagePath = `/launch/${filterKey}/${success}`;
     router.push(filterPagePath);
   };

@@ -5,61 +5,53 @@
   margin: 1rem 0;
   background: white;
   padding: 1em;
-}
+  & img {
+    width: 100%;
+    object-fit: cover;
+    height: 10rem;
+  }
 
-.item img {
-  width: 100%;
-  object-fit: cover;
-  height: 10rem;
-}
+  & .content {
+    width: 100%;
+    & h2 {
+      margin: 0.5rem 0;
+    }
+    & .date {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      & svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #666666;
+      }
 
-.content {
-  width: 100%;
+      & time {
+        color: #666666;
+        font-weight: bold;
+      }
+    }
+  }
 }
-
-.content h2 {
-  margin: 0.5rem 0;
-}
-
-.date {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.date svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #666666;
-}
-
-.content time {
-  color: #666666;
-  font-weight: bold;
-}
-
 .icon {
   margin-left: 0.5rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-}
-
-.icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  & svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
   .item {
     width: 20%;
     margin-left: 1em;
+    & img {
+      height: 14rem;
+    }
   }
-
-  .item img {
-    height: 14rem;
-  }
-
   .content h2 {
     margin: 1rem 0;
   }
