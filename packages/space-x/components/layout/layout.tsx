@@ -1,5 +1,5 @@
-import React from "react";
 import MainHeader from "./main-header";
+import React from "react";
 import styles from "../../styles/Globals.module.scss";
 const Layout = (props) => {
   return (

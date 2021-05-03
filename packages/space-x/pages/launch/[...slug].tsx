@@ -1,8 +1,8 @@
-import React from "react";
-import { getFilteredLaunch } from "../../helpers/api-utils";
-import LaunchList from "../../components/launches/launch-list";
 import { GetServerSideProps } from "next";
+import { getFilteredLaunch } from "../../helpers/api-utils";
 import Head from "next/head";
+import LaunchList from "../../components/launches/launch-list";
+import React from "react";
 
 const FilteredLaunchPage = (props) => {
   const { filteredLaunches } = props;

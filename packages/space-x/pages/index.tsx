@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
-import React from "react";
 import Head from "next/head";
+import React from "react";
 
 import { getFeaturedLaunch } from "../helpers/api-utils";
 import LaunchList from "../components/launches/launch-list";
@@ -21,7 +21,7 @@ const Home = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const featureLaunch = await getFeaturedLaunch();
   return {
     props: {

@@ -30,7 +30,7 @@ export async function getLaunchById(id) {
 export async function getFilteredLaunch(dateFilter) {
   const { year, isSuccess } = dateFilter;
   const allLaunches = await getAllLaunch();
-  let filteredLaunch = allLaunches.filter((launch) => {
+  const filteredLaunch = allLaunches.filter((launch) => {
     return (
       launch.launch_year === year &&
       launch.launch_successful.toString() === isSuccess

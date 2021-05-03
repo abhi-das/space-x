@@ -22,7 +22,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "data/dummy-data.js"
   ],
   "exclude": [
     "node_modules"

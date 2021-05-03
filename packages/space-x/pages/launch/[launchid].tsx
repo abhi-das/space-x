@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 import { getFeaturedLaunch, getLaunchById } from "../../helpers/api-utils";
 

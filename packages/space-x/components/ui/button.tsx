@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import styles from "./button.module.scss";
 
 const Button = (props) => {
@@ -7,7 +7,7 @@ const Button = (props) => {
     return (
       <>
         <Link href={props.link}>
-          <a className={styles.btn}>{props.children}</a>
+          <a href={props.link} className={styles.btn}>{props.children}</a>
         </Link>
       </>
     );

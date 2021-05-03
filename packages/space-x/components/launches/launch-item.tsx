@@ -1,8 +1,7 @@
+import Button from "../ui/button";
+import DateIcon from "../icons/date-icon";
 import React from "react";
 import styles from "./launch-item.module.scss";
-import Button from "../ui/button";
-import AddressIcon from "../icons/address-icon";
-import DateIcon from "../icons/date-icon";
 
 const LaunchItem = (props) => {
   const {

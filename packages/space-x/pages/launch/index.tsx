@@ -1,9 +1,9 @@
-import React from "react";
-import LaunchList from "../../components/launches/launch-list";
-import LaunchSearch from "../../components/launches/launch-search";
+import { GetStaticProps } from "next";
 import { getAllLaunch } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
-import { GetStaticProps } from "next";
+import LaunchList from "../../components/launches/launch-list";
+import LaunchSearch from "../../components/launches/launch-search";
+import React from "react";
 import styles from "../../styles/Globals.module.scss";
 
 const AllLaunches = (props) => {
@@ -13,6 +13,7 @@ const AllLaunches = (props) => {
   if (!allLaunches) {
     return <p>Loading...</p>;
   }
+  console.log('test--')
 
   const onSearch = (filterKey, success) => {
     // TODO: make second param dynamic in the filterPagePath
