@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   margin-top: 1em;
   margin-left: 1em;
+  margin-right: 1em;
 
   background: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
@@ -31,5 +32,18 @@
   }
   & button {
     margin-top: 1em;
+  }
+}
+
+@media (min-width: 700px) {
+  .form {
+    flex: 0 0 20%;
+    margin-right: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .form {
+    flex: 0 0 15%;
+    margin-right: 0;
   }
 }

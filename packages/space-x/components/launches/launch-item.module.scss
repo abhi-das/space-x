@@ -43,8 +43,13 @@
     height: 1.25rem;
   }
 }
+@media (min-width: 701px) {
+  .item {
+    width: 25%;
+  }
+}
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .item {
     width: 20%;
     margin-left: 1em;

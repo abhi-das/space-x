@@ -7,16 +7,20 @@ $color-primary: #0070f3;
 .flex {
     display: flex;
     flex-direction: column;
-        flex-wrap: wrap;
-        align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 700px) {
     .flex {
-        display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: flex-start;
+    }
+}
+
+@media (min-width: 1024px) {
+    .flex {
+        flex-wrap: nowrap;
     }
 }
 
