@@ -1,53 +1,53 @@
 .form {
-    display: flex;
-    justify-content: center;
-    flex: 0 0 15%;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    margin-top: 1em;
-    margin-left: 1em;
+  display: flex;
+  justify-content: center;
+  flex: 0 0 15%;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  margin-left: 1em;
 
-    background: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 0 1em 2em;
 }
 
 .radioContainer {
-    & .subTitle {
-        text-align: center;
-        font-weight: bold;
-        border-bottom: 1px solid #c3c3c3;
-        color: #7f7c7c;
-        line-height: 1.5em;
+  & .subTitle {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #c3c3c3;
+    color: #7f7c7c;
+    line-height: 1.5em;
+  }
+  & .radioBox {
+    & input[type="radio"] {
+      opacity: 0;
+      position: fixed;
+      width: 0;
     }
-    & .radioBox {
-        & input[type=radio] {
-            opacity: 0;
-            position: fixed;
-            width: 0;
-        }
-        & label {
-            text-transform: capitalize;
-            display: inline-block;
-            background-color: #aaf8a5;
-            padding: .3em 0.8em;
-            margin-left: .5em;
-            margin-top: .5em;
-            font-family: sans-serif, Arial;
-            font-size: .8em;
-            border: 2px solid rgb(61, 202, 92);
-            border-radius: 4px;
-            &:hover {
-                background-color: #dfd;
-            }
-            &:focus + label {
-                border: 2px dashed #444;
-            }
-            &:checked + label {
-                background-color: #bfb;
-                border-color: #4c4;
-            }
-        }
+    & label {
+      text-transform: capitalize;
+      display: inline-block;
+      background-color: #aaf8a5;
+      padding: 0.3em 0.8em;
+      margin-left: 0.5em;
+      margin-top: 0.5em;
+      font-family: sans-serif, Arial;
+      font-size: 0.8em;
+      border: 2px solid rgb(61, 202, 92);
+      border-radius: 4px;
+      &:hover {
+        background-color: #dfd;
+      }
+      &:focus + label {
+        border: 2px dashed #444;
+      }
+      &:checked + label {
+        background-color: #bfb;
+        border-color: #4c4;
+      }
     }
+  }
 }

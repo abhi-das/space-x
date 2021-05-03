@@ -1,42 +1,42 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
+}
+
+.logo a {
+  text-decoration: none;
+  color: rgb(83, 83, 83);
+  font-weight: bold;
+}
+
+.nav {
+  li {
+    list-style-type: none;
     padding: 0 1em;
   }
-  
-  .logo a {
-    text-decoration: none;
-    color: rgb(83, 83, 83);
-    font-weight: bold;
-  }
-  
-  .nav {
-    li {
-      list-style-type: none;
-      padding: 0 1em;
-    }
-    a {
+  a {
     text-decoration: none;
     color: rgb(83, 83, 83);
     font-size: 1rem;
     font-weight: bold;
-    }
   }
-  
-  @media (min-width: 768px) {
-    .logo {
-      font-size: 1.5rem;
-    }
-  
-    .nav a {
-      font-size: 1rem;
-    }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
   }
+
+  .nav a {
+    font-size: 1rem;
+  }
+}

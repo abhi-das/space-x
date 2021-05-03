@@ -1,4 +1,4 @@
 export interface filterKeys {
-    year?: string;
-    isSuccess?: string;
+  year?: string;
+  isSuccess?: string;
 }
