@@ -1,4 +1,4 @@
-![SpaceX](https://e7.pngegg.com/pngimages/120/100/png-clipart-international-space-station-spacex-dragon-falcon-9-outer-space-web-browser-spacex-crs14-label-logo.png?compress=1&style=centerme)
+
 ## Space-X Launch
 - [Demo](https://space-x-eight.vercel.app/launch)
 
