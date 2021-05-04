@@ -1,6 +1,3 @@
-# next-typescript
-NextJS in TypeScript
-
 ## Feature tags
 
 - Next
@@ -14,7 +11,6 @@ NextJS in TypeScript
 - Prettier
 - eslint
 - CI/CD with Github Actions
----
 
 ## Installation
 
@@ -25,7 +21,6 @@ NextJS in TypeScript
 - `yarn dev`
 - Visit http://localhost:3000/
 
----
 
 ## Scripts
 
@@ -34,12 +29,10 @@ yarn format
 yarn lint
 ```
 
----
 
 ## Firebase Data Source
 [Space-X](https://space-lauch-default-rtdb.firebaseio.com/spaceX.json)
 
----
 
 ## .github/workflows/space-x-deploy.yml
 
@@ -70,26 +63,22 @@ jobs:
       - run: yarn build
 ```
 
----
 
 ## Why ESLint is Awesome
 This is awesome because not only does ESLint identify ways to make code better, but if you don’t need or don’t agree with certain rules, they can be changed or ignored (either for the line, for the whole file, or for the whole project).
 
 None of the rules depend on each other, they all function independently, and some rules can even fix the code themselves to fall in line with the prescribed rules.
 
----
 
 ## Authors
 
 [Abhishek Das](https://github.com/abhi-das)
 
----
 
 ## Inspired by
 
 [Nextjs Typescript Official Site](https://nextjs.org/)
 
----
 
 ### License
 
