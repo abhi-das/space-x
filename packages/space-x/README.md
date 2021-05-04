@@ -49,7 +49,7 @@ yarn lint
 
 ---
 
-## .github/workflows/main.yml
+## .github/workflows/space-x-deploy.yml
 
 ```sh
 name: spaceX
