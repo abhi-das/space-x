@@ -67,6 +67,18 @@ jobs:
       - run: yarn build
 ```
 
+## VS codebase settings.json
+
+```sh
+{
+    "git.ignoreLimitWarning": true,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}
+```
+
 
 ## Why ESLint is Awesome
 This is awesome because not only does ESLint identify ways to make code better, but if you don’t need or don’t agree with certain rules, they can be changed or ignored (either for the line, for the whole file, or for the whole project).
