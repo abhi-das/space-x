@@ -18,20 +18,12 @@ NextJS in TypeScript
 
 ## Installation
 
-- `git clone git@github.com:rwieruch/nextjs-firebase-authentication.git`
-- `cd nextjs-firebase-authentication`
+- `git clone https://github.com/abhi-das/space-x.git`
+- `cd packages/space-x`
 - See other installation instructions below ...
-- `npm install`
-- `npm run dev`
+- `yarn install`
+- `yarn dev`
 - Visit http://localhost:3000/
-
----
-
-## Running
-
-```sh
-yarn dev
-```
 
 ---
 
