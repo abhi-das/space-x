@@ -71,6 +71,7 @@ jobs:
 ## Running Docker
 
 ```sh
+cd infra/k8s
 docker-compose up --build
 
 ```
