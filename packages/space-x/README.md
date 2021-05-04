@@ -13,6 +13,7 @@ NextJS in TypeScript
 - Mobile First Approach
 - Prettier
 - eslint
+- CI/CD with Github Actions
 ---
 
 ## Installation
@@ -45,6 +46,37 @@ yarn lint
 
 ## Firebase Data Source
 [Space-X](https://space-lauch-default-rtdb.firebaseio.com/spaceX.json)
+
+---
+
+## .github/workflows/main.yml
+
+```sh
+name: spaceX
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'packages/space-x/**'
+
+defaults:
+  run:
+    working-directory: packages/space-x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+```
 
 ---
 
