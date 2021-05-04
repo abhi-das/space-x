@@ -3,24 +3,55 @@ NextJS in TypeScript
 
 ## Feature tags
 
-- next
-- typescript
-
+- Next
+- Typescript
+- React Hook
+- Firebase database
+- Server Side Rendering
+- CSS Module Support
+- SCSS Support
+- Mobile First Approach
+- Prettier
+- eslint
 ---
 
-## Install
+## Installation
 
-```sh
-npm i
-```
+- `git clone git@github.com:rwieruch/nextjs-firebase-authentication.git`
+- `cd nextjs-firebase-authentication`
+- See other installation instructions below ...
+- `npm install`
+- `npm run dev`
+- Visit http://localhost:3000/
 
 ---
 
 ## Running
 
 ```sh
-npm run dev
+yarn dev
 ```
+
+---
+
+## Scripts
+
+```sh
+yarn format
+yarn lint
+```
+
+---
+
+## Firebase Data Source
+[Space-X](https://space-lauch-default-rtdb.firebaseio.com/spaceX.json)
+
+---
+
+## Why ESLint is Awesome
+This is awesome because not only does ESLint identify ways to make code better, but if you don’t need or don’t agree with certain rules, they can be changed or ignored (either for the line, for the whole file, or for the whole project).
+
+None of the rules depend on each other, they all function independently, and some rules can even fix the code themselves to fall in line with the prescribed rules.
 
 ---
 
