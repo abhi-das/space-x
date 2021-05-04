@@ -11,10 +11,11 @@
 - Server Side Rendering
 - CSS Module Support
 - SCSS Support
-- Mobile First Approach
+- Dockerise Support
+- CI/CD with Github Actions
 - Prettier
 - eslint
-- CI/CD with Github Actions
+- Mobile First Approach
 
 ## VS codebase settings.json
 

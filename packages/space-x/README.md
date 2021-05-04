@@ -11,10 +11,11 @@
 - Server Side Rendering
 - CSS Module Support
 - SCSS Support
-- Mobile First Approach
+- Dockerise Support
+- CI/CD with Github Actions
 - Prettier
 - eslint
-- CI/CD with Github Actions
+- Mobile First Approach
 
 ## Installation
 
@@ -65,6 +66,13 @@ jobs:
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
       - run: yarn build
+```
+
+## Running Docker
+
+```sh
+docker-compose up --build
+
 ```
 
 ## Authors
