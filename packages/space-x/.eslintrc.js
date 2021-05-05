@@ -31,6 +31,7 @@ module.exports = {
                 'plugin:react/recommended', // React rules
                 'plugin:react-hooks/recommended', // React hooks rules
                 'plugin:jsx-a11y/recommended', // Accessibility rules
+                "plugin:@typescript-eslint/eslint-recommended"
             ],
             rules: {
                 "@typescript-eslint/no-empty-function": "off",
@@ -38,7 +39,7 @@ module.exports = {
                 "@typescript-eslint/no-require-imports": "error",
                 "@typescript-eslint/no-use-before-define": "error",
                 "@typescript-eslint/type-annotation-spacing": "error",
-                "camelcase": "error",
+                // "camelcase": "error",
                 "comma-dangle": "off",
                 "eol-last": "off",
                 "no-console": [
@@ -77,9 +78,21 @@ module.exports = {
                 "no-new-wrappers": "error",
                 "no-redeclare": "error",
                 'react/prop-types': 'off',
-                'no-unused-vars': 'error',
+                "no-unused-vars": [
+                    "error",
+                    {
+                        "vars": "all",
+                        "args": "none"
+                    }
+                ],
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                      "vars": "all",
+                      "args": "none"
+                    }
+                ],
                 'react/jsx-props-no-spreading': 'warn',
-                '@typescript-eslint/no-unused-vars': ['error'],
                 "sort-imports-es6-autofix/sort-imports-es6": [
                     2,
                     {

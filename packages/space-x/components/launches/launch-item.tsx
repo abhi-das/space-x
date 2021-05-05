@@ -3,7 +3,17 @@ import DateIcon from "../icons/date-icon";
 import React from "react";
 import styles from "./launch-item.module.scss";
 
-const LaunchItem = (props) => {
+export interface LaunchItemProps {
+  id: string;
+  title: string;
+  images: string;
+  date: string;
+  successFulLaunch: boolean;
+  successFulLanding: boolean;
+  key?: string;
+}
+
+const LaunchItem = (props: LaunchItemProps) => {
   const {
     title,
     images,
@@ -29,10 +39,10 @@ const LaunchItem = (props) => {
           <strong>Launch Year:</strong> <DateIcon /> <time>{date}</time>
         </div>
         <div>
-          <strong>Successful Launch:</strong> {successFulLaunch}
+          <strong>Successful Launch:</strong> {successFulLaunch.toString()}
         </div>
         <div>
-          <strong>Successful Landing:</strong> {successFulLanding}
+          <strong>Successful Landing:</strong> {successFulLanding.toString()}
         </div>
       </div>
     </li>

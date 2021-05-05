@@ -3,18 +3,32 @@ import React from "react";
 
 import styles from "./launch-list.module.scss";
 
-const LaunchList = ({ items }) => {
+export interface LaunchListItem {
+  mission_id: string;
+  mission_name: string;
+  image: string;
+  launch_year: string;
+  launch_successful: boolean;
+  landing_successful: boolean;
+}
+
+interface LaunchListProps {
+  items: Array<LaunchListItem>;
+}
+
+const LaunchList = (props: LaunchListProps) => {
+  const { items } = props;
   return (
     <ul className={styles.list}>
-      {items.map((launch) => (
+      {items.map((item) => (
         <LaunchItem
-          key={launch.mission_id}
-          id={launch.mission_id}
-          title={launch.mission_name}
-          images={launch.image}
-          date={launch.launch_year}
-          successFulLaunch={launch.launch_successful.toString()}
-          successFulLanding={launch.landing_successful.toString()}
+          id={item.mission_id}
+          title={item.mission_name}
+          images={item.image}
+          date={item.launch_year}
+          successFulLaunch={item.launch_successful}
+          successFulLanding={item.landing_successful}
+          key={item.mission_id}
         />
       ))}
     </ul>

@@ -3,11 +3,19 @@ import Radio from "../ui/radio";
 import React from "react";
 import styles from "./launch-search.module.scss";
 
-const LaunchSearch = (props) => {
-  const [year, setYear] = React.useState(undefined);
-  const [isSuccessFul, setIsSuccessFul] = React.useState(undefined);
+interface LaunchSearchDispatch {
+  onSearch: (year: string, isSuccessFul: string) => void;
+}
 
-  const searchHandler = (event) => {
+type Props = LaunchSearchDispatch;
+
+const LaunchSearch = (props: Props) => {
+  const [year, setYear] = React.useState<string | undefined>(undefined);
+  const [isSuccessFul, setIsSuccessFul] = React.useState<string | undefined>(
+    undefined
+  );
+
+  const searchHandler = (event): void => {
     event.preventDefault();
     if (year && isSuccessFul !== undefined) {
       props.onSearch(year, isSuccessFul);

@@ -1,12 +1,18 @@
 import { GetStaticProps } from "next";
 import { getAllLaunch } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
-import LaunchList from "../../components/launches/launch-list";
+import LaunchList, {
+  LaunchListItem,
+} from "../../components/launches/launch-list";
 import LaunchSearch from "../../components/launches/launch-search";
 import React from "react";
 import styles from "../../styles/Globals.module.scss";
 
-const AllLaunches = (props) => {
+interface AllLaunchesProps {
+  allLaunches: Array<LaunchListItem>;
+}
+
+const AllLaunches = (props: AllLaunchesProps) => {
   const router = useRouter();
   const { allLaunches } = props;
 
