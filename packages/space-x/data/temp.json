@@ -1,114 +1,112 @@
-{
-    "spaceX": [
-        {
-            "mission_name": "FalconSat",
-            "mission_id": "1011",
-            "launch_year": "2016",
-            "launch_successful": false,
-            "landing_successful": false,
-            "image": "images/r1.jpg",
-            "isFeatured": true,
-            "details": "Engine failure at 33 seconds and loss of vehicle"
-        },
-        {
-            "mission_name": "DSCOVR",
-            "mission_id": "1012",
-            "launch_year": "2015",
-            "launch_successful": true,
-            "landing_successful": true,
-            "image": "images/r11.jpg",
-            "isFeatured": true,
-            "details": "Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage"
-        },
-        {
-            "mission_name": "ABS-3A / Eutelsat 115W B",
-            "mission_id": "1013",
-            "launch_year": "2011",
-            "launch_successful": true,
-            "landing_successful": false,
-            "image": "images/r2.jpg",
-            "isFeatured": false,
-            "details": "Residual stage 1 thrust led to collision between stage 1 and stage 2"
-        },
-        {
-            "mission_name": "TürkmenÄlem 52°E / MonacoSAT",
-            "mission_id": "1014",
-            "launch_year": "2012",
-            "launch_successful": true,
-            "landing_successful": false,
-            "image": "images/r3.jpg",
-            "isFeatured": false,
-            "details": "Ratsat was carried to orbit on the first successful orbital launch of any privately funded and developed, liquid-propelled carrier rocket, the SpaceX Falcon 1"
-        },
-        {
-            "mission_name": "OG-2 Mission 2",
-            "mission_id": "1015",
-            "launch_year": "2011",
-            "launch_successful": false,
-            "landing_successful": true,
-            "image": "images/r4.jpg",
-            "isFeatured": false,
-            "details": "Launch was scrubbed on first attempt, second launch attempt was successful"
-        },
-        {
-            "mission_name": "Trailblazer",
-            "mission_id": "1016",
-            "launch_year": "2016",
-            "launch_successful": false,
-            "landing_successful": true,
-            "image": "images/r5.jpg",
-            "isFeatured": false,
-            "details": "CRS-1 successful, but the secondary payload was inserted into abnormally low orbit and lost due to Falcon 9 boost stage engine failure, ISS visiting vehicle safety rules, and the primary payload owner's contractual right to decline a second ignition of the second stage under some conditions."
-        },
-        {
-            "mission_name": "COTS 1",
-            "mission_id": "1017",
-            "launch_year": "2014",
-            "launch_successful": true,
-            "landing_successful": true,
-            "image": "images/r6.jpg",
-            "isFeatured": false,
-            "details": "Last launch of the original Falcon 9 v1.0 launch vehicle"
-        },
-        {
-            "mission_name": "CRS-1",
-            "mission_id": "1018",
-            "launch_year": "2016",
-            "launch_successful": false,
-            "landing_successful": true,
-            "image": "images/r7.jpg",
-            "isFeatured": false,
-            "details": "Commercial mission and first Falcon 9 v1.1 flight, with improved 13-tonne to LEO capacity. Following second-stage separation from the first stage, an attempt was made to perform an ocean touchdown test of the discarded booster vehicle. The test provided good test data on the experiment-its primary objective-but as the booster neared the ocean, aerodynamic forces caused an uncontrollable roll. The center engine, depleted of fuel by centrifugal force, shut down resulting in the impact and destruction of the vehicle."
-        },
-        {
-            "mission_name": "CASSIOPE",
-            "mission_id": "1019",
-            "launch_year": "2013",
-            "launch_successful": true,
-            "landing_successful": true,
-            "image": "images/r8.jpg",
-            "isFeatured": false,
-            "details": "First GTO launch for Falcon 9"
-        },
-        {
-            "mission_name": "SES-8",
-            "mission_id": "1020",
-            "launch_year": "2015",
-            "launch_successful": true,
-            "landing_successful": true,
-            "image": "images/r9.jpg",
-            "isFeatured": false,
-            "details": "Second GTO launch for Falcon 9. The USAF evaluated launch data from this flight as part of a separate certification program for SpaceX to qualify to fly U.S. military payloads and found that the Thaicom 6 launch had \"unacceptable fuel reserves at engine cutoff of the stage 2 second burnoff\""
-        },
-        {
-            "mission_name": "Thaicom 6",
-            "mission_id": "1021",
-            "launch_year": "2011",
-            "launch_successful": true,
-            "landing_successful": true,
-            "image": "images/r10.jpg",
-            "isFeatured": false,
-            "details": "Following second-stage separation, SpaceX conducted a second controlled-descent test of the discarded booster vehicle and achieved the first successful controlled ocean touchdown of a liquid-rocket-engine orbital booster. Following touchdown the first stage tipped over as expected and was destroyed. This was the first Falcon 9 booster to fly with extensible landing legs and the first Dragon mission with the Falcon 9 v1.1 launch vehicle."
-        }
-    ]
-}
+[
+    {
+      "details": "Engine failure at 33 seconds and loss of vehicle",
+      "image": "images/r1.webp",
+      "isFeatured": true,
+      "landing_successful": false,
+      "launch_successful": false,
+      "launch_year": "2016",
+      "mission_id": "1011",
+      "mission_name": "FalconSat"
+    },
+    {
+      "details": "Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage",
+      "image": "images/r11.webp",
+      "isFeatured": true,
+      "landing_successful": true,
+      "launch_successful": true,
+      "launch_year": "2015",
+      "mission_id": "1012",
+      "mission_name": "DSCOVR"
+    },
+    {
+      "details": "Residual stage 1 thrust led to collision between stage 1 and stage 2",
+      "image": "images/r2.webp",
+      "isFeatured": false,
+      "landing_successful": false,
+      "launch_successful": true,
+      "launch_year": "2011",
+      "mission_id": "1013",
+      "mission_name": "ABS-3A / Eutelsat 115W B"
+    },
+    {
+      "details": "Ratsat was carried to orbit on the first successful orbital launch of any privately funded and developed, liquid-propelled carrier rocket, the SpaceX Falcon 1",
+      "image": "images/r3.webp",
+      "isFeatured": false,
+      "landing_successful": false,
+      "launch_successful": true,
+      "launch_year": "2012",
+      "mission_id": "1014",
+      "mission_name": "TürkmenÄlem 52°E / MonacoSAT"
+    },
+    {
+      "details": "Launch was scrubbed on first attempt, second launch attempt was successful",
+      "image": "images/r4.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": false,
+      "launch_year": "2011",
+      "mission_id": "1015",
+      "mission_name": "OG-2 Mission 2"
+    },
+    {
+      "details": "CRS-1 successful, but the secondary payload was inserted into abnormally low orbit and lost due to Falcon 9 boost stage engine failure, ISS visiting vehicle safety rules, and the primary payload owner's contractual right to decline a second ignition of the second stage under some conditions.",
+      "image": "images/r5.webp",
+      "isFeatured": true,
+      "landing_successful": true,
+      "launch_successful": false,
+      "launch_year": "2016",
+      "mission_id": "1016",
+      "mission_name": "Trailblazer"
+    },
+    {
+      "details": "Last launch of the original Falcon 9 v1.0 launch vehicle",
+      "image": "images/r6.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": true,
+      "launch_year": "2014",
+      "mission_id": "1017",
+      "mission_name": "COTS 1"
+    },
+    {
+      "details": "Commercial mission and first Falcon 9 v1.1 flight, with improved 13-tonne to LEO capacity. Following second-stage separation from the first stage, an attempt was made to perform an ocean touchdown test of the discarded booster vehicle. The test provided good test data on the experiment-its primary objective-but as the booster neared the ocean, aerodynamic forces caused an uncontrollable roll. The center engine, depleted of fuel by centrifugal force, shut down resulting in the impact and destruction of the vehicle.",
+      "image": "images/r7.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": false,
+      "launch_year": "2016",
+      "mission_id": "1018",
+      "mission_name": "CRS-1"
+    },
+    {
+      "details": "First GTO launch for Falcon 9",
+      "image": "images/r8.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": true,
+      "launch_year": "2013",
+      "mission_id": "1019",
+      "mission_name": "CASSIOPE"
+    },
+    {
+      "details": "Second GTO launch for Falcon 9. The USAF evaluated launch data from this flight as part of a separate certification program for SpaceX to qualify to fly U.S. military payloads and found that the Thaicom 6 launch had \"unacceptable fuel reserves at engine cutoff of the stage 2 second burnoff\"",
+      "image": "images/r9.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": true,
+      "launch_year": "2015",
+      "mission_id": "1020",
+      "mission_name": "SES-8"
+    },
+    {
+      "details": "Following second-stage separation, SpaceX conducted a second controlled-descent test of the discarded booster vehicle and achieved the first successful controlled ocean touchdown of a liquid-rocket-engine orbital booster. Following touchdown the first stage tipped over as expected and was destroyed. This was the first Falcon 9 booster to fly with extensible landing legs and the first Dragon mission with the Falcon 9 v1.1 launch vehicle.",
+      "image": "images/r12.webp",
+      "isFeatured": false,
+      "landing_successful": true,
+      "launch_successful": true,
+      "launch_year": "2011",
+      "mission_id": "1021",
+      "mission_name": "Thaicom 6"
+    }
+  ]
