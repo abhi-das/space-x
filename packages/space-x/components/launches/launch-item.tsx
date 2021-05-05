@@ -27,7 +27,7 @@ const LaunchItem = (props: LaunchItemProps) => {
 
   return (
     <li className={styles.item}>
-      <img src={"/" + images} alt={title} />
+      <img src={"/" + images} alt={title} title={title} />
       <div className={styles.content}>
         <h2>
           <Button link={exploreLink}>{title}</Button>

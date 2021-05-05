@@ -13,12 +13,13 @@ const Home = (props: PageProps) => {
   return (
     <section>
       <Head>
-        <title>Space-X App Landing !!</title>
+        <title>Space-X App Landing</title>
+        <meta charSet="utf-8" />
         <meta name="description" content="space-X launch" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <meta property="og:title" content="Space-X App Landing" key="ogtitle" />
++       <meta property="og:description" content="space-X launch" key="ogdesc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
       </Head>
       <LaunchList items={props.launches} />
     </section>
