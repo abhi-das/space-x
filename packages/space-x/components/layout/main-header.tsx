@@ -5,9 +5,13 @@ import styles from "./main-header.module.scss";
 const MainHeader = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <Link href="/">SpaceX Launch Programs</Link>
-      </div>
+      <h1 className={styles.logo}>
+        <Link href="/">
+          <p>
+            <span>Space</span>X <span> Launch Programs</span>
+          </p>
+        </Link>
+      </h1>
       <nav className={styles.nav}>
         <ul>
           <li>

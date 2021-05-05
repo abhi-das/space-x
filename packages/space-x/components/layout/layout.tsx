@@ -1,3 +1,4 @@
+import Footer from "../footer/Footer";
 import MainHeader from "./main-header";
 import React from "react";
 import styles from "../../styles/Globals.module.scss";
@@ -13,10 +14,7 @@ const Layout = (props) => {
         `}</style> */}
       <MainHeader />
       <main>{props.children}</main>
-      <footer className={styles.footer}>
-        <strong>Developed By:&nbsp;</strong>
-        <span>Abhishek Das</span>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 };

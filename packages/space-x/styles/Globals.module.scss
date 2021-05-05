@@ -47,5 +47,9 @@
  
   .layout {
     font-family: 'Nunito';
-    background: #e2e2e2;
+    background: $gray-lgt-1;
+  }
+
+  .containerCenter{
+    text-align: center;
   }

@@ -1,8 +1,10 @@
 import { GetServerSideProps } from "next";
 import { getFilteredLaunch } from "../../helpers/api-utils";
 import Head from "next/head";
+import Header from "../../components/header/Header";
 import LaunchList from "../../components/launches/launch-list";
 import React from "react";
+import styles from "../../styles/Globals.module.scss";
 
 const FilteredLaunchPage = (props) => {
   const { filteredLaunches } = props;
@@ -20,8 +22,8 @@ const FilteredLaunchPage = (props) => {
       <Head>
         <title>Filtered Launch</title>
       </Head>
-      <section>
-        <h2>Filtered Launch Page</h2>
+      <Header headerType="h2" title="Filtered Launch Page" />
+      <section className={styles.containerCenter}>
         <LaunchList items={filteredLaunches} />
       </section>
     </>

@@ -1,7 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+import Header from "../../components/header/Header";
 import Image from "next/image";
 import React from "react";
+import styles from "../../styles/Globals.module.scss";
 
 import { getFeaturedLaunch, getLaunchById } from "../../helpers/api-utils";
 
@@ -21,10 +23,8 @@ const LaunchDetailPage = (props) => {
         <title>{launch.mission_name}</title>
         <meta name="description" content={launch.details} />
       </Head>
-      <header>
-        <h1>{launch.mission_name}</h1>
-      </header>
-      <section>
+      <Header headerType="h2" title={launch.mission_name} />
+      <section className={styles.containerCenter}>
         <Image
           src={`/${launch.image}`}
           alt={launch.title}
