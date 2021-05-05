@@ -5,6 +5,7 @@ module.exports = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
     },
+    compress: true,
     webpackDevMiddleware: config => {
         config.watchOptions = {
             poll: 1000,
