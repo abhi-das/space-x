@@ -48,8 +48,13 @@
   .layout {
     font-family: 'Nunito';
     background: $gray-lgt-1;
+    min-height: 100vh;
   }
 
   .containerCenter{
     text-align: center;
+  }
+
+  .center {
+      text-align: center;
   }

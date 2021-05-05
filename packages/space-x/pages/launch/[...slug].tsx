@@ -10,11 +10,11 @@ const FilteredLaunchPage = (props) => {
   const { filteredLaunches } = props;
 
   if (!filteredLaunches) {
-    return <p>Loading...</p>;
+    return <p className={styles.center}>Loading...</p>;
   }
 
   if (filteredLaunches.length === 0) {
-    return <p>No match!</p>;
+    return <p className={styles.center}>No match!</p>;
   }
 
   return (
