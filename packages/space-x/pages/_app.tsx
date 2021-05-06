@@ -1,6 +1,6 @@
+import Head from "next/head";
 import Layout from "../components/layout/layout";
 import React from "react";
-import Head from "next/head";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -10,7 +10,8 @@ const MyApp = ({ Component, pageProps }) => {
         <meta charSet="utf-8" />
         <meta name="description" content="space-X launch" />
         <meta property="og:title" content="Space-X App Landing" key="ogtitle" />
-+       <meta property="og:description" content="space-X launch" key="ogdesc" />
+        +{" "}
+        <meta property="og:description" content="space-X launch" key="ogdesc" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"

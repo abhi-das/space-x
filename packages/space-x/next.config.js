@@ -9,13 +9,13 @@ module.exports = {
         includePaths: [path.join(__dirname, 'styles')],
     },
     compress: true,
-    withPWA: ({
+    withPWA: {
         pwa: {
             dest: 'public',
             sw: 'service-worker.js',
             runtimeCaching,
         }
-    }),
+    },
     webpackDevMiddleware: config => {
         config.watchOptions = {
             poll: 1000,

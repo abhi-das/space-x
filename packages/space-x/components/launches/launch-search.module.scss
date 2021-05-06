@@ -2,7 +2,7 @@
 
 .form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   flex: 0 0 15%;
   align-content: flex-start;
   flex-wrap: wrap;
@@ -14,26 +14,41 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 0 1em 2em;
-  .setYear {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
 
-  .radioContainer {
+  h2 {
+    margin: ($baseline * 0.5) 0;
+  }
+  & .radioContainer {
     display: block;
     width: 100%;
     text-align: center;
-    & .subTitle {
-      text-align: center;
-      font-weight: bold;
-      border-bottom: 1px solid #c3c3c3;
-      color: $gray-lgt-2;
-      line-height: 1.5em;
-    }
   }
-  & button {
+  & .subTitle {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #c3c3c3;
+    color: $gray-lgt-2;
+    line-height: 1.5em;
+    margin: ($baseline * 0.5) 0;
+  }
+  & .submitBtn {
     margin-top: $baseline;
+    padding: 0.5em;
+    border: none;
+    background: rgb(138, 243, 143);
+    color: green;
+
+    &:disabled {
+      background: #e8e8e8;
+      color: #c7c5c5;
+    }
+
+    &:focus {
+      background: green;
+      color: white;
+      outline: 2px solid green;
+      outline-offset: 2px;
+    }
   }
 }
 

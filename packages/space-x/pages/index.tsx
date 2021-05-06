@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
 import React from "react";
 
 import { getFeaturedLaunch } from "../helpers/api-utils";

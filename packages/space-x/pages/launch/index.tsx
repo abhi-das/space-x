@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next";
 import { getAllLaunch } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import LaunchList, {
   LaunchListItem,
 } from "../../components/launches/launch-list";
 import LaunchSearch from "../../components/launches/launch-search";
 import React from "react";
 import styles from "../../styles/Globals.module.scss";
-import Head from "next/head";
 
 interface AllLaunchesProps {
   allLaunches: Array<LaunchListItem>;
@@ -21,8 +21,8 @@ const AllLaunches = (props: AllLaunchesProps) => {
     return <p>Loading...</p>;
   }
 
-  const onSearch = (filterKey, success) => {
-    const filterPagePath = `/launch/${filterKey}/${success}`;
+  const onSearch = (filterKey, isSuccessLaunch, isSuccessLand) => {
+    const filterPagePath = `/launch/${filterKey}/${isSuccessLaunch}/${isSuccessLand}`;
     router.push(filterPagePath);
   };
 
@@ -30,7 +30,10 @@ const AllLaunches = (props: AllLaunchesProps) => {
     <>
       <Head>
         <title>Browse All Launch</title>
-        <meta name="description" content="Browse all launch by year, also filter by landing and launching year." />
+        <meta
+          name="description"
+          content="Browse all launch by year, also filter by landing and launching year."
+        />
       </Head>
       <section className={styles.flex}>
         <LaunchSearch onSearch={onSearch} />

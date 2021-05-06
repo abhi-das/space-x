@@ -33,12 +33,13 @@ export async function getLaunchByYear(year) {
 }
 
 export async function getFilteredLaunch(dateFilter) {
-  const { year, isSuccess } = dateFilter;
+  const { year, isSuccessLaunch, isSuccessLand } = dateFilter;
   const allLaunches = await getAllLaunch();
   const filteredLaunch = allLaunches.filter((launch) => {
     return (
       launch.launch_year === year &&
-      launch.launch_successful.toString() === isSuccess
+      launch.launch_successful.toString() === isSuccessLaunch &&
+      launch.landing_successful.toString() === isSuccessLand
     );
   });
 

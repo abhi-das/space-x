@@ -1,10 +1,17 @@
 .radioItem {
   display: inline-block;
+  margin-right: 0.4em;
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
   & label {
     text-transform: capitalize;
+    display: block;
     & input[type="radio"] {
-      display: none;
-      &:checked {
+      position: absolute;
+      opacity: 0;
+      &:checked,
+      &:focus {
         + .bg {
           background-color: green;
           span {
@@ -20,11 +27,10 @@
       padding: 1em 1.5em;
       background-color: rgb(138, 243, 143);
       border: 1px solid rgb(61, 202, 92);
-      margin-left: 0.4em;
       border-radius: 4px;
       transition: all 250ms ease;
       will-change: transition;
-      display: inline-block;
+      display: block;
       text-align: center;
       cursor: pointer;
       position: relative;

@@ -78,13 +78,6 @@ module.exports = {
                 "no-new-wrappers": "error",
                 "no-redeclare": "error",
                 'react/prop-types': 'off',
-                "no-unused-vars": [
-                    "error",
-                    {
-                        "vars": "all",
-                        "args": "none"
-                    }
-                ],
                 "@typescript-eslint/no-unused-vars": [
                     "error",
                     {
@@ -92,7 +85,7 @@ module.exports = {
                       "args": "none"
                     }
                 ],
-                'react/jsx-props-no-spreading': 'warn',
+                'react/jsx-props-no-spreading': 'off',
                 "sort-imports-es6-autofix/sort-imports-es6": [
                     2,
                     {

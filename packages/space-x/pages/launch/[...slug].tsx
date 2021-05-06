@@ -34,7 +34,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const filterKeys = context.params.slug;
   const launches = await getFilteredLaunch({
     year: filterKeys[0],
-    isSuccess: filterKeys[1],
+    isSuccessLaunch: filterKeys[1],
+    isSuccessLand: filterKeys[2],
   });
 
   return {

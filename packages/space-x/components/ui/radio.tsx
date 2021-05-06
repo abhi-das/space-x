@@ -6,6 +6,7 @@ interface RadioProps {
   label: string;
   value: string;
   checked: string;
+  name: string;
   key?: number;
 }
 
@@ -16,7 +17,7 @@ interface RadioDispatch {
 type Props = RadioProps & RadioDispatch;
 
 export const Radio = (props: Props) => {
-  const { id, label, value, checked, setter } = props;
+  const { id, label, value, checked, setter, name } = props;
 
   return (
     <div className={styles.radioItem}>
@@ -26,6 +27,8 @@ export const Radio = (props: Props) => {
           id={id.toString()}
           checked={checked == value}
           onChange={() => setter(value)}
+          name={name}
+          aria-hidden="true"
         />
         <div className={styles.bg}>
           <span>{label}</span>
