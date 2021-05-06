@@ -7,7 +7,7 @@ import LaunchList, {
 } from "../../components/launches/launch-list";
 import LaunchSearch from "../../components/launches/launch-search";
 import React from "react";
-// import styles from "../../styles/globals.module.scss";
+import styles from "../../styles/globals.module.scss";
 
 interface AllLaunchesProps {
   allLaunches: Array<LaunchListItem>;
@@ -35,8 +35,7 @@ const AllLaunches = (props: AllLaunchesProps) => {
           content="Browse all launch by year, also filter by landing and launching year."
         />
       </Head>
-      {/* <section className={styles.flex}> */}
-      <section>
+      <section className={styles.flex}>
         <LaunchSearch onSearch={onSearch} />
         <LaunchList items={allLaunches} />
       </section>

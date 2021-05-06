@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "rimraf dist && next build --profile",
+    "build": "rimraf dist && next build",
     "format": "prettier --write pages/**/*.{ts,tsx,scss} components/**/*.{ts,tsx,scss} common/**/*.{ts,tsx} helpers/**/*.{ts,tsx}",
     "lint": "eslint --ext js,jsx,ts,tsx --color --fix .",
     "precommit": "pretty-quick --staged",
