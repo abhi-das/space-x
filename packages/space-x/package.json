@@ -5,13 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build",
+    "build": "rimraf dist && next build --profile",
     "format": "prettier --write pages/**/*.{ts,tsx,scss} components/**/*.{ts,tsx,scss} common/**/*.{ts,tsx} helpers/**/*.{ts,tsx}",
     "lint": "eslint --ext js,jsx,ts,tsx --color --fix .",
     "precommit": "pretty-quick --staged",
     "win-find-port": "netstat -ano | findstr :3000",
     "win-kill-port": "tskill <id>",
-    "localbuild": "yarn format & yarn lint & yarn build"
+    "localbuild": "yarn format & yarn lint & rimraf dist && yarn build"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.22.1",
