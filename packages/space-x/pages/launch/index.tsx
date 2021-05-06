@@ -18,7 +18,7 @@ const AllLaunches = (props: AllLaunchesProps) => {
   const { allLaunches } = props;
 
   if (!allLaunches) {
-    return <p>Loading...</p>;
+    return <p>Loading....</p>;
   }
 
   const onSearch = (filterKey, isSuccessLaunch, isSuccessLand) => {
