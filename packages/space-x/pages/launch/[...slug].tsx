@@ -4,7 +4,7 @@ import Head from "next/head";
 import Header from "../../components/header/Header";
 import LaunchList from "../../components/launches/launch-list";
 import React from "react";
-import styles from "../../styles/Globals.module.scss";
+import styles from "../../styles/globals.module.scss";
 
 const FilteredLaunchPage = (props) => {
   const { filteredLaunches } = props;

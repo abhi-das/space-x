@@ -7,7 +7,7 @@ import LaunchList, {
 } from "../../components/launches/launch-list";
 import LaunchSearch from "../../components/launches/launch-search";
 import React from "react";
-import styles from "../../styles/Globals.module.scss";
+import styles from "../../styles/globals.module.scss";
 
 interface AllLaunchesProps {
   allLaunches: Array<LaunchListItem>;
