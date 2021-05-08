@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spacexui
+spec:
+  containers:
+    - name: spacexui
+      image: spacex/ui
+      imagePullPolicy: Never
+    

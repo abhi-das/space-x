@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spacexservice
+spec:
+  containers:
+    - name: spacexservice
+      image: spacex/api
+      imagePullPolicy: Never
+    

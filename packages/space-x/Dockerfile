@@ -1,7 +1,7 @@
 FROM node:15
 
-ENV PORT 3000
-EXPOSE 3000
+# ENV PORT 3000
+# EXPOSE 3000
 
 # Create app directory
 RUN mkdir -p /usr/src/app
