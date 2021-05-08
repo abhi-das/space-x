@@ -1,20 +1,18 @@
 import { Application, Request, Response } from 'express';
-import { SpaceLaunches } from '../common';
 import { randomBytes } from 'crypto';
+import { SpaceLaunch } from '../common';
+
 
 const SpacexRoutes = (app: Application): void => {
-  const spaceLaunches: SpaceLaunches = {
-    spaceLaunch: [],
-  };
-
+  const spaceLaunches: SpaceLaunch[] = [];
   app
     .route('/space-launches')
     .get((req: Request, res: Response): void => {
       const maxLimit = req.query.limit;
       if (maxLimit) {
-        spaceLaunches.spaceLaunch.splice(
+        spaceLaunches.splice(
           Number(maxLimit),
-          spaceLaunches.spaceLaunch.length,
+          spaceLaunches.length,
         );
       }
       res.status(200).send(spaceLaunches);
@@ -22,14 +20,14 @@ const SpacexRoutes = (app: Application): void => {
     .post((req: Request, res: Response): void => {
       const missionId = randomBytes(4).toString('hex');
       const missionName = req.body;
-      spaceLaunches.spaceLaunch?.push({ missionId, missionName });
-      res.status(201).send(spaceLaunches);
+      spaceLaunches.push({ missionId, missionName });
+      res.status(201).send({ missionId, missionName });
     });
 
   app
     .route('/space-launches/:id/launch')
     .get((req: Request, res: Response): void => {
-      const selectedLaunch = spaceLaunches.spaceLaunch.filter(
+      const selectedLaunch = spaceLaunches.filter(
         launch => launch.missionId === req.params.id,
       );
       res.status(200).send(selectedLaunch);

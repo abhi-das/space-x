@@ -1,8 +1,7 @@
-export interface SpaceLaunch {
+interface SpaceLaunch {
   missionId: string;
   missionName: string;
 }
 
-export interface SpaceLaunches {
-  spaceLaunch: Array<SpaceLaunch>;
-}
+
+export {SpaceLaunch};

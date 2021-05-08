@@ -8,7 +8,15 @@
     "start": "nodemon -q dist/index.js",
     "dev": "nodemon src/index.ts",
     "lint": "eslint --config .eslintrc.js --ext ts --color --fix .",
-    "format": "prettier --config .prettierrc.json --write src/**/*.ts"
+    "format": "prettier --config .prettierrc.json --write src/**/*.ts",
+    "functional-test": "jest --watchAll --no-cache"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
   },
   "dependencies": {
     "axios": "^0.21.1",
