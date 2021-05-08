@@ -10,7 +10,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended"
     ],
     parserOptions: { ecmaVersion: 8 },
-    ignorePatterns: ['node_modules/*', 'dist/*', '!.prettierrc.json', '.eslintrc.js'],
+    ignorePatterns: ['node_modules/*', 'dist/*', '!.prettierrc.json', '.eslintrc.js', 'src/common/index.ts'],
     plugins: [
         "@typescript-eslint",
         "sort-imports-es6-autofix",
