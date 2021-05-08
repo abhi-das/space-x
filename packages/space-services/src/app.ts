@@ -6,7 +6,7 @@ import express, { Application } from 'express';
 const App: Application = express();
 
 // Middlewares
-App.use(bodyParser.urlencoded({ extended : true }));
+App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
 App.use(cors());
 

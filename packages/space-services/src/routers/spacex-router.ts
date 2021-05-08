@@ -2,7 +2,6 @@ import { Application, Request, Response } from 'express';
 import { randomBytes } from 'crypto';
 import { SpaceLaunch } from '../common';
 
-
 const SpacexRoutes = (app: Application): void => {
   const spaceLaunches: SpaceLaunch[] = [];
   app
@@ -10,10 +9,7 @@ const SpacexRoutes = (app: Application): void => {
     .get((req: Request, res: Response): void => {
       const maxLimit = req.query.limit;
       if (maxLimit) {
-        spaceLaunches.splice(
-          Number(maxLimit),
-          spaceLaunches.length,
-        );
+        spaceLaunches.splice(Number(maxLimit), spaceLaunches.length);
       }
       res.status(200).send(spaceLaunches);
     })

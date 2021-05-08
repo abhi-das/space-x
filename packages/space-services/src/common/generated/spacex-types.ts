@@ -3,5 +3,4 @@ interface SpaceLaunch {
   missionName: string;
 }
 
-
-export {SpaceLaunch};
+export { SpaceLaunch };

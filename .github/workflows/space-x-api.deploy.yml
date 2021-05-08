@@ -1,0 +1,25 @@
+name: spaceService
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'packages/space-services'
+
+
+defaults:
+  run:
+    working-directory: packages/space-services
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build

@@ -1,4 +1,3 @@
-
-beforeAll(async() => {
-    process.env.TEMP = 'testkey';
+beforeAll(async () => {
+  process.env.TEMP = 'testkey';
 });
