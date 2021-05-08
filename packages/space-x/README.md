@@ -73,7 +73,7 @@ jobs:
 
 ```sh
 cd infra/k8s
-docker-compose up --build
+
 
 ```
 

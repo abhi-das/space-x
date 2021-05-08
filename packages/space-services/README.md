@@ -9,13 +9,79 @@ path: /space-launches
 method: GET
 body: -
 
+
+GOAL: Create mission
+
+path: /space-launches
+method: POST
+body: { id, name }
+params: -
+
+
+GOAL: Get launch by id
+
+path: /space-launches/:{id}/launch
+method: GET
+body: -
+params: -
+query: {id}
+
 ```
 
+## .github/workflows/space-x-api-deploy.yml
+
+```sh
+name: spaceServices
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'packages/space-services/**'
+
+defaults:
+  run:
+    working-directory: packages/space-services
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+```
+
+## Jest Test case Enabled
+
+```sh
+
+yarn functional-test
+
+```
 
 ## ESlint
 
-Code linting
+```sh
+
+yarn lint
+
+```
 
 ## Prettier
 
-Code indentation
+```sh
+
+yarn format
+
+```
+
+## Authors
+
+[Abhishek Das](https://github.com/abhi-das)
