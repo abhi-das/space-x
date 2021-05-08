@@ -1,6 +1,6 @@
+import { App } from '../../app';
 import { randomBytes } from 'crypto';
 import request from 'supertest';
-import { App } from '../../app';
 
 const allMissions: any = [];
 

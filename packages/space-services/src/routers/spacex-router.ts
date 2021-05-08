@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express';
-import { randomBytes } from 'crypto';
 import { SpaceLaunch } from '../common';
+import { randomBytes } from 'crypto';
 
 const SpacexRoutes = (app: Application): void => {
   const spaceLaunches: SpaceLaunch[] = [];
