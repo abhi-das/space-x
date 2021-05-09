@@ -89,6 +89,15 @@ cd infra/k8s
 }
 ```
 
+## About Testcafe and Execution Testcase
+TestCafe excels where other end-to-end testing solutions fall short. TestCafe does not depend on Selenium or other testing software. TestCafe runs on the popular Node.js platform, and makes use of the browsers that you already have. TestCafe is distributed for free under the MIT license.
+
+```sh
+
+yarn testcafe
+
+```
+
 ## Performace Testing
 ![Screenshot](./public/others/performaceStatus.png)
 
