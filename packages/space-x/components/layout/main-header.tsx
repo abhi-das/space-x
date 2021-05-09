@@ -8,9 +8,6 @@ const MainHeader = () => {
       <h1 className={`title ${styles.logo}`}>
         <Link href="/">
           Space-x Launch Programs
-          {/* <p>
-            <span>Space</span>X <span> Launch Programs</span>
-          </p> */}
         </Link>
       </h1>
       <nav className={`nav ${styles.nav}`}>

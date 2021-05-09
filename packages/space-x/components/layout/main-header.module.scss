@@ -19,26 +19,6 @@
 }
 h1.logo {
   cursor: pointer;
-  & span {
-    transition: 0.5s linear;
-    color: #535353;
-  }
-  & p {
-    color: #0135f1;
-  }
-  &:hover span:nth-child(1) {
-    margin-right: 2px;
-  }
-  &:hover span:nth-child(1):after {
-    content: "-";
-  }
-  &:hover span:nth-child(2) {
-    margin-left: 2px;
-  }
-  &:hover span {
-    color: rgb(158, 158, 158);
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
-  }
 }
 
 .nav {
