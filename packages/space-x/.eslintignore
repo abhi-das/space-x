@@ -2,3 +2,6 @@ next.config.js
 next-env.d.ts
 tsconfig.json
 dist
+serviceWorker.ts
+setupTests.ts
+e2e/**/__tests__/**

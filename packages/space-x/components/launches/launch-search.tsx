@@ -65,7 +65,7 @@ const LaunchSearch = (props: Props) => {
   ];
 
   return (
-    <form className={styles.form} onSubmit={searchHandler}>
+    <form className={`filter-form ${styles.form}`} onSubmit={searchHandler}>
       <h2>Filters</h2>
       <p className={styles.subTitle}>Launch Years</p>
       <div className={styles.radioContainer}>

@@ -5,16 +5,17 @@ import styles from "./main-header.module.scss";
 const MainHeader = () => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>
+      <h1 className={`title ${styles.logo}`}>
         <Link href="/">
-          <p>
+          Space-x Launch Programs
+          {/* <p>
             <span>Space</span>X <span> Launch Programs</span>
-          </p>
+          </p> */}
         </Link>
       </h1>
-      <nav className={styles.nav}>
-        <ul>
-          <li>
+      <nav className={`nav ${styles.nav}`}>
+        <ul className={"nav-list"}>
+          <li className={"nav-list-item"}>
             <Link href="/launch">Browse All Launch</Link>
           </li>
         </ul>

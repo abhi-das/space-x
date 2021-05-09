@@ -12,7 +12,8 @@
     "precommit": "pretty-quick --staged",
     "win-find-port": "netstat -ano | findstr :3000",
     "win-kill-port": "tskill <id>",
-    "localbuild": "yarn format & yarn lint & rimraf dist && yarn build"
+    "localbuild": "yarn format & yarn lint & rimraf dist && yarn build",
+    "testcafe": "testcafe chrome e2e/**/*test.ts -e -q --debug-on-fail"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.22.1",
@@ -35,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "testcafe": "^1.14.0",
     "typescript": "^4.2.4"
   }
 }

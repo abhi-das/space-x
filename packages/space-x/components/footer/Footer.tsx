@@ -3,7 +3,7 @@ import styles from "./footer.module.scss";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={`footer ${styles.footer}`}>
       <strong>Developed By:&nbsp;</strong> <span>Abhishek Das</span>
     </footer>
   );

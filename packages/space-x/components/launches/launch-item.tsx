@@ -26,9 +26,9 @@ const LaunchItem = (props: LaunchItemProps) => {
   const exploreLink = `/launch/${id}`;
 
   return (
-    <li className={styles.item}>
+    <li className={`launch-list-item ${styles.item}`}>
       <img src={"/" + images} alt={title} title={title} />
-      <div className={styles.content}>
+      <div className={`content ${styles.content}`}>
         <h2>
           <Button link={exploreLink}>{title}</Button>
         </h2>
