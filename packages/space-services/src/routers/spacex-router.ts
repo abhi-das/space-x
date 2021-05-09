@@ -2,28 +2,91 @@ import { Application, Request, Response } from 'express';
 import { SpaceLaunch } from '../common';
 import { randomBytes } from 'crypto';
 
+const getSuccessFulLaunches = (
+  ar: Array<SpaceLaunch>,
+  status?: string,
+): Array<SpaceLaunch> => {
+  if (status === 'true') {
+    return ar.filter(itm => itm.launch_success === 'true');
+  } else if (status === 'false') {
+    return ar.filter(itm => itm.launch_success === 'false');
+  } else {
+    return ar;
+  }
+};
+
+const getSuccessFulLandings = (
+  ar: Array<SpaceLaunch>,
+  status?: string,
+): Array<SpaceLaunch> => {
+  if (status === 'true') {
+    return ar.filter(itm => itm.land_success === 'true');
+  } else if (status === 'false') {
+    return ar.filter(itm => itm.land_success === 'false');
+  } else {
+    return ar;
+  }
+};
+
+const getLaunchByYear = (
+  ar: Array<SpaceLaunch>,
+  year?: string,
+): Array<SpaceLaunch> => {
+  return ar.filter(itm => itm.launch_year === year);
+};
+
 const SpacexRoutes = (app: Application): void => {
-  const spaceLaunches: SpaceLaunch[] = [];
+  let filteredLaunch: Array<SpaceLaunch> = [];
+  const version = 'v3';
+
   app
-    .route('/space-launches')
+    .route(`/${version}/launches`)
     .get((req: Request, res: Response): void => {
-      const maxLimit = req.query.limit;
-      if (maxLimit) {
-        spaceLaunches.splice(Number(maxLimit), spaceLaunches.length);
+      const query = req.query;
+
+      if (query.launch_success) {
+        const successFulLaunches = getSuccessFulLaunches(
+          filteredLaunch,
+          query.launch_success.toString(),
+        );
+        filteredLaunch = successFulLaunches;
       }
-      res.status(200).send(spaceLaunches);
+
+      if (query.land_success) {
+        const successFulLanding = getSuccessFulLandings(
+          filteredLaunch,
+          query.land_success.toString(),
+        );
+        filteredLaunch = [...filteredLaunch, ...successFulLanding];
+      }
+
+      if (query.launch_year) {
+        const launchByYear = getLaunchByYear(
+          filteredLaunch,
+          query.launch_year.toString(),
+        );
+        filteredLaunch = [...filteredLaunch, ...launchByYear];
+      }
+
+      if (query.limit) {
+        filteredLaunch.splice(Number(query.limit), filteredLaunch.length);
+      }
+
+      res.status(200).send(filteredLaunch);
     })
     .post((req: Request, res: Response): void => {
-      const missionId = randomBytes(4).toString('hex');
-      const missionName = req.body;
-      spaceLaunches.push({ missionId, missionName });
-      res.status(201).send({ missionId, missionName });
+      const launchFromReqBody = {
+        missionId: randomBytes(4).toString('hex'),
+        ...req.body,
+      };
+      filteredLaunch.push(launchFromReqBody);
+      res.status(201).send(launchFromReqBody);
     });
 
   app
-    .route('/space-launches/:id/launch')
+    .route(`/${version}/launches/:id/launch`)
     .get((req: Request, res: Response): void => {
-      const selectedLaunch = spaceLaunches.filter(
+      const selectedLaunch = filteredLaunch.filter(
         launch => launch.missionId === req.params.id,
       );
       res.status(200).send(selectedLaunch);
