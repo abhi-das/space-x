@@ -4,23 +4,23 @@
 ```sh
 
 GOAL: Get all space-x launches
-
-path: /space-launches
+path: /launches
 method: GET
 body: -
-
+query: {
+  limit=100
+  launch_success=true
+  land_success=false
+}
 
 GOAL: Create mission
-
-path: /space-launches
+path: /launches
 method: POST
-body: { id, name }
+body: { missionId, missionName, launch_success, land_success, launch_year }
 params: -
 
-
 GOAL: Get launch by id
-
-path: /space-launches/:{id}/launch
+path: /launches/:{id}/launch
 method: GET
 body: -
 params: -
@@ -62,7 +62,7 @@ jobs:
 
 ```sh
 
-yarn functional-test
+yarn jest
 
 ```
 
