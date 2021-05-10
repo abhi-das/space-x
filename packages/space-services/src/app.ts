@@ -1,4 +1,4 @@
-import SpacexRoutes from './routers/spacex-router';
+import LaunchRoutes from './routers/launches';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
@@ -11,6 +11,6 @@ App.use(bodyParser.json());
 App.use(cors());
 
 // SpaceX API routes
-SpacexRoutes(App);
+LaunchRoutes(App);
 
 export { App };

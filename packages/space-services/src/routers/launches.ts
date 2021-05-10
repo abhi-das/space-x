@@ -35,7 +35,7 @@ const getLaunchByYear = (
   return ar.filter(itm => itm.launch_year === year);
 };
 
-const SpacexRoutes = (app: Application): void => {
+const LaunchRoutes = (app: Application): void => {
   let filteredLaunch: Array<SpaceLaunch> = [];
   const version = 'v3';
 
@@ -93,4 +93,4 @@ const SpacexRoutes = (app: Application): void => {
     });
 };
 
-export default SpacexRoutes;
+export default LaunchRoutes;
