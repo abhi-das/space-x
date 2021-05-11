@@ -1,19 +1,17 @@
+import axios from "axios";
+
 export async function getAllLaunch() {
-  const response = await fetch(
-    "https://space-lauch-default-rtdb.firebaseio.com/spaceX.json"
-  );
-  const data = await response.json();
-
-  const launches = [];
-
-  for (const key in data) {
-    launches.push({
-      id: key,
-      ...data[key],
-    });
+  try {
+    const response = await axios.get(
+      `https://space-lauch-default-rtdb.firebaseio.com/spaceX.json`
+    );
+    return response.data;
+  } catch (err) {
+    // console.error(err.response.data);
+    return {
+      errors: err.response.data,
+    };
   }
-
-  return launches;
 }
 
 export async function getFeaturedLaunch() {
@@ -21,13 +19,13 @@ export async function getFeaturedLaunch() {
   return allLaunches.filter((launch) => launch.isFeatured);
 }
 
-export async function getLaunchById(id) {
+export async function getLaunchById(id: string) {
   // TODO: Id pass year then search by year here
   const allLaunches = await getAllLaunch();
   return allLaunches.find((launch) => launch.mission_id === id);
 }
 
-export async function getLaunchByYear(year) {
+export async function getLaunchByYear(year: string) {
   const allLaunches = await getAllLaunch();
   return allLaunches.find((launch) => launch.launch_year === year);
 }

@@ -2,6 +2,12 @@ import Radio from "../ui/radio";
 import React from "react";
 import styles from "./launch-search.module.scss";
 
+export interface FilterTypes {
+  year: string;
+  isSuccessFulLaunch: string;
+  isSuccessFulLand: string;
+}
+
 interface LaunchSearchDispatch {
   onSearch: (
     year: string,

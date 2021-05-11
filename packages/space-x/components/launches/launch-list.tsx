@@ -18,6 +18,7 @@ interface LaunchListProps {
 
 const LaunchList = (props: LaunchListProps) => {
   const { items } = props;
+
   return (
     <ul className={`launch-list ${styles.list}`}>
       {items.map((item) => (

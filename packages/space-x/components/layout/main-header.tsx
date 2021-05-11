@@ -6,9 +6,7 @@ const MainHeader = () => {
   return (
     <header className={styles.header}>
       <h1 className={`title ${styles.logo}`}>
-        <Link href="/">
-          Space-x Launch Programs
-        </Link>
+        <Link href="/">Space-x Launch Programs</Link>
       </h1>
       <nav className={`nav ${styles.nav}`}>
         <ul className={"nav-list"}>
