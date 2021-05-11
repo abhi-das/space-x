@@ -19,13 +19,13 @@ export async function getFeaturedLaunch() {
   return allLaunches.filter((launch) => launch.isFeatured);
 }
 
-export async function getLaunchById(id: string) {
+export async function getLaunchById(id) {
   // TODO: Id pass year then search by year here
   const allLaunches = await getAllLaunch();
   return allLaunches.find((launch) => launch.mission_id === id);
 }
 
-export async function getLaunchByYear(year: string) {
+export async function getLaunchByYear(year) {
   const allLaunches = await getAllLaunch();
   return allLaunches.find((launch) => launch.launch_year === year);
 }
