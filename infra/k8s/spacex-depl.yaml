@@ -1,10 +1,31 @@
-apiVersion: v1
-kind: Pod
+apiVersion: spacexui/v1
+kind: Deployment
 metadata:
-  name: spacexui
+  name: spacexui-depl
+sepc:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui-client
+  template:
+    metadata:
+      labels:
+        app: ui-client
+    spec:
+      containers:
+        - name: spacexui
+          image: spacex/ui
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-client-srv
 spec:
-  containers:
-    - name: spacexui
-      image: spacex/ui
-      imagePullPolicy: Never
-    
+  selector:
+    app: ui-client
+  ports:
+    - name: ui-client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
