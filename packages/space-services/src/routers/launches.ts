@@ -1,6 +1,7 @@
 import { Application, Request, Response } from 'express';
 import { SpaceLaunch } from '../common';
 import { randomBytes } from 'crypto';
+import verifyToken from '../middlewares/verify-token';
 
 const getSuccessFulLaunches = (
   ar: Array<SpaceLaunch>,
@@ -41,7 +42,7 @@ const LaunchRoutes = (app: Application): void => {
 
   app
     .route(`/${version}/launches`)
-    .get((req: Request, res: Response): void => {
+    .get(verifyToken, (req: Request, res: Response): void => {
       const query = req.query;
 
       if (query.launch_success) {
@@ -74,7 +75,7 @@ const LaunchRoutes = (app: Application): void => {
 
       res.status(200).send(filteredLaunch);
     })
-    .post((req: Request, res: Response): void => {
+    .post(verifyToken, (req: Request, res: Response): void => {
       const launchFromReqBody = {
         missionId: randomBytes(4).toString('hex'),
         ...req.body,
@@ -85,7 +86,7 @@ const LaunchRoutes = (app: Application): void => {
 
   app
     .route(`/${version}/launches/:id/launch`)
-    .get((req: Request, res: Response): void => {
+    .get(verifyToken, (req: Request, res: Response): void => {
       const selectedLaunch = filteredLaunch.filter(
         launch => launch.missionId === req.params.id,
       );
