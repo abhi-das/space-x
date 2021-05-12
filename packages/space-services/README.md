@@ -28,6 +28,16 @@ query: {id}
 
 ```
 
+## Protected API Endpoints using JWT Middleware
+
+```sh
+
+jwt.sign( payload, secretKey, options )
+jwt.verify( token, secretKey)
+
+```
+
+
 ## .github/workflows/space-x-api-deploy.yml
 
 ```sh
