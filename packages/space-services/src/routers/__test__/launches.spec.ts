@@ -4,8 +4,9 @@ import request from 'supertest';
 
 const allMissions: any = [];
 const version = 'v3';
+// Login and create JWT Token
 
-it('Scenario: Create new mission', async () => {
+it('Scenario: Create new mission without JWT Token', async () => {
   const launchFromReqBody = {
     missionId: randomBytes(4).toString('hex'),
     missionName: 'm 3',
@@ -17,19 +18,50 @@ it('Scenario: Create new mission', async () => {
   return request(App)
     .post(`/${version}/launches`)
     .send(launchFromReqBody)
-    .expect(201);
+    .expect(401);
 });
 
-it('Scenario: Get all missions', async () => {
-  return request(App).get(`/${version}/launches`).send(allMissions).expect(200);
+it('Scenario: Create new mission with JWT Token', async () => {
+  const launchFromReqBody = {
+    missionId: randomBytes(4).toString('hex'),
+    missionName: 'm 3',
+    launch_success: 'false',
+    land_success: 'false',
+    launch_year: '2001',
+  };
+
+  allMissions.push(launchFromReqBody);
+  // Login and create JWT Token
+  const token = await global.login();
+  const response = await request(App)
+    .post(`/${version}/launches`)
+    .set('Aurthorization', token)
+    .send(launchFromReqBody);
+
+  expect(response.status).toBe(200);
 });
 
-it('Scenario: Get mission by id', async () => {
+it('Scenario: Get all missions with JWT Token', async () => {
+  // Login and create JWT Token
+  const token = await global.login();
+  const response = await request(App)
+    .get(`/${version}/launches`)
+    .set('Aurthorization', token)
+    .send(allMissions);
+
+  expect(response.status).toBe(200);
+});
+
+it('Scenario: Get mission by id with JWT Token', async () => {
   const id = allMissions[0].missionId;
-  return request(App)
+  // Login and create JWT Token
+  const token = await global.login();
+  const response = await request(App)
     .get(`/${version}/launches/:id/launch`)
-    .send(allMissions[id])
-    .expect(200);
+    .set('Aurthorization', token)
+    .send(allMissions[id]);
+
+  expect(response.status).toBe(200);
 });
 
 // Scenario: Get launch only launch_success = true

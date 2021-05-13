@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 interface custReq {
-  userId?: string;
+  currentUser?: string;
 }
 
 const verifyToken = (
@@ -12,6 +12,12 @@ const verifyToken = (
 ): void => {
   const authHeader = req.get('Aurthorization');
   const err = new Error('Not Aurthorized!');
+  const tokenKey = process.env.TOKEN_KEY;
+
+  if (!tokenKey) {
+    res.status(401).json({ message: 'token key not found from ENV' });
+    throw new Error('token key not found from ENV');
+  }
 
   if (!authHeader) {
     res.status(401).json({ message: 'Token not found', statusCode: 401 });
@@ -20,7 +26,7 @@ const verifyToken = (
   const token = authHeader.split(' ')[1];
   let decodedToken: any;
   try {
-    decodedToken = jwt.verify(token, 'secr');
+    decodedToken = jwt.verify(token, tokenKey);
   } catch (err) {
     const message = 'Token does not match';
     res.json({ message, statusCode: 401 });
@@ -31,7 +37,7 @@ const verifyToken = (
     res.status(500).json({ message, statusCode: 500 });
     throw message;
   }
-  req.userId = decodedToken.userId;
+  req.currentUser = decodedToken.currentUser;
   next();
 };
 

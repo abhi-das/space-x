@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 5000;
 
 const startSpaceXApiService = () => {
   App.listen(PORT, () => {
-    console.log(`Listening PORT=${PORT} => API Version=${process.env.APIVERSION}`);
+    console.log(
+      `Listening PORT=${PORT} => API Version=${process.env.APIVERSION} =>  TOKEN_KEY=${process.env.TOKEN_KEY}`,
+    );
   });
 };
 
