@@ -24,9 +24,12 @@ App.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // Log HTTP calls and Errors
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
-  flags: 'a',
-});
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  {
+    flags: 'a',
+  },
+);
 App.use(morgan('combined', { stream: accessLogStream }));
 
 // SpaceX API routes

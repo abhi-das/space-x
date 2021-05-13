@@ -1,6 +1,9 @@
 import { App } from './app';
+import dotenv from 'dotenv';
 
-const PORT = 5000;
+dotenv.config();
+
+const PORT = process.env.PORT || 5000;
 
 const startSpaceXApiService = () => {
   App.listen(PORT, () => {
