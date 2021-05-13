@@ -38,7 +38,7 @@ const getLaunchByYear = (
 
 const LaunchRoutes = (app: Application): void => {
   let filteredLaunch: Array<SpaceLaunch> = [];
-  const version = 'v3';
+  const version = process.env.APIVERSION || 'v3';
 
   app
     .route(`/${version}/launches`)

@@ -37,7 +37,6 @@ jwt.verify( token, secretKey)
 
 ```
 
-
 ## .github/workflows/space-x-api-deploy.yml
 
 ```sh
@@ -91,6 +90,9 @@ yarn lint
 yarn format
 
 ```
+
+## Morgan Package for Application Logger
+## Environment NPM Package for secrets
 
 ## Authors
 
