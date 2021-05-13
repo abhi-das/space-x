@@ -9,7 +9,7 @@
     "dev": "nodemon src/index.ts",
     "lint": "eslint --config .eslintrc.js --ext ts --color --fix .",
     "format": "prettier --config .prettierrc.json --write src/**/*.ts",
-    "jest": "jest --watchAll --no-cache"
+    "jest": "jest --watchAll --no-cache --coverage"
   },
   "jest": {
     "preset": "ts-jest",
