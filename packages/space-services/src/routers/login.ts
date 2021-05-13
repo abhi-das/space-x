@@ -11,9 +11,8 @@ const LoginRoute = (app: Application): void => {
       ...req.body,
     };
 
-    const token = jwt.sign({ user: user }, 'secr', { expiresIn: '1h' });
-
-    res.status(201).json({ token: token, userId: user.id });
+    const token = jwt.sign(user, 'secr', { expiresIn: '1h' });
+    res.status(200).json({ token: token, userId: user.id });
   });
 };
 

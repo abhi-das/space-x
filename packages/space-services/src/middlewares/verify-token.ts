@@ -9,25 +9,27 @@ const verifyToken = (
   req: Request & custReq,
   res: Response,
   next: NextFunction,
-): Response | undefined => {
+): void => {
   const authHeader = req.get('Aurthorization');
-  // const error = new Error('Not Aurthorized !');
+  const err = new Error('Not Aurthorized!');
 
   if (!authHeader) {
-    return res.sendStatus(401).json({ message: 'Forbiden!' });
-    // throw error;
+    res.status(401).json({ message: 'Token not found', statusCode: 401 });
+    throw err;
   }
   const token = authHeader.split(' ')[1];
   let decodedToken: any;
   try {
     decodedToken = jwt.verify(token, 'secr');
   } catch (err) {
-    // throw err
-    return res.sendStatus(401).json({ message: 'Forbiden!' });
+    const message = 'Token does not match';
+    res.json({ message, statusCode: 401 });
+    throw message;
   }
   if (!decodedToken) {
-    // throw error;
-    return res.sendStatus(401).json({ message: 'Forbiden!' });
+    const message = 'Invalid token';
+    res.status(500).json({ message, statusCode: 500 });
+    throw message;
   }
   req.userId = decodedToken.userId;
   next();
