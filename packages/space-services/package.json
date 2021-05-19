@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.1",
-    "@types/mongoose": "^5.10.5",
     "@types/morgan": "^1.9.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

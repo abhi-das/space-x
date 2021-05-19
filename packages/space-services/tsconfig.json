@@ -9,7 +9,6 @@
     "outDir": "dist",
     "baseUrl": ".",
     "strict": true,
-    "skipLibCheck": true,
     "paths": {
       "*": ["node_modules/*"]
     }
