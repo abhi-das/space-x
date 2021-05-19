@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { appConf } from '../config';
 import jwt from 'jsonwebtoken';
 
 interface custReq {
@@ -12,7 +13,7 @@ const verifyToken = (
 ): void => {
   const authHeader = req.get('Aurthorization');
   const err = new Error('Not Aurthorized!');
-  const tokenKey = process.env.TOKEN_KEY;
+  const tokenKey = appConf.tokenKey;
 
   if (!tokenKey) {
     res.status(401).json({ message: 'token key not found from ENV' });

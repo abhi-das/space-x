@@ -1,9 +1,10 @@
 import { App } from '../../app';
 import { randomBytes } from 'crypto';
 import request from 'supertest';
+import { appConf } from '../../config';
 
 const allMissions: any = [];
-const version = 'v3';
+const version = appConf.apiVersion;
 // Login and create JWT Token
 
 it('Scenario: Create new mission without JWT Token', async () => {

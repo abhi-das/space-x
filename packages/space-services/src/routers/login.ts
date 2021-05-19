@@ -1,24 +1,44 @@
 import { Application, Request, Response } from 'express';
-import { randomBytes } from 'crypto';
+import { appConf, dbConf } from '../config';
+import { getDb } from '../db-connect';
 import jwt from 'jsonwebtoken';
 
-const LoginRoute = (app: Application): void => {
-  const version = 'v3';
+interface User {
+  name: string;
+  email: string;
+}
 
-  app.route(`/${version}/login`).post((req: Request, res: Response): void => {
-    const tokenKey = process.env.TOKEN_KEY;
+const createUser = async (user: User) => {
+  // Save user into DB
+  const db = getDb();
+  const newUser = await db
+    .collection(`${dbConf.userCollection}`)
+    .insertOne(user);
+  return newUser;
+};
+
+const LoginRoute = (app: Application): void => {
+  const version = appConf.apiVersion;
+  const tokenKey = appConf.tokenKey;
+
+  app.route(`/${version}/login`).post(async (req: Request, res: Response) => {
     if (!tokenKey) {
       res.status(401).json({ message: 'token key not found from ENV' });
       throw new Error('token key not found from ENV');
     }
 
-    const user = {
-      id: randomBytes(4).toString('hex'),
+    const user: User = {
       ...req.body,
     };
 
-    const token = jwt.sign(user, tokenKey!, { expiresIn: '1h' });
-    res.status(200).json({ token: token, userId: user.id });
+    try {
+      const newUser = await createUser(user);
+      // Once user created generate JWT
+      const token = jwt.sign(user, tokenKey!, { expiresIn: '1h' });
+      res.status(200).json({ token: token, userId: newUser.insertedId });
+    } catch (error) {
+      res.status(500).json({ message: 'login error from DB!' });
+    }
   });
 };
 

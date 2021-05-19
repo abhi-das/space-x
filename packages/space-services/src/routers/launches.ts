@@ -1,5 +1,6 @@
 import { Application, Request, Response } from 'express';
 import { SpaceLaunch } from '../common';
+import { appConf } from '../config';
 import { randomBytes } from 'crypto';
 import verifyToken from '../middlewares/verify-token';
 
@@ -38,7 +39,7 @@ const getLaunchByYear = (
 
 const LaunchRoutes = (app: Application): void => {
   let filteredLaunch: Array<SpaceLaunch> = [];
-  const version = process.env.APIVERSION || 'v3';
+  const version = appConf.apiVersion;
 
   app
     .route(`/${version}/launches`)

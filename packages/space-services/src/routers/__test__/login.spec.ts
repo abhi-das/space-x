@@ -1,17 +1,15 @@
 import request from 'supertest';
 import { App } from '../../app';
-
-const version = 'v3';
+import { appConf } from '../../config';
 
 it('simple login', async () => {
   const user = {
-    isFeatured: 'true',
-    landing_successful: 'true',
-    launch_successful: 'true',
-    launch_year: '2001',
-    mission_name: 'Test Mission',
+    userName: 'User1',
+    email: 'test@test.com',
   };
-  const response = await request(App).post(`/${version}/login`).send(user);
+  const response = await request(App)
+    .post(`/${appConf.apiVersion}/login`)
+    .send(user);
 
   expect(response.status).not.toEqual(401);
 });
