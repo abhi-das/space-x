@@ -16,6 +16,7 @@ const createMission = async (mission: Mission) => {
 const getAllMission = async (q: DbQuery) => {
   // Get all mission from DB
   let query = {};
+  /* eslint-disable camelcase */
   if (q.landing_successful) {
     query = {
       ...query,
@@ -36,6 +37,7 @@ const getAllMission = async (q: DbQuery) => {
       launch_year: q.launch_year.toString(),
     };
   }
+  /* eslint-enable camelcase */
   const db = getDb();
   const allMission = await db
     .collection(`${dbConf.missionCollection}`)
@@ -47,7 +49,9 @@ const getAllMission = async (q: DbQuery) => {
 
 const getMissionByMissionId = async (missionId: string) => {
   // Get mission by Id from DB
+  /* eslint-disable camelcase */
   const q = { mission_id: missionId };
+  /* eslint-enable camelcase */
   const db = getDb();
   const mission = await db.collection(`${dbConf.missionCollection}`).findOne(q);
   return mission;
