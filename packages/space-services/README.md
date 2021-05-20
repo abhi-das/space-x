@@ -28,6 +28,21 @@ query: {id}
 
 ```
 
+## EndPoints
+
+```sh
+GET:
+http://{host}:{PORT}/{version}/launches
+http://{host}:{PORT}/{version}/launches?limit=1&landing_successful=true&launch_successful=false
+http://{host}:{PORT}/{version}/launches/{id}/launch
+
+
+POST:
+http://{host}:{PORT}/{version}/login
+http://{host}:{PORT}/{version}/launches
+```
+Note: JWT token would be required to get the URL working. Login endpoint will be generating JWT token.
+
 ## Protected API Endpoints using JWT Middleware
 
 ```sh

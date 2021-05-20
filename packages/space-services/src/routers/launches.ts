@@ -1,97 +1,96 @@
 import { Application, Request, Response } from 'express';
-import { SpaceLaunch } from '../common';
-import { appConf } from '../config';
-import { randomBytes } from 'crypto';
+import { DbQuery, Mission } from '../common';
+import { appConf, dbConf } from '../config';
+import { getDb } from '../db-connect';
 import verifyToken from '../middlewares/verify-token';
 
-const getSuccessFulLaunches = (
-  ar: Array<SpaceLaunch>,
-  status?: string,
-): Array<SpaceLaunch> => {
-  if (status === 'true') {
-    return ar.filter(itm => itm.launch_success === 'true');
-  } else if (status === 'false') {
-    return ar.filter(itm => itm.launch_success === 'false');
-  } else {
-    return ar;
-  }
+const createMission = async (mission: Mission) => {
+  // Save mission into DB
+  const db = getDb();
+  const newMission = await db
+    .collection(`${dbConf.missionCollection}`)
+    .insertOne(mission);
+  return newMission;
 };
 
-const getSuccessFulLandings = (
-  ar: Array<SpaceLaunch>,
-  status?: string,
-): Array<SpaceLaunch> => {
-  if (status === 'true') {
-    return ar.filter(itm => itm.land_success === 'true');
-  } else if (status === 'false') {
-    return ar.filter(itm => itm.land_success === 'false');
-  } else {
-    return ar;
+const getAllMission = async (q: DbQuery) => {
+  // Get all mission from DB
+  let query = {};
+  if (q.landing_successful) {
+    query = {
+      ...query,
+      landing_successful: q.landing_successful.toString(),
+    };
   }
+
+  if (q.launch_successful) {
+    query = {
+      ...query,
+      launch_successful: q.launch_successful.toString(),
+    };
+  }
+
+  if (q.launch_year) {
+    query = {
+      ...query,
+      launch_year: q.launch_year.toString(),
+    };
+  }
+  const db = getDb();
+  const allMission = await db
+    .collection(`${dbConf.missionCollection}`)
+    .find(query)
+    .limit(Number(q.limit))
+    .toArray();
+  return allMission;
 };
 
-const getLaunchByYear = (
-  ar: Array<SpaceLaunch>,
-  year?: string,
-): Array<SpaceLaunch> => {
-  return ar.filter(itm => itm.launch_year === year);
+const getMissionByMissionId = async (missionId: string) => {
+  // Get mission by Id from DB
+  const q = { mission_id: missionId };
+  const db = getDb();
+  const mission = await db.collection(`${dbConf.missionCollection}`).findOne(q);
+  return mission;
 };
 
 const LaunchRoutes = (app: Application): void => {
-  let filteredLaunch: Array<SpaceLaunch> = [];
   const version = appConf.apiVersion;
-
   app
     .route(`/${version}/launches`)
-    .get(verifyToken, (req: Request, res: Response): void => {
+    .get(verifyToken, async (req: Request, res: Response) => {
       const query = req.query;
-
-      if (query.launch_success) {
-        const successFulLaunches = getSuccessFulLaunches(
-          filteredLaunch,
-          query.launch_success.toString(),
-        );
-        filteredLaunch = successFulLaunches;
+      let missions: Array<Mission> = [];
+      // Get all missions
+      try {
+        missions = await getAllMission(query);
+      } catch (error) {
+        res.status(400).json({ message: 'No mission found in the DB!' });
       }
-
-      if (query.land_success) {
-        const successFulLanding = getSuccessFulLandings(
-          filteredLaunch,
-          query.land_success.toString(),
-        );
-        filteredLaunch = [...filteredLaunch, ...successFulLanding];
-      }
-
-      if (query.launch_year) {
-        const launchByYear = getLaunchByYear(
-          filteredLaunch,
-          query.launch_year.toString(),
-        );
-        filteredLaunch = [...filteredLaunch, ...launchByYear];
-      }
-
-      if (query.limit) {
-        filteredLaunch.splice(Number(query.limit), filteredLaunch.length);
-      }
-
-      res.status(200).send(filteredLaunch);
+      res.status(200).send(missions);
     })
-    .post(verifyToken, (req: Request, res: Response): void => {
-      const launchFromReqBody = {
-        missionId: randomBytes(4).toString('hex'),
+    .post(verifyToken, async (req: Request, res: Response) => {
+      const launchFromReqBody: Mission = {
         ...req.body,
       };
-      filteredLaunch.push(launchFromReqBody);
-      res.status(201).send(launchFromReqBody);
+      try {
+        const newMission = await createMission(launchFromReqBody);
+        res.status(201).send(newMission.ops);
+      } catch (error) {
+        res.status(500).json({ message: 'Error on mission creation!' });
+      }
     });
 
   app
     .route(`/${version}/launches/:id/launch`)
-    .get(verifyToken, (req: Request, res: Response): void => {
-      const selectedLaunch = filteredLaunch.filter(
-        launch => launch.missionId === req.params.id,
-      );
-      res.status(200).send(selectedLaunch);
+    .get(verifyToken, async (req: Request, res: Response) => {
+      try {
+        const mission = await getMissionByMissionId(req.params.id);
+        res.status(200).send(mission);
+      } catch (error) {
+        res
+          .status(500)
+          .json({ message: 'Mission could not found by given id!' });
+      }
     });
 };
 
