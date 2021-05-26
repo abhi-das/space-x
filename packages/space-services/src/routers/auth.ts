@@ -17,7 +17,7 @@ const createUser = async (user: User) => {
   return newUser;
 };
 
-const LoginRoute = (app: Application): void => {
+const AuthRoute = (app: Application): void => {
   const version = appConf.apiVersion;
   const tokenKey = appConf.tokenKey;
 
@@ -42,4 +42,4 @@ const LoginRoute = (app: Application): void => {
   });
 };
 
-export default LoginRoute;
+export default AuthRoute;

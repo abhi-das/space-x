@@ -1,5 +1,5 @@
 import LaunchRoutes from './routers/launches';
-import LoginRoute from './routers/login';
+import AuthRoute from './routers/auth';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
@@ -36,7 +36,7 @@ App.use(morgan('combined', { stream: accessLogStream }));
 LaunchRoutes(App);
 
 // Login
-LoginRoute(App);
+AuthRoute(App);
 
 // App.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 //   if(error) {
