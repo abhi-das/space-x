@@ -2,6 +2,7 @@ import { Application, Request, Response } from 'express';
 import { appConf, dbConf } from '../config';
 import { getDb } from '../db-connect';
 import jwt from 'jsonwebtoken';
+import { SessionData } from '../custom-types';
 
 interface User {
   name: string;
@@ -21,7 +22,7 @@ const AuthRoute = (app: Application): void => {
   const version = appConf.apiVersion;
   const tokenKey = appConf.tokenKey;
 
-  app.route(`/${version}/login`).post(async (req: Request, res: Response) => {
+  app.route(`/${version}/login`).post(async (req: (Request & SessionData), res: Response) => {
     if (!tokenKey) {
       res.status(401).json({ message: 'token key not found from ENV' });
       throw new Error('token key not found from ENV');
@@ -35,6 +36,11 @@ const AuthRoute = (app: Application): void => {
       const newUser = await createUser(user);
       // Once user created generate JWT
       const token = jwt.sign(user, tokenKey!, { expiresIn: '1h' });
+      req.session.isLoggedIn = true;
+      req.session.cookie = {
+        httpOnly: true,
+        originalMaxAge: 10
+      };
       res.status(200).json({ token: token, userId: newUser.insertedId });
     } catch (error) {
       res.status(500).json({ message: 'login error from DB!' });

@@ -6,6 +6,8 @@ import express, { Application, NextFunction, Request, Response } from 'express';
 import fs from 'fs';
 import morgan from 'morgan';
 import path from 'path';
+import session from 'express-session';
+import { appConf } from './config';
 
 const App: Application = express();
 
@@ -31,6 +33,13 @@ const accessLogStream = fs.createWriteStream(
   },
 );
 App.use(morgan('combined', { stream: accessLogStream }));
+
+// use session
+App.use(session({
+  secret: appConf.tokenKey!,
+  resave: false,
+  saveUninitialized: false
+}))
 
 // SpaceX API routes
 LaunchRoutes(App);
