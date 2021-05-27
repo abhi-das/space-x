@@ -8,6 +8,8 @@ import fs from 'fs';
 import morgan from 'morgan';
 import path from 'path';
 import session from 'express-session';
+import helmet from 'helmet';
+import compression from 'compression';
 
 const App: Application = express();
 
@@ -15,8 +17,9 @@ const App: Application = express();
 App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
 App.use(cors());
+
+// Set Required Headers
 App.use((req: Request, res: Response, next: NextFunction) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Methods',
     'OPTIONS, POST, GET, PATCH, DELETE',
@@ -24,6 +27,11 @@ App.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Aurthorization');
   next();
 });
+App.use(helmet());
+
+// Compression
+App.use(compression());
+// res.flush()
 
 // Log HTTP calls and Errors
 const accessLogStream = fs.createWriteStream(
@@ -33,7 +41,6 @@ const accessLogStream = fs.createWriteStream(
   },
 );
 App.use(morgan('combined', { stream: accessLogStream }));
-
 // use session
 App.use(session({
   secret: appConf.tokenKey!,
