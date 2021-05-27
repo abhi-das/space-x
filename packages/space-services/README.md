@@ -28,12 +28,12 @@ query: {id}
 
 ```
 
-## EndPoints
+## Local EndPoints
 
 ```sh
 GET:
 http://{host}:{PORT}/{version}/launches
-http://localhost:8011/v3/launches?limit=5&landing_successful=true
+http://{host}:{PORT}/{version}/launches?limit=5&landing_successful=true
 http://{host}:{PORT}/{version}/launches?limit=1&landing_successful=true&launch_successful=false
 http://{host}:{PORT}/{version}/launches/{id}/launch
 
@@ -42,6 +42,22 @@ POST:
 http://{host}:{PORT}/{version}/login
 http://{host}:{PORT}/{version}/launches
 ```
+
+## Heroku EndPoints
+
+```sh
+GET:
+https://space-x-white.herokuapp.com/{version}/launches
+https://space-x-white.herokuapp.com/{version}/launches?limit=5&landing_successful=true
+https://space-x-white.herokuapp.com/{version}/launches?limit=1&landing_successful=true&launch_successful=false
+https://space-x-white.herokuapp.com/{version}/launches/{id}/launch
+
+
+POST:
+https://space-x-white.herokuapp.com/{version}/login
+https://space-x-white.herokuapp.com/{version}/launches
+```
+
 Note: JWT token would be required to get the URL working. Login endpoint will be generating JWT token.
 
 ## Protected API Endpoints using JWT Middleware
@@ -107,8 +123,8 @@ yarn format
 
 ```
 
-## Deployment
-Run from root directory of the project
+## Mono Repo Project Deployment
+Run from root directory of the project.
 
 ```sh
 
@@ -119,7 +135,11 @@ git add .
 git commit -m "comments"
 git subtree push --prefix packages/space-services heroku master
 
+heroku logs
+
 ```
+Always run `heroku logs` once deployment is done to check if DB is connected and required ENV variables are set on heroku properly.
+
 
 ## Morgan Package for Application Logger
 ## Environment NPM Package for secrets
