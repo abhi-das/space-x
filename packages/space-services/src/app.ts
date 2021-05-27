@@ -1,5 +1,6 @@
-import LaunchRoutes from './routers/launches';
+import { appConf } from './config';
 import AuthRoute from './routers/auth';
+import LaunchRoutes from './routers/launches';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
@@ -7,7 +8,6 @@ import fs from 'fs';
 import morgan from 'morgan';
 import path from 'path';
 import session from 'express-session';
-import { appConf } from './config';
 
 const App: Application = express();
 

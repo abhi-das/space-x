@@ -1,8 +1,8 @@
 import { Application, Request, Response } from 'express';
+import { SessionData } from '../custom-types';
 import { appConf, dbConf } from '../config';
 import { getDb } from '../db-connect';
 import jwt from 'jsonwebtoken';
-import { SessionData } from '../custom-types';
 
 interface User {
   name: string;
