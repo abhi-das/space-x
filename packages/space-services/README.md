@@ -107,6 +107,20 @@ yarn format
 
 ```
 
+## Deployment
+Run from root directory of the project
+
+```sh
+
+heroku login
+heroku git:clone -a <heroku project name>
+
+git add .
+git commit -m "comments"
+git subtree push --prefix packages/space-services heroku master
+
+```
+
 ## Morgan Package for Application Logger
 ## Environment NPM Package for secrets
 
