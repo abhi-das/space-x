@@ -41,8 +41,8 @@ const accessLogStream = fs.createWriteStream(
 );
 App.use(morgan('combined', { stream: accessLogStream }));
 
-// use session
-App.use(appSession())
+// if using express-session only uncomment below
+// App.use(appSession())
 
 // SpaceX API routes
 LaunchRoutes(App);

@@ -36,11 +36,14 @@ const AuthRoute = (app: Application): void => {
       const newUser = await createUser(user);
       // Once user created generate JWT
       const token = jwt.sign(user, tokenKey!, { expiresIn: '1h' });
-      req.session.isLoggedIn = true;
-      req.session.cookie = {
-        httpOnly: true,
-        originalMaxAge: 10
-      };
+
+      // if using express-session only uncomment below
+      // req.session.isLoggedIn = true;
+      // req.session.cookie = {
+      //   httpOnly: true,
+      //   originalMaxAge: 10
+      // };
+
       res.status(200).json({ token: token, userId: newUser.insertedId });
     } catch (error) {
       res.status(500).json({ message: 'login error from DB!' });
@@ -49,13 +52,14 @@ const AuthRoute = (app: Application): void => {
 
   app.route(`/${version}/logout`).post((req:Request, res:Response) => {
 
-    req.session.destroy((error) => {
-      if(error) {
-        res.status(500).json({ message: 'Error on application logout!'});
-      } else {
-        res.status(200).json({ message: 'Logout successfully!'});
-      }
-    })
+    // if using express-session only uncomment below
+    // req.session.destroy((error) => {
+    //   if(error) {
+    //     res.status(500).json({ message: 'Error on application logout!'});
+    //   } else {
+    //     res.status(200).json({ message: 'Logout successfully!'});
+    //   }
+    // })
 
   });
 };
