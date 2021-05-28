@@ -46,6 +46,18 @@ const AuthRoute = (app: Application): void => {
       res.status(500).json({ message: 'login error from DB!' });
     }
   });
+
+  app.route(`/${version}/logout`).post((req:Request, res:Response) => {
+
+    req.session.destroy((error) => {
+      if(error) {
+        res.status(500).json({ message: 'Error on application logout!'});
+      } else {
+        res.status(200).json({ message: 'Logout successfully!'});
+      }
+    })
+
+  });
 };
 
 export default AuthRoute;

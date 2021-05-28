@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import { dbConf } from './config';
+import { dbConf, dbUri } from './config';
 
 let _client: any;
 const dbConnect = async () => {
   try {
     _client = await mongoose.connect(
-      `mongodb+srv://user_new:password1234@cluster0.3ynf5.mongodb.net/${dbConf.dbName}?retryWrites=true&w=majority`,
+      `${dbUri}/${dbConf.dbName}`,
       {
         useCreateIndex: true,
         useNewUrlParser: true,

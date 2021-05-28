@@ -1,4 +1,3 @@
-import { appConf } from './config';
 import AuthRoute from './routers/auth';
 import LaunchRoutes from './routers/launches';
 import bodyParser from 'body-parser';
@@ -7,9 +6,9 @@ import express, { Application, NextFunction, Request, Response } from 'express';
 import fs from 'fs';
 import morgan from 'morgan';
 import path from 'path';
-import session from 'express-session';
 import helmet from 'helmet';
 import compression from 'compression';
+import appSession from './middlewares/app-session';
 
 const App: Application = express();
 
@@ -41,12 +40,9 @@ const accessLogStream = fs.createWriteStream(
   },
 );
 App.use(morgan('combined', { stream: accessLogStream }));
+
 // use session
-App.use(session({
-  secret: appConf.tokenKey!,
-  resave: false,
-  saveUninitialized: false
-}))
+App.use(appSession())
 
 // SpaceX API routes
 LaunchRoutes(App);
