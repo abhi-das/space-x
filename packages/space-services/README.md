@@ -55,6 +55,7 @@ https://space-x-white.herokuapp.com/{version}/launches/{id}/launch
 
 POST:
 https://space-x-white.herokuapp.com/{version}/login
+https://space-x-white.herokuapp.com/{version}/logout
 https://space-x-white.herokuapp.com/{version}/launches
 ```
 
