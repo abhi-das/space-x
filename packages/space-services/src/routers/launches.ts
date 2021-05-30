@@ -2,6 +2,7 @@ import { Application, Request, Response } from 'express';
 import { DbQuery, Mission } from '../common';
 import { appConf, dbConf } from '../config';
 import { getDb } from '../db-connect';
+import requireAuth from '../middlewares/require-auth';
 import verifyToken from '../middlewares/verify-token';
 
 const createMission = async (mission: Mission) => {
@@ -61,7 +62,7 @@ const LaunchRoutes = (app: Application): void => {
   const version = appConf.apiVersion;
   app
     .route(`/${version}/launches`)
-    .get(verifyToken, async (req: Request, res: Response) => {
+    .get(verifyToken, requireAuth, async (req: Request, res: Response) => {
       const query = req.query;
       let missions: Array<Mission> = [];
       // Get all missions
@@ -72,7 +73,7 @@ const LaunchRoutes = (app: Application): void => {
       }
       res.status(200).send(missions);
     })
-    .post(verifyToken, async (req: Request, res: Response) => {
+    .post(verifyToken, requireAuth, async (req: Request, res: Response) => {
       const launchFromReqBody: Mission = {
         ...req.body,
       };
@@ -86,7 +87,7 @@ const LaunchRoutes = (app: Application): void => {
 
   app
     .route(`/${version}/launches/:id/launch`)
-    .get(verifyToken, async (req: Request, res: Response) => {
+    .get(verifyToken, requireAuth, async (req: Request, res: Response) => {
       try {
         const mission = await getMissionByMissionId(req.params.id);
         res.status(200).send(mission);

@@ -1,31 +1,24 @@
 import AuthRoute from './routers/auth';
 import LaunchRoutes from './routers/launches';
 import bodyParser from 'body-parser';
+import compression from 'compression';
+import cookieSession from 'cookie-session';
 import cors from 'cors';
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import fs from 'fs';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
-import helmet from 'helmet';
-import compression from 'compression';
-import appSession from './middlewares/app-session';
 
 const App: Application = express();
 
+// App.set('trust proxy', true);
 // Middlewares
 App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
 App.use(cors());
 
 // Set Required Headers
-App.use((req: Request, res: Response, next: NextFunction) => {
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'OPTIONS, POST, GET, PATCH, DELETE',
-  );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Aurthorization');
-  next();
-});
 App.use(helmet());
 
 // Compression
@@ -41,8 +34,8 @@ const accessLogStream = fs.createWriteStream(
 );
 App.use(morgan('combined', { stream: accessLogStream }));
 
-// if using express-session only uncomment below
-// App.use(appSession())
+// session
+App.use(cookieSession({ signed: false, secure: true }));
 
 // SpaceX API routes
 LaunchRoutes(App);
@@ -57,7 +50,8 @@ AuthRoute(App);
 // })
 
 App.all('*', async (req: Request, res: Response) => {
-  throw new Error('Not found page!');
+  // throw new Error('Not found page!');
+  res.status(401).json({ message: '401 Page - Wrong end point!' });
 });
 
 export { App };

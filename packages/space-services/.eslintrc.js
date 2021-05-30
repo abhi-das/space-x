@@ -22,6 +22,21 @@ module.exports = {
         {
             files: ['**/*.ts'],
             rules: {
+                "@typescript-eslint/ban-types": ["error",
+                    {
+                        "types": {
+                            "String": false,
+                            "Boolean": false,
+                            "Number": false,
+                            "Symbol": false,
+                            "{}": false,
+                            "Object": false,
+                            "object": false,
+                            "Function": false,
+                        },
+                        "extendDefaults": true
+                    }
+                ],
                 "@typescript-eslint/no-non-null-assertion": "off",
                 "@typescript-eslint/explicit-module-boundary-types": "off",
                 "@typescript-eslint/no-empty-function": "off",

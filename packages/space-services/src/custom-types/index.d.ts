@@ -1,6 +1,3 @@
-
 export interface SessionData {
-    session: {
-        isLoggedIn?: boolean;
-    }
+  jwt?: string | undefined;
 }

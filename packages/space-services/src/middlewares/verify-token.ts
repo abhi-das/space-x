@@ -1,44 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
 import { appConf } from '../config';
+import { currentUserReq } from '../routers/auth';
 import jwt from 'jsonwebtoken';
 
-interface custReq {
-  currentUser?: string;
-}
-
-const verifyToken = (
-  req: Request & custReq,
+const verifyToken = async (
+  req: Request & currentUserReq,
   res: Response,
   next: NextFunction,
-): void => {
-  const authHeader = req.get('Aurthorization');
-  const err = new Error('Not Aurthorized!');
-  const tokenKey = appConf.tokenKey;
-
-  if (!tokenKey) {
-    res.status(401).json({ message: 'token key not found from ENV' });
-    throw new Error('token key not found from ENV');
+) => {
+  if (!req.session?.jwt || !appConf.tokenKey) {
+    res.status(401).json({ message: 'Not Authorised!' });
+    return next();
   }
-
-  if (!authHeader) {
-    res.status(401).json({ message: 'Token not found', statusCode: 401 });
-    throw err;
-  }
-  const token = authHeader.split(' ')[1];
-  let decodedToken: any;
   try {
-    decodedToken = jwt.verify(token, tokenKey);
-  } catch (err) {
-    const message = 'Token does not match';
-    res.json({ message, statusCode: 401 });
-    throw message;
-  }
-  if (!decodedToken) {
-    const message = 'Invalid token';
-    res.status(500).json({ message, statusCode: 500 });
-    throw message;
-  }
-  req.currentUser = decodedToken.currentUser;
+    const payload = await jwt.verify(req.session.jwt, appConf.tokenKey);
+    req.currentUser = payload;
+  } catch (error) {}
+
   next();
 };
 
