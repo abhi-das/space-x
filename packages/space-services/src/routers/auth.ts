@@ -19,10 +19,7 @@ export interface currentUserReq {
 const createUser = async (user: User) => {
   const db = getDb();
   // Save user into DB
-  const newUser = await db
-    .collection(`${dbConf.userCollection}`)
-    .insertOne(user);
-  return newUser;
+  return await db.collection(`${dbConf.userCollection}`).insertOne(user);
 };
 
 const findExistingUser = async (user: User) => {

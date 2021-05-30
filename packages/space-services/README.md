@@ -36,10 +36,13 @@ http://{host}:{PORT}/{version}/launches
 http://{host}:{PORT}/{version}/launches?limit=5&landing_successful=true
 http://{host}:{PORT}/{version}/launches?limit=1&landing_successful=true&launch_successful=false
 http://{host}:{PORT}/{version}/launches/{id}/launch
+http://{host}:{PORT}/{version}/launches/{id}/currentuser
 
 
 POST:
+http://{host}:{PORT}/{version}/signin
 http://{host}:{PORT}/{version}/login
+http://{host}:{PORT}/{version}/logout
 http://{host}:{PORT}/{version}/launches
 ```
 
@@ -51,9 +54,11 @@ https://space-x-white.herokuapp.com/{version}/launches
 https://space-x-white.herokuapp.com/{version}/launches?limit=5&landing_successful=true
 https://space-x-white.herokuapp.com/{version}/launches?limit=1&landing_successful=true&launch_successful=false
 https://space-x-white.herokuapp.com/{version}/launches/{id}/launch
+https://space-x-white.herokuapp.com/{version}/currentuser
 
 
 POST:
+https://space-x-white.herokuapp.com/{version}/signin
 https://space-x-white.herokuapp.com/{version}/login
 https://space-x-white.herokuapp.com/{version}/logout
 https://space-x-white.herokuapp.com/{version}/launches

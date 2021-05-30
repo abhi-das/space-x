@@ -20,7 +20,6 @@ global.login = async () => {
   const tokenKey = process.env.TOKEN_KEY;
 
   const user = {
-    id: randomBytes(4).toString('hex'),
     email: 'test@tes.com',
   };
 

@@ -4,7 +4,6 @@ import { appConf } from '../../config';
 
 it('simple login', async () => {
   const user = {
-    userName: 'User1',
     email: 'test@test.com',
   };
   const response = await request(App)

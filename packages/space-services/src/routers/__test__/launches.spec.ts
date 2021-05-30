@@ -36,7 +36,6 @@ it('Scenario: Create new mission with JWT Token', async () => {
   const token = await global.login();
   const response = await request(App)
     .post(`/${version}/launches`)
-    .set('Aurthorization', token)
     .send(launchFromReqBody);
 
   expect(response.status).toBe(200);
@@ -47,7 +46,6 @@ it('Scenario: Get all missions with JWT Token', async () => {
   const token = await global.login();
   const response = await request(App)
     .get(`/${version}/launches`)
-    .set('Aurthorization', token)
     .send(allMissions);
 
   expect(response.status).toBe(200);
@@ -59,7 +57,6 @@ it('Scenario: Get mission by id with JWT Token', async () => {
   const token = await global.login();
   const response = await request(App)
     .get(`/${version}/launches/:id/launch`)
-    .set('Aurthorization', token)
     .send(allMissions[id]);
 
   expect(response.status).toBe(200);
