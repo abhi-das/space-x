@@ -5,8 +5,12 @@ import Image from "next/image";
 import React from "react";
 import styles from "../../styles/globals.module.scss";
 
-import { getFeaturedLaunch, getLaunchById, ResError } from "../../helpers/api-utils";
 import { LaunchListItem } from "../../components/launches/launch-list";
+import {
+  ResError,
+  getFeaturedLaunch,
+  getLaunchById,
+} from "../../helpers/api-utils";
 
 const LaunchDetailPage = (props) => {
   //TODO: Use Context and find if search criteria has more then 1 param (YEAR, and isSuccess etc..)
@@ -44,14 +48,14 @@ const LaunchDetailPage = (props) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const launchId = context.params.launchid;
-  const response:(LaunchListItem | ResError) = await getLaunchById(launchId);
+  const response: LaunchListItem | ResError = await getLaunchById(launchId);
   // if(!response.error?.message) {
-    return {
-      props: {
-        selectedLaunch: response,
-      },
-      revalidate: 30,
-    }
+  return {
+    props: {
+      selectedLaunch: response,
+    },
+    revalidate: 30,
+  };
   // }
   // return {
   //   props: {
@@ -62,7 +66,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await getFeaturedLaunch();
-  if(response instanceof Array) {
+  if (response instanceof Array) {
     const path = response.map((launch) => ({
       params: { launchid: launch.mission_id },
     }));
@@ -72,9 +76,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
   }
   return {
-    paths: [{
-      params: { launchid: ''}
-    }],
+    paths: [
+      {
+        params: { launchid: "" },
+      },
+    ],
     fallback: true,
   };
 };

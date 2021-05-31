@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     isSuccessLand: filterKeys[2],
   });
 
-  if(response instanceof Array) {
+  if (response instanceof Array) {
     return {
       props: {
         filteredLaunches: response,
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
   return {
     props: {
-      error: response
+      error: response,
     },
   };
 };

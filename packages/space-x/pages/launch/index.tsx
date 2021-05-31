@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { getAllLaunch, ResError } from "../../helpers/api-utils";
+import { ResError, getAllLaunch } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import LaunchList, {
@@ -37,10 +37,12 @@ const AllLaunches = (props: AllLaunchesProps) => {
         />
       </Head>
       <section className={styles.flex}>
-        {allLaunches && <>
-          <LaunchSearch onSearch={onSearch} />
-          <LaunchList items={allLaunches} />
-        </>}
+        {allLaunches && (
+          <>
+            <LaunchSearch onSearch={onSearch} />
+            <LaunchList items={allLaunches} />
+          </>
+        )}
         {error && <p className="error">{error.message}</p>}
       </section>
     </>
@@ -49,17 +51,17 @@ const AllLaunches = (props: AllLaunchesProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await getAllLaunch();
-  if(response instanceof Array) {
+  if (response instanceof Array) {
     return {
       props: {
         allLaunches: response,
       },
       revalidate: 60,
     };
-  };
+  }
   return {
     props: {
-      error: response
+      error: response,
     },
   };
 };

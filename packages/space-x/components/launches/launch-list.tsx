@@ -22,17 +22,18 @@ const LaunchList = (props: LaunchListProps) => {
 
   return (
     <ul className={`launch-list ${styles.list}`}>
-      {items.length > 0 && items.map((item) => (
-        <LaunchItem
-          id={item.mission_id}
-          title={item.mission_name}
-          images={item.image}
-          date={item.launch_year}
-          successFulLaunch={item.launch_successful}
-          successFulLanding={item.landing_successful}
-          key={item.mission_id}
-        />
-      ))}
+      {items.length > 0 &&
+        items.map((item) => (
+          <LaunchItem
+            id={item.mission_id}
+            title={item.mission_name}
+            images={item.image}
+            date={item.launch_year}
+            successFulLaunch={item.launch_successful}
+            successFulLanding={item.landing_successful}
+            key={item.mission_id}
+          />
+        ))}
     </ul>
   );
 };

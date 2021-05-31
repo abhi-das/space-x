@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { getFeaturedLaunch, ResError } from "../helpers/api-utils";
+import { ResError, getFeaturedLaunch } from "../helpers/api-utils";
 import LaunchList, { LaunchListItem } from "../components/launches/launch-list";
 
 interface PageProps {
@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 const Home = (props: PageProps) => {
-  const {launches, error } = props;
+  const { launches, error } = props;
   return (
     <section>
       {launches && <LaunchList items={props.launches} />}
@@ -21,16 +21,16 @@ const Home = (props: PageProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await getFeaturedLaunch();
-  if(response instanceof Array) {
+  if (response instanceof Array) {
     return {
       props: {
-        launches: response
+        launches: response,
       },
     };
-  };
+  }
   return {
     props: {
-      error: response
+      error: response,
     },
   };
 };
