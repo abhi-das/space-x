@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { getAllLaunch } from "../../helpers/api-utils";
+import { getAllLaunch, ResError } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import LaunchList, {
@@ -11,15 +11,16 @@ import styles from "../../styles/globals.module.scss";
 
 interface AllLaunchesProps {
   allLaunches: Array<LaunchListItem>;
+  error?: ResError;
 }
 
 const AllLaunches = (props: AllLaunchesProps) => {
   const router = useRouter();
-  const { allLaunches } = props;
+  const { allLaunches, error } = props;
 
-  if (!allLaunches) {
-    return <p>Loading....</p>;
-  }
+  // if (!allLaunches) {
+  //   return <p>Loading....</p>;
+  // }
 
   const onSearch = (filterKey, isSuccessLaunch, isSuccessLand) => {
     const filterPagePath = `/launch/${filterKey}/${isSuccessLaunch}/${isSuccessLand}`;
@@ -36,20 +37,30 @@ const AllLaunches = (props: AllLaunchesProps) => {
         />
       </Head>
       <section className={styles.flex}>
-        <LaunchSearch onSearch={onSearch} />
-        <LaunchList items={allLaunches} />
+        {allLaunches && <>
+          <LaunchSearch onSearch={onSearch} />
+          <LaunchList items={allLaunches} />
+        </>}
+        {error && <p className="error">{error.message}</p>}
       </section>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const launchs = await getAllLaunch();
+  const response = await getAllLaunch();
+  if(response instanceof Array) {
+    return {
+      props: {
+        allLaunches: response,
+      },
+      revalidate: 60,
+    };
+  };
   return {
     props: {
-      allLaunches: launchs,
+      error: response
     },
-    revalidate: 60,
   };
 };
 

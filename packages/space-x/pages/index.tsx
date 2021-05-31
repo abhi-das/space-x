@@ -1,26 +1,36 @@
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { getFeaturedLaunch } from "../helpers/api-utils";
+import { getFeaturedLaunch, ResError } from "../helpers/api-utils";
 import LaunchList, { LaunchListItem } from "../components/launches/launch-list";
 
 interface PageProps {
-  launches: Array<LaunchListItem>;
+  launches?: Array<LaunchListItem>;
+  error?: ResError;
 }
 
 const Home = (props: PageProps) => {
+  const {launches, error } = props;
   return (
     <section>
-      <LaunchList items={props.launches} />
+      {launches && <LaunchList items={props.launches} />}
+      {error && <p className="error">{error.message}</p>}
     </section>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const featureLaunch = await getFeaturedLaunch();
+  const response = await getFeaturedLaunch();
+  if(response instanceof Array) {
+    return {
+      props: {
+        launches: response
+      },
+    };
+  };
   return {
     props: {
-      launches: featureLaunch,
+      error: response
     },
   };
 };

@@ -7,7 +7,7 @@ import React from "react";
 import styles from "../../styles/globals.module.scss";
 
 const FilteredLaunchPage = (props) => {
-  const { filteredLaunches } = props;
+  const { filteredLaunches, error } = props;
 
   if (!filteredLaunches) {
     return <p className={styles.center}>Loading...</p>;
@@ -24,7 +24,8 @@ const FilteredLaunchPage = (props) => {
       </Head>
       <Header headerType="h2" title="Filtered Launch Page" />
       <section className={styles.containerCenter}>
-        <LaunchList items={filteredLaunches} />
+        {filteredLaunches && <LaunchList items={filteredLaunches} />}
+        {error && <p className="error">{error.message}</p>}
       </section>
     </>
   );
@@ -32,16 +33,23 @@ const FilteredLaunchPage = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const filterKeys = context.params.slug;
-  const launches = await getFilteredLaunch({
+  const response = await getFilteredLaunch({
     year: filterKeys[0],
     isSuccessLaunch: filterKeys[1],
     isSuccessLand: filterKeys[2],
   });
 
+  if(response instanceof Array) {
+    return {
+      props: {
+        filteredLaunches: response,
+        fallback: false,
+      },
+    };
+  }
   return {
     props: {
-      filteredLaunches: launches,
-      fallback: false,
+      error: response
     },
   };
 };

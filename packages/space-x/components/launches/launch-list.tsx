@@ -10,6 +10,7 @@ export interface LaunchListItem {
   launch_year: string;
   launch_successful: boolean;
   landing_successful: boolean;
+  isFeatured: boolean;
 }
 
 interface LaunchListProps {
@@ -21,7 +22,7 @@ const LaunchList = (props: LaunchListProps) => {
 
   return (
     <ul className={`launch-list ${styles.list}`}>
-      {items.map((item) => (
+      {items.length > 0 && items.map((item) => (
         <LaunchItem
           id={item.mission_id}
           title={item.mission_name}
