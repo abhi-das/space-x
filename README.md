@@ -1,9 +1,16 @@
 
-## Go to specific project to explore more 
+## Go to UI project to explore more 
 
 ```sh
 
 cd packages/space-x
+
+```
+## Go to API project to explore more 
+
+```sh
+
+cd packages/space-services
 
 ```
 

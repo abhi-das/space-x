@@ -62,7 +62,7 @@ const LaunchRoutes = (app: Application): void => {
   const version = appConf.apiVersion;
   app
     .route(`/${version}/launches`)
-    .get(verifyToken, requireAuth, async (req: Request, res: Response) => {
+    .get(async (req: Request, res: Response) => {
       const query = req.query;
       let missions: Array<Mission> = [];
       // Get all missions
