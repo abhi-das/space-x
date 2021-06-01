@@ -6,62 +6,68 @@ import React from "react";
 import styles from "../../styles/globals.module.scss";
 
 import { LaunchListItem } from "../../components/launches/launch-list";
-import {
-  ResError,
-  getFeaturedLaunch,
-  getLaunchById,
-} from "../../helpers/api-utils";
+import { getFeaturedLaunch, getLaunchById } from "../../helpers/api-utils";
 
 const LaunchDetailPage = (props) => {
   //TODO: Use Context and find if search criteria has more then 1 param (YEAR, and isSuccess etc..)
   //TODO: Make the change accordingly in api-util logic getLaunchById method
 
-  const launch = props.selectedLaunch;
+  const { selectedLaunch, error } = props;
 
-  if (!launch) {
-    return <p>Loading...</p>;
-  }
+  // if (!selectedLaunch) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <>
-      <Head>
-        <title>{launch.mission_name}</title>
-        <meta name="description" content={launch.details} />
-      </Head>
-      <Header headerType="h2" title={launch.mission_name} />
-      <section className={styles.containerCenter}>
-        <Image
-          src={`/${launch.image}`}
-          alt={launch.title}
-          width={300}
-          height={260}
-        />
-        <p>
-          <strong>Year: </strong>
-          {launch.launch_year}
-        </p>
-        <p>{launch.details}</p>
-      </section>
+      {selectedLaunch && selectedLaunch.length && (
+        <>
+          <Head>
+            <title>{selectedLaunch.mission_name}</title>
+            <meta name="description" content={selectedLaunch.details} />
+          </Head>
+          <Header headerType="h2" title={selectedLaunch.mission_name} />
+          <section className={styles.containerCenter}>
+            <Image
+              src={`/${selectedLaunch.image}`}
+              alt={selectedLaunch.title}
+              width={300}
+              height={260}
+            />
+            <p>
+              <strong>Year: </strong>
+              {selectedLaunch.launch_year}
+            </p>
+            <p>{selectedLaunch.details}</p>
+          </section>
+        </>
+      )}
+      {selectedLaunch && (
+        <p className="error">No mission found with specificed mission id.</p>
+      )}
+      {error && <p className="error">{error.message}</p>}
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const launchId = context.params.launchid;
-  const response: LaunchListItem | ResError = await getLaunchById(launchId);
-  // if(!response.error?.message) {
+  const response = await getLaunchById(launchId);
+
+  if ((response as LaunchListItem).mission_id !== null) {
+    return {
+      props: {
+        selectedLaunch: response,
+      },
+      revalidate: 30,
+    };
+  }
+
   return {
     props: {
-      selectedLaunch: response,
+      error: response,
     },
-    revalidate: 30,
   };
-  // }
-  // return {
-  //   props: {
-  //     error: response
-  //   },
-  // };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

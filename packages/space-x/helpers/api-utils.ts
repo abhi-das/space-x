@@ -41,21 +41,23 @@ export async function getFeaturedLaunch(): Promise<
 
 export async function getLaunchById(
   id: string | string[]
-): Promise<LaunchListItem | ResError> {
+): Promise<LaunchListItem | ResError | []> {
   // TODO: Id pass year then search by year here
   const response = await getAllLaunch();
   if (response instanceof Array) {
-    return response.find((launch) => launch.mission_id === id);
+    const result = response.find((launch) => launch.mission_id === id);
+    return result ? result : [];
   }
   return response;
 }
 
 export async function getLaunchByYear(
   year
-): Promise<LaunchListItem | ResError> {
+): Promise<LaunchListItem | ResError | []> {
   const response = await getAllLaunch();
   if (response instanceof Array) {
-    return response.find((launch) => launch.launch_year === year);
+    const result = response.find((launch) => launch.launch_year === year);
+    return result ? result : [];
   }
   return response;
 }
@@ -73,7 +75,7 @@ export async function getFilteredLaunch(
         launch.landing_successful.toString() === isSuccessLand
       );
     });
-    return filteredLaunch;
+    return filteredLaunch ? filteredLaunch : [];
   }
   return response;
 }
