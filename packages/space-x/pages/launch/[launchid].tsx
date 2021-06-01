@@ -1,26 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import { LaunchListItem } from "../../components/launches/launch-list";
+import { getFeaturedLaunch, getLaunchById } from "../../helpers/api-utils";
 import Head from "next/head";
 import Header from "../../components/header/Header";
 import Image from "next/image";
 import React from "react";
 import styles from "../../styles/globals.module.scss";
 
-import { LaunchListItem } from "../../components/launches/launch-list";
-import { getFeaturedLaunch, getLaunchById } from "../../helpers/api-utils";
-
 const LaunchDetailPage = (props) => {
   //TODO: Use Context and find if search criteria has more then 1 param (YEAR, and isSuccess etc..)
   //TODO: Make the change accordingly in api-util logic getLaunchById method
 
   const { selectedLaunch, error } = props;
-
-  // if (!selectedLaunch) {
-  //   return <p>Loading...</p>;
-  // }
-
   return (
     <>
-      {selectedLaunch && selectedLaunch.length && (
+      {selectedLaunch && (
         <>
           <Head>
             <title>{selectedLaunch.mission_name}</title>
@@ -42,9 +36,7 @@ const LaunchDetailPage = (props) => {
           </section>
         </>
       )}
-      {selectedLaunch && (
-        <p className="error">No mission found with specificed mission id.</p>
-      )}
+      {!selectedLaunch && !error && <p>Loading...</p>}
       {error && <p className="error">{error.message}</p>}
     </>
   );
@@ -54,7 +46,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const launchId = context.params.launchid;
   const response = await getLaunchById(launchId);
 
-  if ((response as LaunchListItem).mission_id !== null) {
+  if (response !== null && Object.prototype.hasOwnProperty.call((response as LaunchListItem), "mission_id")) {
     return {
       props: {
         selectedLaunch: response,
