@@ -1,3 +1,4 @@
+import CustomLoading from "../components/loading/loading";
 import Head from "next/head";
 import Layout from "../components/layout/layout";
 import React from "react";
@@ -33,6 +34,7 @@ const MyApp = ({ Component, pageProps }) => {
         <meta name="theme-color" content="#c7c7c7" />
       </Head>
       <Component {...pageProps} />
+      <CustomLoading />
     </Layout>
   );
 };

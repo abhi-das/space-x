@@ -43,6 +43,7 @@ const AllLaunches = (props: AllLaunchesProps) => {
             <LaunchList items={allLaunches} />
           </>
         )}
+        {!allLaunches && <p>Loading...</p>}
         {error && <p className="error">{error.message}</p>}
       </section>
     </>

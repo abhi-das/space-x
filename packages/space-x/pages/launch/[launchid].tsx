@@ -46,7 +46,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const launchId = context.params.launchid;
   const response = await getLaunchById(launchId);
 
-  if (response !== null && Object.prototype.hasOwnProperty.call((response as LaunchListItem), "mission_id")) {
+  if (
+    response !== null &&
+    Object.prototype.hasOwnProperty.call(
+      response as LaunchListItem,
+      "mission_id"
+    )
+  ) {
     return {
       props: {
         selectedLaunch: response,
