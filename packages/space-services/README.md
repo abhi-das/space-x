@@ -136,7 +136,7 @@ Run from root directory of the project.
 
 heroku login
 heroku git:clone -a <heroku project name>
-
+heroku git:remote -a space-x-apiv
 git add .
 git commit -m "comments"
 git subtree push --prefix packages/space-services heroku master
