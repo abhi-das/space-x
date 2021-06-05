@@ -1,62 +1,55 @@
 import { Application, Request, Response } from 'express';
 import { SessionData } from '../custom-types';
-import { appConf, dbConf } from '../config';
-import { getDb } from '../db-connect';
+import { User } from '../models/User';
+import { appConf } from '../config';
 import jwt from 'jsonwebtoken';
 import requireAuth from '../middlewares/require-auth';
 import verifyToken from '../middlewares/verify-token';
 
-interface User {
-  name?: string;
-  email?: string;
-  password?: string;
-}
-
 export interface currentUserReq {
   currentUser?: string | object;
 }
-
-const createUser = async (user: User) => {
-  const db = getDb();
-  // Save user into DB
-  return await db.collection(`${dbConf.userCollection}`).insertOne(user);
-};
-
-const findExistingUser = async (user: User) => {
-  const db = getDb();
-  return await db.collection(`${dbConf.userCollection}`).findOne(user);
-};
 
 const AuthRoute = (app: Application): void => {
   const version = appConf.apiVersion;
   const tokenKey = appConf.tokenKey;
 
   app
-    .route(`/${version}/signin`)
+    .route(`/${version}/signup`)
     .post(async (req: Request & SessionData, res: Response) => {
       if (!tokenKey) {
-        res.status(401).json({ message: 'token key not found from ENV' });
-        throw new Error('token key not found from ENV');
+        return res
+          .status(401)
+          .json({ message: 'token key not found from ENV' });
+        // throw new Error('token key not found from ENV');
       }
 
-      const user: User = {
-        name: req.body.name,
-        email: req.body.email,
+      const userPayload = {
+        email: req.body.email.toString(),
       };
-      let newUser: any = {};
 
       try {
-        newUser = await createUser(user);
-        const token = jwt.sign(user, tokenKey);
+        const exUser = await User.findOne(userPayload);
+        if (exUser) {
+          return res.status(200).json({ message: 'email already in use!' });
+        }
+      } catch (error) {
+        res.status(400).json({ message: 'Error while finding email from DB!' });
+      }
+
+      try {
+        const newUser = User.buildUser(userPayload);
+        const result = await newUser.save();
+        const token = jwt.sign(userPayload, tokenKey);
         req.session = {
           jwt: token,
         };
         req.sessionOptions = {
           maxAge: 6 * 60 * 60 * 1000,
         };
-        res.status(200).json({ userId: newUser.insertedId! });
+        res.status(201).json({ userId: result._id! });
       } catch (error) {
-        res.status(500).json({ message: 'login error from DB!' });
+        res.status(400).json({ message: 'Error on save user in User DB!' });
       }
     });
 
@@ -71,46 +64,45 @@ const AuthRoute = (app: Application): void => {
     );
 
   app
-    .route(`/${version}/login`)
+    .route(`/${version}/signin`)
     .post(async (req: Request & currentUserReq, res: Response) => {
       if (!tokenKey) {
-        res.status(401).json({ message: 'token key not found from ENV' });
-        throw new Error('token key not found from ENV');
+        return res
+          .status(401)
+          .json({ message: 'token key not found from ENV' });
+        // throw new Error('token key not found from ENV');
       }
 
       // TODO:
       // Add password match logic here on signin
       const user = {
-        email: req.body.email,
-        // password: req.body.password
+        email: req.body.email.toString(),
       };
+
       try {
-        const exUser = await findExistingUser(user);
-        const token = jwt.sign(
-          {
-            name: exUser.name,
-            email: exUser.email,
-          },
-          tokenKey,
-        );
+        const signInUser = await User.findOne(user);
+        if (!signInUser) {
+          return res.status(200).json({ message: 'User does not exist!' });
+        }
+        const token = jwt.sign(user, tokenKey);
         req.session = {
           jwt: token,
         };
         req.sessionOptions = {
           maxAge: 6 * 60 * 60 * 1000,
         };
-        res.status(200).json({ userId: exUser._id! });
+        res.status(200).json({ userId: signInUser._id });
       } catch (error) {
-        res.send({ message: 'User not found!' });
+        res.status(400).send({ message: 'Error while finding user in DB!' });
       }
     });
 
-  app.route(`/${version}/logout`).post((req: Request, res: Response) => {
+  app.route(`/${version}/signout`).post((req: Request, res: Response) => {
     req.session = null;
     req.sessionOptions = {
       maxAge: 0,
     };
-    res.send({ message: 'successfulyy logout!' });
+    res.send({ message: 'successfully logout!' });
   });
 };
 

@@ -1,18 +1,9 @@
 import { Application, Request, Response } from 'express';
-import { DbQuery, Mission } from '../common';
-import { appConf, dbConf } from '../config';
-import { getDb } from '../db-connect';
+import { DbQuery, MissionItem } from '../common';
+import { Mission } from '../models/mission';
+import { appConf } from '../config';
 import requireAuth from '../middlewares/require-auth';
 import verifyToken from '../middlewares/verify-token';
-
-const createMission = async (mission: Mission) => {
-  // Save mission into DB
-  const db = getDb();
-  const newMission = await db
-    .collection(`${dbConf.missionCollection}`)
-    .insertOne(mission);
-  return newMission;
-};
 
 const getAllMission = async (q: DbQuery) => {
   // Get all mission from DB
@@ -39,23 +30,8 @@ const getAllMission = async (q: DbQuery) => {
     };
   }
   /* eslint-enable camelcase */
-  const db = getDb();
-  const allMission = await db
-    .collection(`${dbConf.missionCollection}`)
-    .find(query)
-    .limit(Number(q.limit))
-    .toArray();
+  const allMission = await Mission.find(query).limit(Number(q.limit)).exec();
   return allMission;
-};
-
-const getMissionByMissionId = async (missionId: string) => {
-  // Get mission by Id from DB
-  /* eslint-disable camelcase */
-  const q = { mission_id: missionId };
-  /* eslint-enable camelcase */
-  const db = getDb();
-  const mission = await db.collection(`${dbConf.missionCollection}`).findOne(q);
-  return mission;
 };
 
 const LaunchRoutes = (app: Application): void => {
@@ -64,22 +40,32 @@ const LaunchRoutes = (app: Application): void => {
     .route(`/${version}/launches`)
     .get(async (req: Request, res: Response) => {
       const query = req.query;
-      let missions: Array<Mission> = [];
+      let missions: Array<MissionItem> = [];
       // Get all missions
       try {
         missions = await getAllMission(query);
+        res.status(200).send(missions);
       } catch (error) {
         res.status(400).json({ message: 'No mission found in the DB!' });
       }
-      res.status(200).send(missions);
     })
+
     .post(verifyToken, requireAuth, async (req: Request, res: Response) => {
-      const launchFromReqBody: Mission = {
-        ...req.body,
+      /* eslint-disable camelcase */
+      const launchFromReqBody = {
+        details: req.body.details.toString(),
+        image: req.body.image.toString(),
+        isFeatured: req.body.isFeatured.toString(),
+        landing_successful: req.body.landing_successful.toString(),
+        launch_successful: req.body.launch_successful.toString(),
+        launch_year: req.body.launch_year.toString(),
+        mission_id: req.body.mission_id.toString(),
+        mission_name: req.body.mission_name.toString(),
       };
       try {
-        const newMission = await createMission(launchFromReqBody);
-        res.status(201).send(newMission.ops);
+        const newMission = Mission.buildMission(launchFromReqBody);
+        await newMission.save();
+        res.status(200).json({ message: 'Mission created!' });
       } catch (error) {
         res.status(500).json({ message: 'Error on mission creation!' });
       }
@@ -89,12 +75,12 @@ const LaunchRoutes = (app: Application): void => {
     .route(`/${version}/launches/:id/launch`)
     .get(verifyToken, requireAuth, async (req: Request, res: Response) => {
       try {
-        const mission = await getMissionByMissionId(req.params.id);
+        const mission = await Mission.findOne({ mission_id: req.params.id });
         res.status(200).send(mission);
       } catch (error) {
         res
           .status(500)
-          .json({ message: 'Mission could not found by given id!' });
+          .json({ message: 'MissionItem could not found by given id!' });
       }
     });
 };

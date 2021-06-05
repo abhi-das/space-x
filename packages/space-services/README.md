@@ -36,7 +36,7 @@ http://{host}:{PORT}/{version}/launches
 http://{host}:{PORT}/{version}/launches?limit=5&landing_successful=true
 http://{host}:{PORT}/{version}/launches?limit=1&landing_successful=true&launch_successful=false
 http://{host}:{PORT}/{version}/launches/{id}/launch
-http://{host}:{PORT}/{version}/launches/{id}/currentuser
+http://{host}:{PORT}/{version}/launches/currentuser
 
 
 POST:

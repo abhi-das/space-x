@@ -6,7 +6,7 @@ interface SpaceLaunch {
   launch_year: string;
 }
 
-interface Mission {
+interface MissionItem {
   details: string;
   image: string;
   isFeatured: string;
@@ -24,4 +24,4 @@ interface DbQuery {
   launch_year?: string;
 }
 
-export { SpaceLaunch, Mission, DbQuery };
+export { SpaceLaunch, MissionItem, DbQuery };
