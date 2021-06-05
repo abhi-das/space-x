@@ -21,7 +21,6 @@ const AuthRoute = (app: Application): void => {
         return res
           .status(401)
           .json({ message: 'token key not found from ENV' });
-        // throw new Error('token key not found from ENV');
       }
 
       const userPayload = {
