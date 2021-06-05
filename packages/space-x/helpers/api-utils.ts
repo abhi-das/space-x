@@ -16,7 +16,7 @@ export async function getAllLaunch(): Promise<
     //   `https://space-lauch-default-rtdb.firebaseio.com/spaceX.json`
     // );
     const response = await axios.get(
-      `https://space-x-white.herokuapp.com/v4/launches`,
+      `https://space-x-apiv.herokuapp.com/v4/launches`,
       options
     );
     return response.data as Array<LaunchListItem>;
