@@ -50,18 +50,18 @@ http://{host}:{PORT}/{version}/launches
 
 ```sh
 GET:
-https://space-x-white.herokuapp.com/{version}/launches
-https://space-x-white.herokuapp.com/{version}/launches?limit=5&landing_successful=true
-https://space-x-white.herokuapp.com/{version}/launches?limit=1&landing_successful=true&launch_successful=false
-https://space-x-white.herokuapp.com/{version}/launches/{id}/launch
-https://space-x-white.herokuapp.com/{version}/currentuser
+https://space-x-apiv.herokuapp.com/{version}/launches
+https://space-x-apiv.herokuapp.com/{version}/launches?limit=5&landing_successful=true
+https://space-x-apiv.herokuapp.com/{version}/launches?limit=1&landing_successful=true&launch_successful=false
+https://space-x-apiv.herokuapp.com/{version}/launches/{id}/launch
+https://space-x-apiv.herokuapp.com/{version}/currentuser
 
 
 POST:
-https://space-x-white.herokuapp.com/{version}/signin
-https://space-x-white.herokuapp.com/{version}/login
-https://space-x-white.herokuapp.com/{version}/logout
-https://space-x-white.herokuapp.com/{version}/launches
+https://space-x-apiv.herokuapp.com/{version}/signin
+https://space-x-apiv.herokuapp.com/{version}/signup
+https://space-x-apiv.herokuapp.com/{version}/signout
+https://space-x-apiv.herokuapp.com/{version}/launches
 ```
 
 Note: JWT token would be required to get the URL working. Login endpoint will be generating JWT token.
@@ -130,16 +130,27 @@ yarn format
 ```
 
 ## Mono Repo Project Deployment
+
+First Time add heroku remote in local
+
+```sh
+heroku git:remote -a space-x-apiv
+```
+
 Run from root directory of the project.
 
 ```sh
 
 heroku login
 heroku git:clone -a <heroku project name>
-heroku git:remote -a space-x-apiv
+
 git add .
 git commit -m "comments"
 git subtree push --prefix packages/space-services heroku master
+
+OR
+
+git push heroku `git subtree split --prefix packages/space-services master`:master --force
 
 heroku logs
 
