@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express';
 import { SessionData } from '../custom-types';
-import { User } from '../models/User';
+import { User } from '../models/user';
 import { appConf } from '../config';
 import jwt from 'jsonwebtoken';
 import requireAuth from '../middlewares/require-auth';
