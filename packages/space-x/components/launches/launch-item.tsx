@@ -2,11 +2,12 @@ import Button from "../ui/button";
 import DateIcon from "../icons/date-icon";
 import React from "react";
 import styles from "./launch-item.module.scss";
+import Image from 'next/image';
 
 export interface LaunchItemProps {
   id: string;
   title: string;
-  images: string;
+  image: string;
   date: string;
   successFulLaunch: boolean;
   successFulLanding: boolean;
@@ -16,7 +17,7 @@ export interface LaunchItemProps {
 const LaunchItem = (props: LaunchItemProps) => {
   const {
     title,
-    images,
+    image,
     date,
     id,
     successFulLaunch,
@@ -27,7 +28,12 @@ const LaunchItem = (props: LaunchItemProps) => {
 
   return (
     <li className={`launch-list-item ${styles.item}`}>
-      <img src={"/" + images} alt={title} title={title} />
+      <Image src={"/" + image} 
+        loading={"lazy"}
+        alt={title} 
+        title={title} 
+        width={300}
+        height={260}/>
       <div className={`content ${styles.content}`}>
         <h2>
           <Button link={exploreLink}>{title}</Button>

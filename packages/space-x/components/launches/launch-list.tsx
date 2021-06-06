@@ -27,7 +27,7 @@ const LaunchList = (props: LaunchListProps) => {
           <LaunchItem
             id={item.mission_id}
             title={item.mission_name}
-            images={item.image}
+            image={item.image}
             date={item.launch_year}
             successFulLaunch={item.launch_successful}
             successFulLanding={item.landing_successful}
