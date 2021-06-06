@@ -28,10 +28,14 @@ const Signup = () => {
     const data = {
       email: userEmail,
     };
+    const options = {
+      headers: { "Content-Type": "application/json" },
+    };
     try {
       const response = await axios.post(
         `https://space-x-apiv.herokuapp.com/v4/signin`,
-        data
+        data,
+        options
       );
       setSigninResponse(response.data);
       setLoader(false);
