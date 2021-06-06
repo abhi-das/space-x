@@ -59,14 +59,17 @@ const Signup = () => {
             </span>
           </h4>
           <div className={style.formGroup}>
-            <label htmlFor="email">User Email: </label>
-            <input
-              className={style.formControl}
-              id="email"
-              name="email"
-              value={userEmail}
-              onChange={(event) => setUserEmail(event.target.value)}
-            />
+            <label htmlFor="email">
+              <input
+                className={style.formControl}
+                id="email"
+                name="email"
+                value={userEmail}
+                onChange={(event) => setUserEmail(event.target.value)}
+                placeholder={"email@email.com"}
+                type="email"
+              />
+            </label>
           </div>
           <div className={style.formGroup}>
             <input
