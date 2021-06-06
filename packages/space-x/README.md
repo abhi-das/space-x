@@ -1,7 +1,4 @@
 
-## Space-X Launch
-- [Demo](https://space-x-eight.vercel.app/launch)
-
 ## Feature tags
 
 - Next
