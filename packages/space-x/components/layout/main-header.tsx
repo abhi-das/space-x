@@ -1,17 +1,51 @@
+import CartIcon from "../icons/cart-icon";
 import Link from "next/link";
 import React from "react";
+import RocketIcon from "../icons/rocket-icon";
+import SaleIcon from "../icons/sale-icon";
+import SignInIcon from "../icons/signin-icon";
+import SiteLogoIcon from "../icons/sitelogo-icon";
 import styles from "./main-header.module.scss";
 
 const MainHeader = () => {
   return (
     <header className={styles.header}>
       <h1 className={`title ${styles.logo}`}>
-        <Link href="/">Space-x Launch Programs</Link>
+        <Link href="/">
+          <span className={styles.navLogo} title="Shop Online">
+            <SiteLogoIcon />
+          </span>
+        </Link>
       </h1>
-      <nav className={`nav ${styles.nav}`}>
-        <ul className={"nav-list"}>
-          <li className={"nav-list-item"}>
-            <Link href="/launch">Browse All Launch</Link>
+      <nav className={styles.nav}>
+        <ul className={styles.navList}>
+          <li className={styles.navListItem}>
+            <Link href="/launch">
+              <span className={styles.navLink} title="Show All Launch">
+                <RocketIcon />
+              </span>
+            </Link>
+          </li>
+          <li className={styles.navListItem}>
+            <Link href="/products">
+              <span className={styles.navLink} title="Products">
+                <SaleIcon />
+              </span>
+            </Link>
+          </li>
+          <li className={styles.navListItem}>
+            <Link href="/cart">
+              <span className={styles.navLink} title="Cart">
+                <CartIcon />
+              </span>
+            </Link>
+          </li>
+          <li className={styles.navListItem}>
+            <Link href="/signin">
+              <span className={styles.navLink} title="Signin">
+                <SignInIcon />
+              </span>
+            </Link>
           </li>
         </ul>
       </nav>
