@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import style from "./signin.module.scss";
 
-import { navigationPaths } from "../../common/navigation-path";
+import { apiEndPoints, navigationPaths } from "../../common/navigation-path";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
 import axios from "axios";
@@ -32,18 +32,14 @@ const Signup = () => {
       headers: { "Content-Type": "application/json" },
     };
     try {
-      const response = await axios.post(
-        `https://space-x-apiv.herokuapp.com/v4/signin`,
-        data,
-        options
-      );
+      const response = await axios.post(apiEndPoints.signIn, data, options);
       setSigninResponse(response.data);
       setLoader(false);
       if (response.data.userId) {
-        router.push(navigationPaths.products);
+        router.push(navigationPaths.cart);
       }
     } catch (error) {
-      setSignInError("SignUp error!!");
+      setSignInError("SignIn error!!");
       setLoader(false);
     }
   };
