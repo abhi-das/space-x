@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import style from "./signin.module.scss";
 
-import { apiEndPoints, navigationPaths } from "../../common/navigation-path";
+import { apiEndPoints } from "../../common/navigation-path";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
 import axios from "axios";
@@ -39,7 +39,7 @@ const Signup = () => {
       setSigninResponse(response.data);
       setLoader(false);
       if (response.data.userId) {
-        router.push(navigationPaths.cart);
+        router.push("/cart");
       }
     } catch (error) {
       setSignInError("SignIn error!!");

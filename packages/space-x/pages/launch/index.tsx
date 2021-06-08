@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next";
 import { ResError, getAllLaunch } from "../../helpers/api-utils";
-import { navigationPaths } from "../../common/navigation-path";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import LaunchList, {
@@ -19,12 +18,8 @@ const AllLaunches = (props: AllLaunchesProps) => {
   const router = useRouter();
   const { allLaunches, error } = props;
 
-  // if (!allLaunches) {
-  //   return <p>Loading....</p>;
-  // }
-
   const onSearch = (filterKey, isSuccessLaunch, isSuccessLand) => {
-    const filterPagePath = `${navigationPaths.launch}/${filterKey}/${isSuccessLaunch}/${isSuccessLand}`;
+    const filterPagePath = `/launch/${filterKey}/${isSuccessLaunch}/${isSuccessLand}`;
     router.push(filterPagePath);
   };
 
