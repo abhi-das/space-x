@@ -14,9 +14,9 @@ interface SigninResponse {
 }
 
 const Signup = () => {
-  const [userEmail, setUserEmail] = React.useState("");
-  const [signInError, setSignInError] = React.useState("");
-  const [loader, setLoader] = React.useState(false);
+  const [email, setEmail] = React.useState<string>("");
+  const [signInError, setSignInError] = React.useState<string>("");
+  const [loader, setLoader] = React.useState<boolean>(false);
   const [signinResponse, setSigninResponse] = React.useState<
     SigninResponse | undefined
   >();
@@ -25,14 +25,17 @@ const Signup = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoader(true);
-    const data = {
-      email: userEmail,
-    };
     const options = {
-      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
     };
     try {
-      const response = await axios.post(apiEndPoints.signIn, data, options);
+      const response = await axios.post(
+        apiEndPoints.signIn,
+        {
+          email,
+        },
+        options
+      );
       setSigninResponse(response.data);
       setLoader(false);
       if (response.data.userId) {
@@ -64,8 +67,8 @@ const Signup = () => {
                 className={style.formControl}
                 id="email"
                 name="email"
-                value={userEmail}
-                onChange={(event) => setUserEmail(event.target.value)}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder={"email@email.com"}
                 type="email"
               />

@@ -11,8 +11,6 @@ interface CartProps {
 
 const Cart = (props: CartProps) => {
   const { currentUser, error } = props;
-  // console.log(props.currentUser)
-
   return (
     <>
       <Head>
@@ -29,23 +27,26 @@ const Cart = (props: CartProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const headers = context.req.headers;
-
-  try {
-    const res = await axios.post(apiEndPoints.currentUser, { headers });
-    const { data } = res;
-    // console.log(res);
-    return {
-      props: {
-        currentUser: data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error: "Not Aurthorized User!",
-      },
-    };
+  if (typeof window === "undefined") {
+    try {
+      const res = await axios.get(apiEndPoints.currentUser, {
+        headers: context.req.headers,
+        withCredentials: true,
+      });
+      const { data } = res;
+      return {
+        props: {
+          currentUser: data,
+        },
+      };
+    } catch (error) {
+      return {
+        props: {
+          error: "Not Aurthorized User!",
+        },
+      };
+    }
+  } else {
   }
 };
 
