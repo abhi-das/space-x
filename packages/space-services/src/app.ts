@@ -12,14 +12,14 @@ import path from 'path';
 
 const App: Application = express();
 
-// App.set('trust proxy', true);
+App.set('trust proxy', true);
 // Middlewares
 App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
-App.use(cors());
 
 // Set Required Headers
 App.use(helmet());
+App.use(cors({ credentials: true, origin: ["http://localhost:3000", "https://space-x-eight.vercel.app"] }));
 
 // Compression
 App.use(compression());
