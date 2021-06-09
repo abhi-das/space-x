@@ -14,14 +14,16 @@ const App: Application = express();
 
 App.set('trust proxy', true);
 App.set('Access-Control-Allow-Origin', '*');
+// App.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
 // Middlewares
 App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
 
 // Set Required Headers
-const whitelist = ["https://space-x-eight.vercel.app", "http://localhost:3000"];
+// const whitelist = ["https://space-x-eight.vercel.app", "http://localhost:3000"];
 const corsOptions = {
-  origin: whitelist,
+  origin: true,
   credentials: true
 };
 App.use(helmet());
