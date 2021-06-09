@@ -48,7 +48,7 @@ App.use(morgan('combined', { stream: accessLogStream }));
 
 // session
 App.use(shouldSendSameSiteNone);
-App.use(cookieSession({ signed: false, secure: true, sameSite: false }));
+App.use(cookieSession({ signed: false, secure: true, sameSite: 'none' }));
 
 // SpaceX API routes
 LaunchRoutes(App);
