@@ -15,6 +15,9 @@ const App: Application = express();
 App.set('trust proxy', true);
 App.set('Access-Control-Allow-Origin', '*');
 // App.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+App.set('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+App.set('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+App.set('Access-Control-Allow-Credentials', 'true');
 
 // Middlewares
 App.use(bodyParser.urlencoded({ extended: true }));
