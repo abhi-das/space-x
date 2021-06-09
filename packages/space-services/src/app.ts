@@ -9,6 +9,7 @@ import fs from 'fs';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
+import { shouldSendSameSiteNone } from 'should-send-same-site-none';
 
 const App: Application = express();
 
@@ -46,6 +47,7 @@ const accessLogStream = fs.createWriteStream(
 App.use(morgan('combined', { stream: accessLogStream }));
 
 // session
+App.use(shouldSendSameSiteNone);
 App.use(cookieSession({ signed: false, secure: true, sameSite: 'none' }));
 
 // SpaceX API routes
