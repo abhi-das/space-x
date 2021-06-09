@@ -46,7 +46,7 @@ const accessLogStream = fs.createWriteStream(
 App.use(morgan('combined', { stream: accessLogStream }));
 
 // session
-App.use(cookieSession({ signed: false, secure: true }));
+App.use(cookieSession({ signed: false, secure: true, sameSite: 'none' }));
 
 // SpaceX API routes
 LaunchRoutes(App);
