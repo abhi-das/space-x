@@ -13,7 +13,7 @@ interface SigninResponse {
   message?: string;
 }
 
-const Signup = () => {
+const Signin = () => {
   const [email, setEmail] = React.useState<string>("");
   const [signInError, setSignInError] = React.useState<string>("");
   const [loader, setLoader] = React.useState<boolean>(false);
@@ -93,4 +93,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;
