@@ -1,3 +1,4 @@
+import { shouldSendSameSiteNone } from 'should-send-same-site-none';
 import AuthRoute from './routers/auth';
 import LaunchRoutes from './routers/launches';
 import bodyParser from 'body-parser';
@@ -6,17 +7,19 @@ import cookieSession from 'cookie-session';
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import fs from 'fs';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
-import { shouldSendSameSiteNone } from 'should-send-same-site-none';
 
 const App: Application = express();
 
 App.set('trust proxy', true);
 App.set('Access-Control-Allow-Origin', '*');
 App.set('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-App.set('Access-Control-Allow-Headers', 'Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+App.set(
+  'Access-Control-Allow-Headers',
+  'Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+);
 App.set('Access-Control-Allow-Credentials', 'true');
 
 // Middlewares
@@ -28,9 +31,9 @@ App.use(bodyParser.json());
 const corsOptions = {
   origin: true,
   credentials: true,
-  exposedHeaders: '*'
+  exposedHeaders: '*',
 };
-App.use(helmet());
+// App.use(helmet());
 App.use(cors(corsOptions));
 
 // Compression
@@ -48,11 +51,13 @@ App.use(morgan('combined', { stream: accessLogStream }));
 
 // session
 App.use(shouldSendSameSiteNone);
-App.use(cookieSession({ 
-  signed: false, 
-  secure: true, 
-  sameSite: 'none' 
-}));
+App.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+    sameSite: 'none',
+  }),
+);
 
 // SpaceX API routes
 LaunchRoutes(App);
