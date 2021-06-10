@@ -32,6 +32,11 @@ const corsOptions = {
   exposedHeaders: '*'
 };
 App.use(helmet());
+App.use(
+  helmet.permittedCrossDomainPolicies({
+    permittedPolicies: "all",
+  })
+);
 App.use(cors(corsOptions));
 
 // Compression
