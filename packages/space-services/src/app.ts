@@ -13,7 +13,7 @@ import path from 'path';
 
 const App: Application = express();
 
-App.set('trust proxy', true);
+// App.set('trust proxy', true);
 App.set('Access-Control-Allow-Origin', '*');
 App.set('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
 App.set(
@@ -25,6 +25,16 @@ App.set('Access-Control-Allow-Credentials', 'true');
 // Middlewares
 App.use(bodyParser.urlencoded({ extended: true }));
 App.use(bodyParser.json());
+
+// session
+App.use(shouldSendSameSiteNone);
+App.use(
+  cookieSession({
+    signed: false,
+    // secure: true,
+    sameSite: 'none',
+  }),
+);
 
 // Set Required Headers
 // const whitelist = ["https://space-x-eight.vercel.app", "http://localhost:3000"];
@@ -48,16 +58,6 @@ const accessLogStream = fs.createWriteStream(
   },
 );
 App.use(morgan('combined', { stream: accessLogStream }));
-
-// session
-App.use(shouldSendSameSiteNone);
-App.use(
-  cookieSession({
-    signed: false,
-    secure: true,
-    sameSite: 'none',
-  }),
-);
 
 // SpaceX API routes
 LaunchRoutes(App);

@@ -44,7 +44,7 @@ const AuthRoute = (app: Application): void => {
           jwt: token,
         };
         req.sessionOptions = {
-          maxAge: 6 * 60 * 60 * 1000,
+          maxAge: 6 * 60 * 60 * 1000
         };
         res.status(201).json({ userId: result._id! });
       } catch (error) {
@@ -88,7 +88,7 @@ const AuthRoute = (app: Application): void => {
           jwt: token,
         };
         req.sessionOptions = {
-          maxAge: 6 * 60 * 60 * 1000,
+          maxAge: 12 * 60 * 60 * 1000
         };
         res.status(200).json({ userId: signInUser._id });
       } catch (error) {
@@ -99,7 +99,7 @@ const AuthRoute = (app: Application): void => {
   app.route(`/${version}/signout`).post((req: Request, res: Response) => {
     req.session = null;
     req.sessionOptions = {
-      maxAge: 0,
+      maxAge: 0
     };
     res.send({ message: 'successfully logout!' });
   });
