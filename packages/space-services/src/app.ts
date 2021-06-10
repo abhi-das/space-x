@@ -7,7 +7,7 @@ import cookieSession from 'cookie-session';
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import fs from 'fs';
-// import helmet from 'helmet';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
 
@@ -33,7 +33,7 @@ const corsOptions = {
   credentials: true,
   exposedHeaders: '*',
 };
-// App.use(helmet());
+App.use(helmet());
 App.use(cors(corsOptions));
 
 // Compression
