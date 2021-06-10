@@ -13,7 +13,7 @@ import path from 'path';
 
 const App: Application = express();
 
-// App.set('trust proxy', true);
+App.set('trust proxy', true);
 App.set('Access-Control-Allow-Origin', '*');
 App.set('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
 App.set(
