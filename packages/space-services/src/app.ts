@@ -28,7 +28,8 @@ App.use(bodyParser.json());
 // const whitelist = ["https://space-x-eight.vercel.app", "http://localhost:3000"];
 const corsOptions = {
   origin: true,
-  credentials: true
+  credentials: true,
+  exposedHeaders: '*'
 };
 App.use(helmet());
 App.use(cors(corsOptions));
@@ -48,7 +49,11 @@ App.use(morgan('combined', { stream: accessLogStream }));
 
 // session
 App.use(shouldSendSameSiteNone);
-App.use(cookieSession({ signed: false, secure: true, sameSite: 'none' }));
+App.use(cookieSession({ 
+  signed: false, 
+  secure: true, 
+  sameSite: 'none' 
+}));
 
 // SpaceX API routes
 LaunchRoutes(App);
