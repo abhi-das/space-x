@@ -31,7 +31,7 @@ App.use(shouldSendSameSiteNone);
 App.use(
   cookieSession({
     signed: false,
-    // secure: true,
+    secure: true,
     sameSite: 'none',
   }),
 );
