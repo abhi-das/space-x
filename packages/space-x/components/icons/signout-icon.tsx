@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignInIcon = () => {
+const SignOutIcon = () => {
   return (
     <>
       <svg
@@ -21,4 +21,4 @@ const SignInIcon = () => {
   );
 };
 
-export default SignInIcon;
+export default SignOutIcon;

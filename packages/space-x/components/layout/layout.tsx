@@ -1,3 +1,4 @@
+import CurrentUserProvider from "../../store/currentuser-provider";
 import Footer from "../footer/Footer";
 import MainHeader from "./main-header";
 import React from "react";
@@ -12,9 +13,11 @@ const Layout = (props) => {
           background: #e5e5e5;
         }
       `}</style>
-      <MainHeader />
-      <main>{props.children}</main>
-      <Footer></Footer>
+      <CurrentUserProvider>
+        <MainHeader />
+        <main>{props.children}</main>
+      </CurrentUserProvider>
+      <Footer />
     </div>
   );
 };

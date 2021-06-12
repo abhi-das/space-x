@@ -36,6 +36,12 @@
         display: block;
       }
     }
+    & .btn {
+      border: none;
+      &:hover {
+        background-color: #c4ffd3;
+      }
+    }
   }
   a {
     text-decoration: none;

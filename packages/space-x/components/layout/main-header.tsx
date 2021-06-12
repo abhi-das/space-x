@@ -1,14 +1,34 @@
+import { apiEndPoints } from "../../common/navigation-path";
+import { useRouter } from "next/router";
 import CartIcon from "../icons/cart-icon";
+import CurrentUserContext from "../../store/currentuser-context";
 import Link from "next/link";
 import React from "react";
 import RocketIcon from "../icons/rocket-icon";
 import SaleIcon from "../icons/sale-icon";
 import SignInIcon from "../icons/signin-icon";
+import SignOutIcon from "../icons/signout-icon";
 import SignUpIcon from "../icons/signup-icon";
 import SiteLogoIcon from "../icons/sitelogo-icon";
 import styles from "./main-header.module.scss";
+import useReq from "../../hooks/use-request";
 
 const MainHeader = () => {
+  const { userId, updateUserId } = React.useContext(CurrentUserContext);
+  const router = useRouter();
+  const payload = {
+    url: apiEndPoints.signOut,
+    method: "post",
+    onSuccess: () => {
+      updateUserId(null);
+      router.push("/");
+    },
+  };
+  const { doRequest } = useReq(payload);
+  const signOutHandler = async () => {
+    await doRequest();
+  };
+
   return (
     <header className={styles.header}>
       <h1 className={`title ${styles.logo}`}>
@@ -42,19 +62,30 @@ const MainHeader = () => {
             </Link>
           </li>
           <li className={styles.navListItem}>
-            <Link href="/signin">
-              <span className={styles.navLink} title="Signin">
-                <SignInIcon />
-              </span>
-            </Link>
+            {!userId && (
+              <Link href="/signin">
+                <span className={styles.navLink} title="Sign in">
+                  <SignInIcon />
+                </span>
+              </Link>
+            )}
+            {userId && (
+              <button className={styles.btn} onClick={signOutHandler}>
+                <span className={styles.navLink} title="Sign out">
+                  <SignOutIcon />
+                </span>
+              </button>
+            )}
           </li>
-          <li className={styles.navListItem}>
-            <Link href="/signup">
-              <span className={styles.navLink} title="Signup">
-                <SignUpIcon />
-              </span>
-            </Link>
-          </li>
+          {!userId && (
+            <li className={styles.navListItem}>
+              <Link href="/signup">
+                <span className={styles.navLink} title="Signup">
+                  <SignUpIcon />
+                </span>
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

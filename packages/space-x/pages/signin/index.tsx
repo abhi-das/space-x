@@ -6,12 +6,13 @@ import style from "./signin.module.scss";
 
 import { apiEndPoints } from "../../common/navigation-path";
 import CtaLoader from "../../components/cta-loader/cta-loader";
+import CurrentUserContext from "../../store/currentuser-context";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
 import useReq, { ApiResponse } from "../../hooks/use-request";
 
 const Signin = () => {
+  const { updateUserId } = React.useContext(CurrentUserContext);
   const [email, setEmail] = React.useState<string>("");
-
   const [signinResponse, setSigninResponse] = React.useState<
     ApiResponse | undefined
   >();
@@ -19,6 +20,7 @@ const Signin = () => {
   const onSuccessHandler = (res: ApiResponse) => {
     setSigninResponse(res);
     if (res.userId) {
+      updateUserId(res.userId);
       router.push("/cart");
     }
   };
