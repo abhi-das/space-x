@@ -22,7 +22,6 @@ const SignUp = () => {
 
   const onSuccessHandler = (res: ApiResponse) => {
     setSignupResponse(res);
-    setLoader(false);
     if (res.userId) {
       router.push("/");
     }
