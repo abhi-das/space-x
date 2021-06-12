@@ -33,6 +33,21 @@ module.exports = {
                 "plugin:@typescript-eslint/eslint-recommended"
             ],
             rules: {
+                "@typescript-eslint/ban-types": ["error",
+                    {
+                        "types": {
+                            "String": false,
+                            "Boolean": false,
+                            "Number": false,
+                            "Symbol": false,
+                            "{}": false,
+                            "Object": false,
+                            "object": false,
+                            "Function": false,
+                        },
+                        "extendDefaults": true
+                    }
+                ],
                 "@typescript-eslint/explicit-module-boundary-types": "off",
                 "@typescript-eslint/no-empty-function": "off",
                 "@typescript-eslint/no-explicit-any": "off",

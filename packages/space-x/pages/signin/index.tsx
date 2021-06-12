@@ -1,38 +1,36 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import style from "./signin.module.scss";
 
 import { apiEndPoints } from "../../common/navigation-path";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
-import useReq, { ApiErrorResponse, ApiResponse } from "../../hooks/use-request";
+import useReq, { ApiResponse } from "../../hooks/use-request";
 
 const Signin = () => {
   const [email, setEmail] = React.useState<string>("");
-  const [loader, setLoader] = React.useState<boolean>(false);
-  const [signinResponse, setSigninResponse] = React.useState<ApiResponse | undefined>();
+
+  const [signinResponse, setSigninResponse] = React.useState<
+    ApiResponse | undefined
+  >();
   const router = useRouter();
   const onSuccessHandler = (res: ApiResponse) => {
     setSigninResponse(res);
-    setLoader(false);
     if (res.userId) {
       router.push("/cart");
     }
-  }
+  };
   const payload = {
     url: apiEndPoints.signIn,
-    method: 'post',
+    method: "post",
     body: { email },
     onSuccess: onSuccessHandler,
-    onError: (res: ApiErrorResponse) => {
-      setLoader(false)
-    }
   };
-  const { doRequest, reqError } = useReq(payload);
+  const { doRequest, reqError, loader } = useReq(payload);
   const onSubmit = async (event) => {
     event.preventDefault();
-    setLoader(true);
     await doRequest();
   };
 
@@ -63,7 +61,14 @@ const Signin = () => {
               />
             </label>
           </div>
-          <div className={style.formGroup}>
+          <div className={`${style.formGroup} ${style.btnContainer}`}>
+            <div className={style.row}>
+              <Link href="/signup">
+                <span className={style.link} title="Signup">
+                  Sign-up
+                </span>
+              </Link>
+            </div>
             <input
               className={style.formControl}
               id="submit"

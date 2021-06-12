@@ -25,4 +25,13 @@
     width: $baseline * 4;
     height: auto;
   }
+  & .btnContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 190px;
+    margin: auto;
+    & div {
+      cursor: pointer;
+    }
+  }
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import React from "react";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
 import styles from "./signup.module.scss";
-import useReq, { ApiErrorResponse, ApiResponse } from "../../hooks/use-request";
+import useReq, { ApiResponse } from "../../hooks/use-request";
 
 interface SignupResponse {
   email?: string;
@@ -17,7 +17,6 @@ interface SignupResponse {
 const SignUp = () => {
   const [userName, setUserName] = React.useState<string>("");
   const [userEmail, setUserEmail] = React.useState<string>("");
-  const [loader, setLoader] = React.useState<boolean>(false);
   const [signupResponse, setSignupResponse] = React.useState<SignupResponse>();
   const router = useRouter();
 
@@ -25,28 +24,23 @@ const SignUp = () => {
     setSignupResponse(res);
     setLoader(false);
     if (res.userId) {
-        router.push("/");
+      router.push("/");
     }
   };
-  const onErrorHandler = (res: ApiErrorResponse) => {
-    setLoader(false);
-  }
   const payload = {
-      url: apiEndPoints.signUp,
-      method: 'post',
-      body: {
-        name: userName,
-        email: userEmail,
-      },
-      onSuccess: onSuccessHandler,
-      onError: onErrorHandler
-  }
+    url: apiEndPoints.signUp,
+    method: "post",
+    body: {
+      name: userName,
+      email: userEmail,
+    },
+    onSuccess: onSuccessHandler,
+  };
 
-  const {doRequest, reqError } = useReq(payload);
+  const { doRequest, reqError, loader } = useReq(payload);
 
   const onSignUp = async (event) => {
     event.preventDefault();
-    setLoader(true);
     await doRequest();
   };
 
