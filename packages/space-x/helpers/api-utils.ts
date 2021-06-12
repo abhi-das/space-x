@@ -15,7 +15,10 @@ export async function getAllLaunch(): Promise<
     // const response = await axios.get(
     //   `https://space-lauch-default-rtdb.firebaseio.com/spaceX.json`
     // );
-    const response = await axios.get("https://space-x-apiv.herokuapp.com/v4/launches", options);
+    const response = await axios.get(
+      "https://space-x-apiv.herokuapp.com/v4/launches",
+      options
+    );
     return response.data as Array<LaunchListItem>;
   } catch (err: any) {
     // TODO: Define Error Type at backend and export interface and use it here

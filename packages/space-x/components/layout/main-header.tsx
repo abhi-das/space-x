@@ -4,6 +4,7 @@ import React from "react";
 import RocketIcon from "../icons/rocket-icon";
 import SaleIcon from "../icons/sale-icon";
 import SignInIcon from "../icons/signin-icon";
+import SignUpIcon from "../icons/signup-icon";
 import SiteLogoIcon from "../icons/sitelogo-icon";
 import styles from "./main-header.module.scss";
 
@@ -44,6 +45,13 @@ const MainHeader = () => {
             <Link href="/signin">
               <span className={styles.navLink} title="Signin">
                 <SignInIcon />
+              </span>
+            </Link>
+          </li>
+          <li className={styles.navListItem}>
+            <Link href="/signup">
+              <span className={styles.navLink} title="Signup">
+                <SignUpIcon />
               </span>
             </Link>
           </li>
