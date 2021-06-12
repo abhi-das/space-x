@@ -6,45 +6,34 @@ import style from "./signin.module.scss";
 import { apiEndPoints } from "../../common/navigation-path";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
-import axios from "axios";
-
-interface SigninResponse {
-  userId?: string;
-  message?: string;
-}
+import useReq, { ApiErrorResponse, ApiResponse } from "../../hooks/use-request";
 
 const Signin = () => {
   const [email, setEmail] = React.useState<string>("");
-  const [signInError, setSignInError] = React.useState<string>("");
   const [loader, setLoader] = React.useState<boolean>(false);
-  const [signinResponse, setSigninResponse] = React.useState<
-    SigninResponse | undefined
-  >();
+  const [signinResponse, setSigninResponse] = React.useState<ApiResponse | undefined>();
   const router = useRouter();
-
+  const onSuccessHandler = (res: ApiResponse) => {
+    setSigninResponse(res);
+    setLoader(false);
+    if (res.userId) {
+      router.push("/cart");
+    }
+  }
+  const payload = {
+    url: apiEndPoints.signIn,
+    method: 'post',
+    body: { email },
+    onSuccess: onSuccessHandler,
+    onError: (res: ApiErrorResponse) => {
+      setLoader(false)
+    }
+  };
+  const { doRequest, reqError } = useReq(payload);
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoader(true);
-    const options = {
-      withCredentials: true,
-    };
-    try {
-      const response = await axios.post(
-        apiEndPoints.signIn,
-        {
-          email,
-        },
-        options
-      );
-      setSigninResponse(response.data);
-      setLoader(false);
-      if (response.data.userId) {
-        router.push("/cart");
-      }
-    } catch (error) {
-      setSignInError("SignIn error!!");
-      setLoader(false);
-    }
+    await doRequest();
   };
 
   return (
@@ -83,7 +72,7 @@ const Signin = () => {
             />
           </div>
         </form>
-        {signInError && <div className={style.error}>{signInError}</div>}
+        {reqError && <div className={style.error}>{reqError}</div>}
         {loader && <CtaLoader />}
         {signinResponse && signinResponse.message && (
           <p className={style.alert}>{signinResponse.message}</p>

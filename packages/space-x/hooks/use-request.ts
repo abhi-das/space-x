@@ -1,23 +1,45 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const useReq = ({ url, method, body }) => {
-    const [errors, setErrors] = useState(null);
-
+export interface ApiResponse {
+    userId?: string;
+    message?: string;
+}
+export interface ApiErrorResponse {
+    message: string;
+}
+interface UseReqAttrs {
+    url: string;
+    method: string;
+    onSuccess: (resp: ApiResponse) => void;
+    onError?: (resp: ApiErrorResponse) => void;
+    body?: object;
+}
+const useReq = (props: UseReqAttrs) => {
+    const { url, method, body, onSuccess, onError } = props;
+    const [reqError, setReqError] = useState<string>(null);
+    const options = {
+        withCredentials: true,
+    };
     const doRequest = async () => {
         try {
-            setErrors(null);
-            const response = await axios[method](url, body);
-            return response;
+            setReqError(null);
+            const response = await axios[method](url, body, options);
+            if(onSuccess) {
+                onSuccess(response.data);
+            }
+            return response.data;
         } catch(err) {
-            // console.error(`err=> ${JSON.stringify(err)}`)
-            setErrors(err.response)
+            setReqError("API endpoint error!!");
+            if(onError) {
+                onError(err.response.data);
+            }
         }
-    }
+    };
 
     return {
         doRequest,
-        errors
+        reqError
     }
 }
 

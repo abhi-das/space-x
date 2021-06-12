@@ -5,8 +5,8 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
-import axios from "axios";
 import styles from "./signup.module.scss";
+import useReq, { ApiErrorResponse, ApiResponse } from "../../hooks/use-request";
 
 interface SignupResponse {
   email?: string;
@@ -17,34 +17,37 @@ interface SignupResponse {
 const SignUp = () => {
   const [userName, setUserName] = React.useState<string>("");
   const [userEmail, setUserEmail] = React.useState<string>("");
-  const [signInError, setSignInError] = React.useState<string>("");
   const [loader, setLoader] = React.useState<boolean>(false);
   const [signupResponse, setSignupResponse] = React.useState<SignupResponse>();
   const router = useRouter();
-  const onSignUp = async (form) => {
-    form.preventDefault();
-    setLoader(true);
-    const options = {
-      withCredentials: true,
-    };
-    try {
-      const response = await axios.post(
-        apiEndPoints.signUp,
-        {
-          name: userName,
-          email: userEmail,
-        },
-        options
-      );
-      setSignupResponse(response.data);
-      setLoader(false);
-      if (response.data.userId) {
+
+  const onSuccessHandler = (res: ApiResponse) => {
+    setSignupResponse(res);
+    setLoader(false);
+    if (res.userId) {
         router.push("/");
-      }
-    } catch (error) {
-      setSignInError("Sign Up error!!");
-      setLoader(false);
     }
+  };
+  const onErrorHandler = (res: ApiErrorResponse) => {
+    setLoader(false);
+  }
+  const payload = {
+      url: apiEndPoints.signUp,
+      method: 'post',
+      body: {
+        name: userName,
+        email: userEmail,
+      },
+      onSuccess: onSuccessHandler,
+      onError: onErrorHandler
+  }
+
+  const {doRequest, reqError } = useReq(payload);
+
+  const onSignUp = async (event) => {
+    event.preventDefault();
+    setLoader(true);
+    await doRequest();
   };
 
   return (
@@ -93,7 +96,7 @@ const SignUp = () => {
             </div>
           </div>
         </form>
-        {signInError && <div className={styles.error}>{signInError}</div>}
+        {reqError && <div className={styles.error}>{reqError}</div>}
         {loader && <CtaLoader />}
         {signupResponse && signupResponse.message && (
           <p className={styles.alert}>{signupResponse.message}</p>
