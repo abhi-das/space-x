@@ -79,9 +79,11 @@ const SignUp = () => {
           <div className={`${styles.formGroup} ${styles.btnContainer}`}>
             <div className={styles.row}>
               <Link href="/signin">
-                <span className={styles.link} title="Signup">
-                  Sign-in
-                </span>
+                <button className={`${styles.btn} ${styles.btnLink}`}>
+                  <span className={styles.link} title="Signup">
+                    Sign-in
+                  </span>
+                </button>
               </Link>
             </div>
             <div className={styles.row}>

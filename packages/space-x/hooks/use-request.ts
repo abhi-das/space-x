@@ -23,13 +23,14 @@ const useReq = (props: UseReqAttrs) => {
         withCredentials: true,
     };
     const doRequest = async () => {
+        setLoader(true);
         try {
             setReqError(null);
-            setLoader(true);
             const response = await axios[method](url, body, options);
             if(onSuccess) {
                 onSuccess(response.data);
             }
+            setLoader(false);
             return response.data;
         } catch(err) {
             setLoader(false);

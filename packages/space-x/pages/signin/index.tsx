@@ -64,17 +64,21 @@ const Signin = () => {
           <div className={`${style.formGroup} ${style.btnContainer}`}>
             <div className={style.row}>
               <Link href="/signup">
-                <span className={style.link} title="Signup">
-                  Sign-up
-                </span>
+                <button className={`${style.btn} ${style.btnLink}`}>
+                  <span className={style.link} title="Signup">
+                    Sign-up
+                  </span>
+                </button>
               </Link>
             </div>
-            <input
-              className={style.formControl}
-              id="submit"
-              type="submit"
-              value="Sign in"
-            />
+            <div className={style.row}>
+              <input
+                className={style.formControl}
+                id="submit"
+                type="submit"
+                value="Sign in"
+              />
+            </div>
           </div>
         </form>
         {reqError && <div className={style.error}>{reqError}</div>}
