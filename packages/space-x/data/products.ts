@@ -1,8 +1,8 @@
-const ShippingType = {
+enum ShippingType {
     /* eslint-disable camelcase */
-    STANDARD_SHIPPING: 'STANDARD_SHIPPING',
-    USPS_PRIORITY_MAIL_SMALL: 'USPS_PRIORITY_MAIL_SMALL',
-    USPS_First_Class: 'USPS_FIRST_CLASS',
+    STANDARD_SHIPPING = 'STANDARD_SHIPPING',
+    USPS_PRIORITY_MAIL_SMALL = 'USPS_PRIORITY_MAIL_SMALL',
+    USPS_First_Class = 'USPS_FIRST_CLASS',
 }
 const products = [{
     manufacturer: "Samsung",
@@ -63,4 +63,4 @@ const products = [{
     }]
 }];
 
-export { products };
+export default products;

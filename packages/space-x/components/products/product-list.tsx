@@ -1,6 +1,6 @@
-import { products } from "../../data/products";
-import ProductItem from "./product-item";
+import ProductItemComponent, { ProductItem } from "./product-item";
 import React from "react";
+import products from "../../data/products";
 import styles from "./product-list.module.scss";
 
 const ProductList = (props) => {
@@ -11,7 +11,7 @@ const ProductList = (props) => {
       <div className={styles.productListContainer}>
         {prodLs &&
           prodLs.map((item, i) => (
-            <ProductItem item={item} key={`${item.category}-${i}`} />
+            <ProductItemComponent item={item} key={`${item.category}-${i}`} />
           ))}
       </div>
     </>

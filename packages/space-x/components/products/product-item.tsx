@@ -16,7 +16,7 @@ interface Review {
   comments: string;
 }
 
-interface ProductItem {
+export interface ProductItem {
   manufacturer: string;
   name: string;
   condition: string;
@@ -33,11 +33,12 @@ interface ProductItem {
   reviews: Array<Review>;
 }
 
-type ProductItemAttr = {
+interface ProductOwnAttr {
   item: ProductItem;
-};
+}
+type ProductAttr = ProductOwnAttr;
 
-const ProductItem = (props: ProductItemAttr) => {
+const ProductItemComponent = (props: ProductAttr) => {
   const { name, image, description, price } = props.item;
   return (
     <>
@@ -64,4 +65,4 @@ const ProductItem = (props: ProductItemAttr) => {
   );
 };
 
-export default ProductItem;
+export default ProductItemComponent;
