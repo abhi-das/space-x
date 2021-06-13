@@ -15,6 +15,8 @@ export const dbConf = {
   userCollection: process.env.USER_COLLECTION,
   missionCollection: process.env.MISSION_COLLECTION,
   appSessionCollection: process.env.SESSION_COLLECTION,
+  productCollection: process.env.PRODUCT_COLLECTION,
+  orderCollection: process.env.ORDER_COLLECTION
 };
 
 export const dbUri = `mongodb+srv://${dbConf.dbUserName}:${dbConf.dbUserPassword}@cluster0.3ynf5.mongodb.net`;
