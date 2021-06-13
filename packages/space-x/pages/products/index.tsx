@@ -1,4 +1,5 @@
 import Head from "next/head";
+import ProductList from "../../components/products/product-list";
 import React from "react";
 
 const Products = () => {
@@ -9,7 +10,8 @@ const Products = () => {
         <meta name="description" content="Products for sale" />
       </Head>
       <section>
-        <h4>Products Page</h4>
+        <h1>Latest Phones</h1>
+        <ProductList />
       </section>
     </>
   );

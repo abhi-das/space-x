@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.productItemContainer {
+  width: $baseline * 15;
+  height: auto;
+  background-color: #fff;
+  margin: $baseline;
+  padding: $baseline;
+  border-radius: 10px;
+  & .imageContainer {
+    cursor: pointer;
+  }
+}
