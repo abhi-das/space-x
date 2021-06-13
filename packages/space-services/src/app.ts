@@ -1,6 +1,7 @@
 import { shouldSendSameSiteNone } from 'should-send-same-site-none';
 import AuthRoute from './routers/auth';
 import LaunchRoutes from './routers/launches';
+import ProductRoutes from './routers/product';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieSession from 'cookie-session';
@@ -64,6 +65,7 @@ LaunchRoutes(App);
 
 // Login
 AuthRoute(App);
+ProductRoutes(App);
 
 // App.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 //   if(error) {

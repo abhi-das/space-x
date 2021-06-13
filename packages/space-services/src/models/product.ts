@@ -1,25 +1,29 @@
-import mongoose from 'mongoose';
 import { dbConf } from '../config';
+import mongoose from 'mongoose';
 
 enum ShippingType {
-    Standard_Shipping = "Standard Shipping", 
-    USPS_Priority_Mail_Small = "USPS Priority Mail Small",
-    USPS_First_Class = "USPS First Class"
+  /* eslint-disable camelcase */
+  STANDARD_SHIPPING = 'STANDARD_SHIPPING',
+  USPS_PRIORITY_MAIL_SMALL = 'USPS_PRIORITY_MAIL_SMALL',
+  USPS_First_Class = 'USPS_FIRST_CLASS',
 }
 
 interface Review {
     name: string;
     rating: string;
     comments: string;
-};
+}
 
-const reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema(
+  {
     name: { type: String, required: true },
     rating: { type: String, required: true },
-    comments: { type: String, required: true }
-}, {
-    timestamps: true
-});
+    comments: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 interface ProductDoc extends mongoose.Document {
     manufacturer: string;
@@ -32,13 +36,13 @@ interface ProductDoc extends mongoose.Document {
     countInStock: number;
     rating: number;
     numOfReviews: number;
-    shippingAvailable: Array<ShippingType>,
+  shippingAvailable: ShippingType;
     shippingCost: string;
     returnPolicy: string;
-    review: Array<Review>;
+  reviews: Array<Review>;
 }
 
-interface ProductAttrs {
+interface ProductItem {
     manufacturer: string;
     name: string;
     condition: string;
@@ -49,17 +53,18 @@ interface ProductAttrs {
     countInStock: number;
     rating: number;
     numOfReviews: number;
-    shippingAvailable: Array<ShippingType>,
+  shippingAvailable: ShippingType;
     shippingCost: string;
     returnPolicy: string;
     reviews: Array<Review>;
 }
 
 interface ProductModel extends mongoose.Model<ProductDoc> {
-    buildProduct: (attrs: ProductAttrs) => ProductDoc
+  buildProduct: (attrs: ProductItem) => ProductDoc;
 }
 
-const productSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema(
+  {
     manufacturer: {
         type: String,
         required: true,
@@ -88,44 +93,51 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        default: 0
+      default: 0,
     },
     countInStock: {
         type: Number,
         required: true,
-        default: 0
+      default: 0,
     },
     rating: {
         type: Number,
         required: true,
-        default: 0
+      default: 0,
     },
     numOfReviews: {
         type: Number,
         required: true,
-        default: 0
+      default: 0,
     },
     shippingAvailable: {
-        type: [ShippingType],
+      type: ShippingType,
+      enum: Object.values(ShippingType),
         required: true,
     },
     shippingCost: {
         type: String,
         required: true,
-        default: 0
+      default: 0,
     },
     returnPolicy: {
         type: String,
         required: true,
-    }
-}, {
-    timestamps: true
-});
-
-productSchema.statics.buildProduct = (attrs: ProductAttrs) => {
-    return new Product(attrs)
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+/* eslint-disable @typescript-eslint/no-use-before-define */
+productSchema.statics.buildProduct = (attrs: ProductItem) => {
+  return new Product(attrs);
 };
 
-const Product = mongoose.model<ProductDoc, ProductModel>('Product', productSchema, `${dbConf.productCollection}`);
+const Product = mongoose.model<ProductDoc, ProductModel>(
+  'Product',
+  productSchema,
+  `${dbConf.productCollection}`,
+);
 
-export { Product };
+export { Product, ProductItem };

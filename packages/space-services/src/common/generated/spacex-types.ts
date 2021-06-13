@@ -24,4 +24,11 @@ interface DbQuery {
   launch_year?: string;
 }
 
-export { SpaceLaunch, MissionItem, DbQuery };
+interface ProductDbQuery {
+  limit?: number;
+  category?: string;
+  condition?: string;
+  rating?: string;
+}
+
+export { SpaceLaunch, MissionItem, DbQuery, ProductDbQuery };
