@@ -45,6 +45,9 @@ const AuthRoute = (app: Application): void => {
         };
         req.sessionOptions = {
           maxAge: 6 * 60 * 60 * 1000,
+          httpOnly: true,
+          secure: true,
+          sameSite: 'none'
         };
         res.status(201).json({ userId: result._id! });
       } catch (error) {
@@ -89,6 +92,9 @@ const AuthRoute = (app: Application): void => {
         };
         req.sessionOptions = {
           maxAge: 12 * 60 * 60 * 1000,
+          httpOnly: true,
+          secure: true,
+          sameSite: 'none'
         };
         res.status(200).json({ userId: signInUser._id });
       } catch (error) {
