@@ -1,13 +1,69 @@
 @import "../../styles/variables.scss";
 
+$baselineSpace: 0.5em;
+
 .productItemContainer {
-  width: $baseline * 15;
+  width: auto;
   height: auto;
-  background-color: #fff;
-  margin: $baseline;
-  padding: $baseline;
+  padding: $baseline * 0.5;
   border-radius: 10px;
+  border: 1px solid #c3c3c3;
+  margin-bottom: $baseline;
+
   & .imageContainer {
     cursor: pointer;
+    padding-top: $baselineSpace;
+    text-align: center;
+  }
+  & .innerContainer {
+    background-color: white;
+    padding: 0 ($baseline * 0.5);
+    border-radius: 10px;
+    height: 100%;
+  }
+
+  & .bodyContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $baseline;
+
+    & .price {
+      padding: 0;
+      margin: 0;
+    }
+    & .btn {
+      padding: 0.5em $baseline;
+      border: none;
+      background: $theme-green-d-1;
+      & .icon {
+        display: inline-block;
+        width: 1.5em;
+        vertical-align: middle;
+      }
+      &:hover,
+      &:focus {
+        background: $theme-green-l-1;
+        outline: 1px solid $theme-green-d-1;
+      }
+    }
+  }
+  & .shortDescription {
+    font-size: 0.8em;
+    margin-top: 0;
+  }
+  & .productName {
+    margin: $baselineSpace 0;
+  }
+}
+
+@media (min-width: 700px) {
+  .productItemContainer {
+    width: $baselineSpace * 30;
+    margin-left: $baselineSpace;
   }
 }

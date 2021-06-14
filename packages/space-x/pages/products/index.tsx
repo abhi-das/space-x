@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ProductList from "../../components/products/product-list";
 import React from "react";
+import globalStyles from "../../styles/globals.module.scss";
 
 const Products = () => {
   return (
@@ -9,8 +10,7 @@ const Products = () => {
         <title>Products for Sale</title>
         <meta name="description" content="Products for sale" />
       </Head>
-      <section>
-        <h1>Latest Phones</h1>
+      <section className={globalStyles.container}>
         <ProductList />
       </section>
     </>

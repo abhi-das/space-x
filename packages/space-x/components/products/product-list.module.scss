@@ -2,5 +2,21 @@
 
 .productListContainer {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 700px) {
+  .productListContainer {
+    flex-direction: row;
+  }
+  .title {
+    margin-left: $baseline;
+  }
+}
+
+@media (min-width: 1024px) {
+  // .productListContainer {
+  // }
 }

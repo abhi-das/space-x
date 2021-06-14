@@ -1,6 +1,6 @@
 import { apiEndPoints } from "../../common/navigation-path";
 import { useRouter } from "next/router";
-import CartIcon from "../icons/cart-icon";
+import BagIcon from "../icons/bag-icon";
 import CurrentUserContext from "../../store/currentuser-context";
 import Link from "next/link";
 import React from "react";
@@ -57,7 +57,7 @@ const MainHeader = () => {
           <li className={styles.navListItem}>
             <Link href="/cart">
               <span className={styles.navLink} title="Cart">
-                <CartIcon />
+                <BagIcon />
               </span>
             </Link>
           </li>

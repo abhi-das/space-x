@@ -8,6 +8,7 @@ const ProductList = (props) => {
 
   return (
     <>
+      <h1 className={styles.title}>Latest Phones</h1>
       <div className={styles.productListContainer}>
         {prodLs &&
           prodLs.map((item, i) => (

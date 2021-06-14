@@ -20,10 +20,15 @@
     .btn {
       padding: 0.5em $baseline * 2;
       border: none;
-      background: #99ca7e;
+      background: $theme-green-d-1;
+      &:hover,
+      &:focus {
+        background: $theme-green-l-1;
+        outline: 1px solid $theme-green-d-1;
+      }
     }
     & .btnLink {
-      background: #c1e2af;
+      background: $theme-green-l-1;
     }
   }
   & .logo {
