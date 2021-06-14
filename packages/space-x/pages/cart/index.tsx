@@ -29,10 +29,10 @@ const Cart = (props: CartProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (typeof window === "undefined") {
     const reqHeaders = {
-      "Access-Control-Allow-Headers": "Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-      "Content-Security-Policy": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Headers": "Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+      // "Content-Security-Policy": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+      // "Access-Control-Allow-Credentials": "true",
+      // "Access-Control-Allow-Origin": "*",
       ...context.req.headers
     };
     try {
