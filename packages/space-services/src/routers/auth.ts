@@ -14,6 +14,12 @@ const AuthRoute = (app: Application): void => {
   const version = appConf.apiVersion;
   const tokenKey = appConf.tokenKey;
 
+  const serverOptions = {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none'
+  }
+
   app
     .route(`/${version}/signup`)
     .post(async (req: Request & SessionData, res: Response) => {
@@ -45,9 +51,7 @@ const AuthRoute = (app: Application): void => {
         };
         req.sessionOptions = {
           maxAge: 6 * 60 * 60 * 1000,
-          httpOnly: true,
-          secure: true,
-          sameSite: 'none'
+          ...serverOptions
         };
         res.status(201).json({ userId: result._id! });
       } catch (error) {
@@ -92,9 +96,7 @@ const AuthRoute = (app: Application): void => {
         };
         req.sessionOptions = {
           maxAge: 12 * 60 * 60 * 1000,
-          httpOnly: true,
-          secure: true,
-          sameSite: 'none'
+          ...serverOptions
         };
         res.status(200).json({ userId: signInUser._id });
       } catch (error) {

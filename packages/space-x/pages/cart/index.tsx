@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // "Content-Security-Policy": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
       // "Access-Control-Allow-Credentials": "true",
       // "Access-Control-Allow-Origin": "*",
-      ...context.req.headers
+      ...context.req.headers,
     };
     try {
       const res = await axios.get(apiEndPoints.currentUser, {

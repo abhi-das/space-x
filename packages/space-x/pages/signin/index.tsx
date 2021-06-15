@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
 import style from "./signin.module.scss";
 
 import { apiEndPoints } from "../../common/navigation-path";
+import Button from "../../components/ui/button";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import CurrentUserContext from "../../store/currentuser-context";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
@@ -65,21 +65,10 @@ const Signin = () => {
           </div>
           <div className={`${style.formGroup} ${style.btnContainer}`}>
             <div className={style.row}>
-              <Link href="/signup">
-                <button className={`${style.btn} ${style.btnLink}`}>
-                  <span className={style.link} title="Signup">
-                    Sign-up
-                  </span>
-                </button>
-              </Link>
+              <Button link="/signup">Sign-up</Button>
             </div>
             <div className={style.row}>
-              <input
-                className={style.formControl}
-                id="submit"
-                type="submit"
-                value="Sign in"
-              />
+              <Button>Sign in</Button>
             </div>
           </div>
         </form>

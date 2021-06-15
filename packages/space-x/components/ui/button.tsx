@@ -2,20 +2,33 @@ import Link from "next/link";
 import React from "react";
 import styles from "./button.module.scss";
 
-const Button = (props) => {
-  if (props.link) {
+interface ButtonAttrs {
+  link?: string;
+  title?: string;
+  classes?: Array<string>;
+  children?: string | JSX.Element;
+  onClick?: () => void;
+}
+
+type ButtonProps = ButtonAttrs;
+
+const Button = (props: ButtonProps) => {
+  const { link, title, children, onClick } = props;
+  if (link) {
     return (
       <>
         <Link href={props.link}>
-          <a className={styles.btn}>{props.children}</a>
+          <a className={styles.btnLink} title={title}>
+            {children}
+          </a>
         </Link>
       </>
     );
   }
   return (
     <>
-      <button className={styles.btnSm} onClick={props.onClick}>
-        {props.children}
+      <button className={styles.btn} title={title} onClick={onClick}>
+        {children}
       </button>
     </>
   );
