@@ -3,36 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "./product-item.module.scss";
-
-enum ShippingType {
-  /* eslint-disable camelcase */
-  STANDARD_SHIPPING = "STANDARD_SHIPPING",
-  USPS_PRIORITY_MAIL_SMALL = "USPS_PRIORITY_MAIL_SMALL",
-  USPS_First_Class = "USPS_FIRST_CLASS",
-}
-
-interface Review {
-  name: string;
-  rating: string;
-  comments: string;
-}
-
-export interface ProductItem {
-  manufacturer: string;
-  name: string;
-  condition: string;
-  image: string;
-  description: string;
-  category: string;
-  price: number;
-  countInStock: number;
-  rating: number;
-  numOfReviews: number;
-  shippingAvailable: ShippingType;
-  shippingCost: string;
-  returnPolicy: string;
-  reviews: Array<Review>;
-}
+import { ProductItem } from "../../pages/products";
 
 interface ProductOwnAttr {
   item: ProductItem;

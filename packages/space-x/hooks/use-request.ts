@@ -11,16 +11,18 @@ export interface ApiErrorResponse {
 interface UseReqAttrs {
     url: string;
     method: string;
-    onSuccess: (resp: ApiResponse) => void;
+    onSuccess: (resp: object) => void;
     onError?: (resp: ApiErrorResponse) => void;
     body?: object;
+    headers?: object;
 }
 const useReq = (props: UseReqAttrs) => {
-    const { url, method, body, onSuccess, onError } = props;
+    const { url, method, body, onSuccess, onError, headers } = props;
     const [reqError, setReqError] = useState<string>(null);
     const [loader, setLoader] = useState<boolean>(false);
     const options = {
         withCredentials: true,
+        ...headers
     };
     const doRequest = async () => {
         setLoader(true);

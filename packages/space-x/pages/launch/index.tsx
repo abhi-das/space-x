@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { ResError, getAllLaunch } from "../../helpers/api-utils";
+import { ResError, getAllRecords } from "../../helpers/api-utils";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import LaunchList, {
@@ -47,7 +47,7 @@ const AllLaunches = (props: AllLaunchesProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await getAllLaunch();
+  const response = await getAllRecords();
   if (response instanceof Array) {
     return {
       props: {
