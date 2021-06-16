@@ -42,35 +42,35 @@ const MainHeader = () => {
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navListItem}>
-            <Button link="/launch" icon={<RocketIcon />}>
+            <Button link="/launch" icon={<RocketIcon />} title="Shoppy">
               Launch
             </Button>
           </li>
           <li className={styles.navListItem}>
-            <Button link="/products" icon={<SaleIcon />}>
+            <Button link="/products" icon={<SaleIcon />} title="products">
               Products
             </Button>
           </li>
           <li className={styles.navListItem}>
-            <Button link="/cart" icon={<BagIcon />}>
+            <Button link="/cart" icon={<BagIcon />} title="shopping bag">
               Bag
             </Button>
           </li>
           <li className={styles.navListItem}>
             {!userId && (
-              <Button link="/signin" icon={<SignInIcon />}>
+              <Button link="/signin" icon={<SignInIcon />} title="sign in">
                 Sign in
               </Button>
             )}
             {userId && (
-              <Button icon={<SignOutIcon />} onClick={signOutHandler}>
+              <Button icon={<SignOutIcon />} onClick={signOutHandler} title="sign out">
                 Sign out
               </Button>
             )}
           </li>
           {!userId && (
             <li className={styles.navListItem}>
-              <Button link="/signup" icon={<SignUpIcon />}>
+              <Button link="/signup" icon={<SignUpIcon />} title="sign up">
                 Sign up
               </Button>
             </li>
