@@ -18,16 +18,16 @@ const ProductItemComponent = (props: ProductAttr) => {
         <div className={styles.innerContainer}>
           <div className={styles.imageContainer}>
             <Link href="/products/details">
-              <div>
-                <Image
-                  src={"/" + image}
-                  loading={"lazy"}
-                  alt={name}
-                  title={name}
-                  width={113}
-                  height={228}
-                />
-              </div>
+                <a className={styles.imageContent}>
+                  <Image
+                    src={"/" + image}
+                    loading={"lazy"}
+                    alt={name}
+                    title={name}
+                    width={113}
+                    height={228}
+                  />
+                </a>
             </Link>
           </div>
           <div className={styles.bodyContainer}>

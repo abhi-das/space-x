@@ -7,11 +7,16 @@
   margin: $baseline 0;
   background: white;
   padding: $baseline;
-  & img {
-    width: 100%;
-    object-fit: cover;
-    height: $baseline * 10;
-  }
+  & .imgContent {
+    display: block;
+      & img {
+        width: 100%;
+        object-fit: cover;
+      }
+      &:focus {
+        outline: 1px dotted $theme-green-d-1;
+      }
+    }
 
   & .content {
     width: 100%;

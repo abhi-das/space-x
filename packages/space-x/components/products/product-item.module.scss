@@ -14,6 +14,12 @@ $baselineSpace: 0.5em;
     cursor: pointer;
     padding-top: $baselineSpace;
     text-align: center;
+    & .imageContent {
+      display: block;
+      &:focus {
+        outline: 1px dotted $theme-green-d-1;
+      }
+    }
   }
   & .innerContainer {
     background-color: white;

@@ -21,14 +21,16 @@ const LaunchItem = (props: LaunchItemProps) => {
 
   return (
     <li className={`launch-list-item ${styles.item}`}>
-      <Image
-        src={"/" + image}
-        loading={"lazy"}
-        alt={title}
-        title={title}
-        width={300}
-        height={260}
-      />
+      <a className={styles.imgContent}>
+        <Image
+          src={"/" + image}
+          loading={"lazy"}
+          alt={title}
+          title={title}
+          width={300}
+          height={260}
+        />
+      </a>
       <div className={`content ${styles.content}`}>
         <h2>
           <Button link={exploreLink}>{title}</Button>
