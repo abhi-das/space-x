@@ -65,7 +65,7 @@ const Signin = () => {
           </div>
           <div className={`${style.formGroup} ${style.btnContainer}`}>
             <Button link="/signup">Sign-up</Button>
-            <Button>Sign in</Button>
+            <Button>Sign-in</Button>
           </div>
         </form>
         {reqError && <div className={style.error}>{reqError}</div>}

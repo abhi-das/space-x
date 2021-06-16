@@ -20,43 +20,16 @@
 .nav {
   .navListItem {
     list-style-type: none;
-    padding: 0 1em;
     display: inline-block;
 
     & .navLink {
-      cursor: pointer;
       display: inline-block;
-      padding: ($baseline * 0.5) $baseline;
-      &:hover {
-        background-color: #c4ffd3;
-      }
-      & svg {
-        width: $baseline * 1.5;
-        height: auto;
-        display: block;
-      }
     }
-    & .btn {
-      border: none;
-      &:hover {
-        background-color: #c4ffd3;
-      }
-    }
-  }
-  a {
-    text-decoration: none;
-    color: rgb(83, 83, 83);
-    font-size: 1rem;
-    font-weight: bold;
   }
 }
 
 @media (min-width: 768px) {
   .logo {
     font-size: 1.5rem;
-  }
-
-  .nav a {
-    font-size: 1rem;
   }
 }

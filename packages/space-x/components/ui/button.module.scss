@@ -1,27 +1,24 @@
-@import "../../styles/variables.scss";
-
-.btn {
-  text-decoration: none;
-  padding: 0.5em $baseline * 2;
-  border: none;
-  font-size: 0.8em;
-  font-family: "Nunito";
-  background: $theme-green-d-1;
-  cursor: pointer;
-  &:hover,
-  &:active {
-    text-decoration: underline;
-    background: $theme-green-d-1;
-    outline: 1px solid $theme-green-l-1;
+.icon {
+  display: inline-block;
+  margin-right: 0.5em;
+  & svg {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
   }
 }
-
-.btnLink {
-  background: $theme-green-l-1;
+.link,
+.btn {
+  text-decoration: none;
+  padding: 0.5em;
+  border: none;
+  font-family: "Nunito";
+  font-size: 0.8em;
+  @extend .icon;
   &:hover,
-  &:active {
-    text-decoration: underline;
-    background: $theme-green-d-1;
-    outline: 1px solid $theme-green-l-1;
+  &:active,
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #acdd3a;
   }
 }

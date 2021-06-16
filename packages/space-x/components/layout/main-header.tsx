@@ -1,6 +1,7 @@
 import { apiEndPoints } from "../../common/navigation-path";
 import { useRouter } from "next/router";
 import BagIcon from "../icons/bag-icon";
+import Button from "../ui/button";
 import CurrentUserContext from "../../store/currentuser-context";
 import Link from "next/link";
 import React from "react";
@@ -41,49 +42,37 @@ const MainHeader = () => {
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navListItem}>
-            <Link href="/launch">
-              <span className={styles.navLink} title="Show All Launch">
-                <RocketIcon />
-              </span>
-            </Link>
+            <Button link="/launch" icon={<RocketIcon />}>
+              Launch
+            </Button>
           </li>
           <li className={styles.navListItem}>
-            <Link href="/products">
-              <span className={styles.navLink} title="Products">
-                <SaleIcon />
-              </span>
-            </Link>
+            <Button link="/products" icon={<SaleIcon />}>
+              Products
+            </Button>
           </li>
           <li className={styles.navListItem}>
-            <Link href="/cart">
-              <span className={styles.navLink} title="Cart">
-                <BagIcon />
-              </span>
-            </Link>
+            <Button link="/cart" icon={<BagIcon />}>
+              Bag
+            </Button>
           </li>
           <li className={styles.navListItem}>
             {!userId && (
-              <Link href="/signin">
-                <span className={styles.navLink} title="Sign in">
-                  <SignInIcon />
-                </span>
-              </Link>
+              <Button link="/signin" icon={<SignInIcon />}>
+                Sign in
+              </Button>
             )}
             {userId && (
-              <button className={styles.btn} onClick={signOutHandler}>
-                <span className={styles.navLink} title="Sign out">
-                  <SignOutIcon />
-                </span>
-              </button>
+              <Button icon={<SignOutIcon />} onClick={signOutHandler}>
+                Sign out
+              </Button>
             )}
           </li>
           {!userId && (
             <li className={styles.navListItem}>
-              <Link href="/signup">
-                <span className={styles.navLink} title="Signup">
-                  <SignUpIcon />
-                </span>
-              </Link>
+              <Button link="/signup" icon={<SignUpIcon />}>
+                Sign up
+              </Button>
             </li>
           )}
         </ul>

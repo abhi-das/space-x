@@ -1,24 +1,26 @@
 import Link from "next/link";
 import React from "react";
-import styles from "./button.module.scss";
+import style from "./button.module.scss";
 
-interface ButtonAttrs {
+interface ButtonAttr {
   link?: string;
-  title?: string;
-  classes?: Array<string>;
   children?: string | JSX.Element;
+  icon?: JSX.Element;
+  title?: string;
   onClick?: () => void;
 }
 
-type ButtonProps = ButtonAttrs;
+type ButtonProps = ButtonAttr;
 
 const Button = (props: ButtonProps) => {
-  const { link, title, children, onClick } = props;
+  const { children, link, title, icon, onClick } = props;
+
   if (link) {
     return (
       <>
         <Link href={link}>
-          <a className={`${styles.btn} ${styles.btnLink}`} title={title}>
+          <a className={style.link} title={title}>
+            {icon && <span className={style.icon}>{icon}</span>}
             {children}
           </a>
         </Link>
@@ -27,7 +29,8 @@ const Button = (props: ButtonProps) => {
   }
   return (
     <>
-      <button className={styles.btn} title={title} onClick={onClick}>
+      <button className={style.btn} onClick={onClick}>
+        {icon && <span className={style.icon}>{icon}</span>}
         {children}
       </button>
     </>
