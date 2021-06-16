@@ -1,12 +1,13 @@
 @import "../../styles/variables.scss";
 
-.btnLink {
+.btn {
   text-decoration: none;
   padding: 0.5em $baseline * 2;
   border: none;
-  background: $theme-green-l-1;
   font-size: 0.8em;
-
+  font-family: "Nunito";
+  background: $theme-green-d-1;
+  cursor: pointer;
   &:hover,
   &:active {
     text-decoration: underline;
@@ -15,14 +16,8 @@
   }
 }
 
-.btn {
-  text-decoration: none;
-  padding: 0.5em $baseline * 2;
-  border: none;
-  background: $theme-green-d-1;
-  font-size: 0.8em;
-  font-family: "Nunito";
-
+.btnLink {
+  background: $theme-green-l-1;
   &:hover,
   &:active {
     text-decoration: underline;

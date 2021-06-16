@@ -16,20 +16,6 @@
     & input {
       padding: $baseline * 0.5;
     }
-    & input[type="submit"],
-    .btn {
-      padding: 0.5em $baseline * 2;
-      border: none;
-      background: $theme-green-d-1;
-      &:hover,
-      &:focus {
-        background: $theme-green-l-1;
-        outline: 1px solid $theme-green-d-1;
-      }
-    }
-    & .btnLink {
-      background: $theme-green-l-1;
-    }
   }
   & .logo {
     display: inline-block;
@@ -41,8 +27,5 @@
     justify-content: space-between;
     width: 200px;
     margin: auto;
-    & div {
-      cursor: pointer;
-    }
   }
 }

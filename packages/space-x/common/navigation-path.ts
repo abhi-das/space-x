@@ -3,7 +3,7 @@ export const apiEndPoints = {
   signUp: `https://space-x-apiv.herokuapp.com/v4/signup`,
   signOut: `https://space-x-apiv.herokuapp.com/v4/signout`,
   currentUser: `https://space-x-apiv.herokuapp.com/v4/currentuser`,
-  products: `https://space-x-apiv.herokuapp.com/v4/products`
+  products: `https://space-x-apiv.herokuapp.com/v4/products`,
 
   // signIn: `http://localhost:8011/v4/signin`,
   // signUp: `http://localhost:8011/v4/signup`,

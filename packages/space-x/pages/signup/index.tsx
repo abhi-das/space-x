@@ -1,8 +1,8 @@
 import { apiEndPoints } from "../../common/navigation-path";
 import { useRouter } from "next/router";
+import Button from "../../components/ui/button";
 import CtaLoader from "../../components/cta-loader/cta-loader";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
 import SiteLogoIcon from "../../components/icons/sitelogo-icon";
 import styles from "./signup.module.scss";
@@ -77,18 +77,8 @@ const SignUp = () => {
             </label>
           </div>
           <div className={`${styles.formGroup} ${styles.btnContainer}`}>
-            <div className={styles.row}>
-              <Link href="/signin">
-                <button className={`${styles.btn} ${styles.btnLink}`}>
-                  <span className={styles.link} title="Signup">
-                    Sign-in
-                  </span>
-                </button>
-              </Link>
-            </div>
-            <div className={styles.row}>
-              <input type="submit" value="Sign up" />
-            </div>
+            <Button link="/signin">Sign-in</Button>
+            <Button>Sign up</Button>
           </div>
         </form>
         {reqError && <div className={styles.error}>{reqError}</div>}

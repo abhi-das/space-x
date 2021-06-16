@@ -17,8 +17,8 @@ const Button = (props: ButtonProps) => {
   if (link) {
     return (
       <>
-        <Link href={props.link}>
-          <a className={styles.btnLink} title={title}>
+        <Link href={link}>
+          <a className={`${styles.btn} ${styles.btnLink}`} title={title}>
             {children}
           </a>
         </Link>
