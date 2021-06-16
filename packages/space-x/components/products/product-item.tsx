@@ -67,8 +67,8 @@ const ProductItemComponent = (props: ProductAttr) => {
               <button className={`${styles.btn}`}>
                 <span className={`${styles.icon} ${styles.link}`}>
                   <CartIcon />
-                </span>{" "}
-                Add to cart
+                </span>
+                <span className={styles.btnText}>Add to cart</span>
               </button>
             </div>
           </div>

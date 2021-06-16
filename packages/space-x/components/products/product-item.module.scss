@@ -3,7 +3,7 @@
 $baselineSpace: 0.5em;
 
 .productItemContainer {
-  width: auto;
+  width: 45%;
   height: auto;
   padding: $baseline * 0.5;
   border-radius: 10px;
@@ -21,7 +21,6 @@ $baselineSpace: 0.5em;
     border-radius: 10px;
     height: 100%;
   }
-
   & .bodyContainer {
     display: flex;
     flex-direction: column;
@@ -31,39 +30,59 @@ $baselineSpace: 0.5em;
     display: flex;
     justify-content: space-between;
     margin-bottom: $baseline;
-
+    align-items: center;
     & .price {
       padding: 0;
       margin: 0;
     }
-    & .btn {
-      padding: 0.5em $baseline;
-      border: none;
-      background: $theme-green-d-1;
-      & .icon {
-        display: inline-block;
-        width: 1.5em;
-        vertical-align: middle;
-      }
-      &:hover,
-      &:focus {
-        background: $theme-green-l-1;
-        outline: 1px solid $theme-green-d-1;
-      }
-    }
   }
-  & .shortDescription {
-    font-size: 0.8em;
-    margin-top: 0;
+  .btn {
+    padding: 0.5em $baseline;
+    border: none;
+    background: $theme-green-d-1;
+    & .icon {
+      display: inline-block;
+      width: 1.5em;
+      vertical-align: middle;
+    }
+    &:hover,
+    &:focus {
+      background: $theme-green-l-1;
+      outline: 1px solid $theme-green-d-1;
+    }
+    & .btnText {
+      display: none;
+    }
   }
   & .productName {
     margin: $baselineSpace 0;
+    font-size: 0.8em;
+  }
+  & .shortDescription {
+    font-size: 0.7em;
+    margin-top: 0;
   }
 }
 
 @media (min-width: 700px) {
   .productItemContainer {
+    width: 80%;
     width: $baselineSpace * 30;
     margin-left: $baselineSpace;
+
+    & .productName {
+      margin: $baselineSpace 0;
+      font-size: 1em;
+    }
+    & .shortDescription {
+      font-size: 0.8em;
+      margin-top: 0;
+    }
+
+    .btn {
+      & .btnText {
+        display: inline-block;
+      }
+    }
   }
 }

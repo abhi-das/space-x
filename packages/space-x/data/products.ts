@@ -44,7 +44,7 @@ const products = [{
     }]
 }, {
     manufacturer: "Motorola",
-    name: "Motorola Moto E6 Play XT2029",
+    name: "Motorola Moto E6 Play",
     condition: "New",
     image: "images/moto1.webp",
     description: "Motorola Moto E6 Play XT2029-1 32GB Unlocked GSM Dual SIM Phone w/ 13MP Camera - Steel Black",

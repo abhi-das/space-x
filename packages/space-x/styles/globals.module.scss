@@ -11,18 +11,7 @@
     align-items: flex-start;
 }
 
-@media (min-width: 700px) {
-    .flex {
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-}
 
-@media (min-width: 1024px) {
-    .flex {
-        flex-wrap: nowrap;
-    }
-}
   
 .footer {
     text-align: center;
@@ -52,7 +41,7 @@
 
   .container { 
       margin: auto;
-      width: 80%;
+      width: auto;
   }
   .containerCenter{
     text-align: center;
@@ -65,3 +54,13 @@
   .error {
       text-align: center;
   }
+
+@media (min-width: 768px) {
+    .flex {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .container { 
+        width: 80%;
+    }
+}

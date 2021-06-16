@@ -2,21 +2,20 @@
 
 .productListContainer {
   display: flex;
-  flex-direction: column;
   align-items: stretch;
   flex-wrap: wrap;
+  justify-content: center;
+}
+.title {
+  font-size: 1em;
+  margin-left: 1em;
 }
 
 @media (min-width: 700px) {
   .productListContainer {
-    flex-direction: row;
+    justify-content: inherit;
   }
   .title {
     margin-left: $baseline;
   }
-}
-
-@media (min-width: 1024px) {
-  // .productListContainer {
-  // }
 }
