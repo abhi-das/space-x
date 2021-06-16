@@ -1,6 +1,6 @@
 import { LaunchListItem } from "../components/launches/launch-list";
-import axios from "axios";
 import { ProductItem } from "../pages/products";
+import axios from "axios";
 
 export interface ResError {
   message?: string;
@@ -83,12 +83,12 @@ export async function getFilteredLaunch(
 
 export async function getProducts(url): Promise<Array<ProductItem> | ResError> {
   const options = {
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json" },
   };
   try {
     const res = await axios.get(url, options);
     return res.data;
-  } catch(err: any) {
+  } catch (err: any) {
     const error = {
       message: "Internal server error while getting records!",
     } as ResError;

@@ -1,16 +1,13 @@
+import { ProductItem } from "../../pages/products";
 import ProductItemComponent from "./product-item";
 import React from "react";
-import products from "../../data/products";
 import styles from "./product-list.module.scss";
-import { ProductItem } from "../../pages/products";
 
 interface ProductListProps {
-  items: Array<ProductItem>
+  items: Array<ProductItem>;
 }
 
 const ProductList = (props: ProductListProps) => {
-  // const prodLs = products as Array<ProductItem>;
-
   const { items } = props;
 
   return (

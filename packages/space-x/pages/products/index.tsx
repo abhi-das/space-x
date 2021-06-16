@@ -1,12 +1,11 @@
+import { GetStaticProps } from "next";
+import { ResError, getProducts } from "../../helpers/api-utils";
+import { apiEndPoints } from "../../common/navigation-path";
+import CtaLoader from "../../components/cta-loader/cta-loader";
 import Head from "next/head";
 import ProductList from "../../components/products/product-list";
 import React from "react";
 import globalStyles from "../../styles/globals.module.scss";
-import { GetStaticProps } from "next";
-import useReq from "../../hooks/use-request";
-import { apiEndPoints } from "../../common/navigation-path";
-import { getProducts, ResError } from "../../helpers/api-utils";
-import CtaLoader from "../../components/cta-loader/cta-loader";
 
 enum ShippingType {
   /* eslint-disable camelcase */
@@ -46,7 +45,6 @@ interface ProductAttrs {
 type ProductsProps = ProductAttrs;
 
 const Products = (props: ProductsProps) => {
-
   const { items, error } = props;
   return (
     <>
@@ -55,7 +53,7 @@ const Products = (props: ProductsProps) => {
         <meta name="description" content="Products for sale" />
       </Head>
       <section className={globalStyles.container}>
-        {(items && items.length > 0) && <ProductList items={items}/> }
+        {items && items.length > 0 && <ProductList items={items} />}
         {!items && <CtaLoader />}
         {error && <p className="error">{error.message}</p>}
       </section>
@@ -63,22 +61,21 @@ const Products = (props: ProductsProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async() => {
-
+export const getStaticProps: GetStaticProps = async () => {
   const response = await getProducts(apiEndPoints.products);
-  if(response instanceof Array) {
+  if (response instanceof Array) {
     return {
       props: {
-        items: response
+        items: response,
       },
-      revalidate: 60
-    }
+      revalidate: 60,
+    };
   }
   return {
     props: {
-      errors: response
-    }
-  }
-}
+      errors: response,
+    },
+  };
+};
 
 export default Products;

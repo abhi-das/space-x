@@ -1,9 +1,9 @@
+import { ProductItem } from "../../pages/products";
 import CartIcon from "../icons/cart-icon";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "./product-item.module.scss";
-import { ProductItem } from "../../pages/products";
 
 interface ProductOwnAttr {
   item: ProductItem;
