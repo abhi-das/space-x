@@ -74,13 +74,13 @@ $baselineSpace: 0.5em;
 }
 
 .vTile {
-  width: $baselineSpace * 26;
+  width: $baselineSpace * 20;
   & .innerContainer {
     flex-direction: column;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 668px) {
   .productItemContainer {
     margin-left: $baselineSpace;
 
@@ -100,10 +100,16 @@ $baselineSpace: 0.5em;
     }
   }
   .vTile {
-    width: $baselineSpace * 30;
+    width: $baselineSpace * 26;
   }
 
   .hTile {
     width: $baselineSpace * 40;
+  }
+}
+
+@media (min-width: 737px) {
+  .vTile {
+    width: $baselineSpace * 30;
   }
 }

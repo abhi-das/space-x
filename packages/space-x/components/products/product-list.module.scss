@@ -5,6 +5,7 @@
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: row;
 }
 
 .title {
@@ -13,11 +14,13 @@
   text-transform: capitalize;
 }
 
-@media (min-width: 700px) {
-  .productListContainer {
-    justify-content: inherit;
-  }
+@media (min-width: 668px) {
   .title {
     margin-left: $baseline;
+  }
+}
+@media (min-width: 737px) {
+  .productListContainer {
+    justify-content: inherit;
   }
 }
