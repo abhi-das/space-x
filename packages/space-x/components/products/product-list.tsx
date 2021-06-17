@@ -5,10 +5,11 @@ import styles from "./product-list.module.scss";
 
 interface ProductListProps {
   items: Array<ProductItem>;
+  layout?: string;
 }
 
 const ProductList = (props: ProductListProps) => {
-  const { items } = props;
+  const { items, layout } = props;
 
   return (
     <>
@@ -16,7 +17,11 @@ const ProductList = (props: ProductListProps) => {
       <div className={styles.productListContainer}>
         {items &&
           items.map((item, i) => (
-            <ProductItemComponent item={item} key={`${item.category}-${i}`} />
+            <ProductItemComponent
+              item={item}
+              key={`${item.category}-${i}`}
+              layout={layout}
+            />
           ))}
       </div>
     </>

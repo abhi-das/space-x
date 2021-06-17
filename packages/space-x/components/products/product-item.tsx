@@ -7,15 +7,18 @@ import styles from "./product-item.module.scss";
 
 interface ProductOwnAttr {
   item: ProductItem;
+  layout?: string;
 }
 type ProductAttr = ProductOwnAttr;
 
 const ProductItemComponent = (props: ProductAttr) => {
   const { name, image, description, price } = props.item;
+  const stname =
+    props.layout == "vTile" ? `${styles.vTile}` : `${styles.hTile}`;
   return (
     <>
-      <article className={styles.productItemContainer}>
-        <div className={styles.innerContainer}>
+      <article className={`${styles.productItemContainer} ${stname}`}>
+        <div className={`${styles.innerContainer}`}>
           <div className={styles.imageContainer}>
             <Link href="/products/details">
               <a className={styles.imageContent}>

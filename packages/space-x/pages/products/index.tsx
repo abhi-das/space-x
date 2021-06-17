@@ -72,14 +72,17 @@ const Products = (props: ProductsProps) => {
         {items && items.length > 0 && (
           <ProductList
             items={getProductByCategory(items, ProductCategoryType.PHONE)}
+            layout="vTile"
           />
         )}
+        {/* TODO:: Add lazy load component logic instead of page load */}
         {items && items.length > 0 && (
           <ProductList
             items={getProductByCategory(
               items,
               ProductCategoryType.REFRIGERATOR
             )}
+            layout="hTile"
           />
         )}
         {!items && <CtaLoader />}

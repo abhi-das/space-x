@@ -3,7 +3,7 @@
 $baselineSpace: 0.5em;
 
 .productItemContainer {
-  width: 45%;
+  width: auto;
   height: auto;
   padding: $baseline * 0.5;
   border-radius: 10px;
@@ -12,7 +12,7 @@ $baselineSpace: 0.5em;
 
   & .imageContainer {
     cursor: pointer;
-    padding-top: $baselineSpace;
+    margin: $baselineSpace;
     text-align: center;
     & .imageContent {
       display: block;
@@ -20,16 +20,19 @@ $baselineSpace: 0.5em;
         outline: 1px dotted $theme-green-d-1;
       }
     }
+    flex: 50%;
   }
   & .innerContainer {
+    display: flex;
+    align-items: center;
     background-color: white;
-    padding: 0 ($baseline * 0.5);
     border-radius: 10px;
     height: 100%;
   }
   & .bodyContainer {
     display: flex;
     flex-direction: column;
+    margin: $baselineSpace;
   }
 
   & .footer {
@@ -70,10 +73,15 @@ $baselineSpace: 0.5em;
   }
 }
 
+.vTile {
+  width: $baselineSpace * 26;
+  & .innerContainer {
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 700px) {
   .productItemContainer {
-    width: 80%;
-    width: $baselineSpace * 30;
     margin-left: $baselineSpace;
 
     & .productName {
@@ -90,5 +98,12 @@ $baselineSpace: 0.5em;
         display: inline-block;
       }
     }
+  }
+  .vTile {
+    width: $baselineSpace * 30;
+  }
+
+  .hTile {
+    width: $baselineSpace * 40;
   }
 }
