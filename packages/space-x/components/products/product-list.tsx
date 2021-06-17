@@ -12,7 +12,7 @@ const ProductList = (props: ProductListProps) => {
 
   return (
     <>
-      <h1 className={styles.title}>Latest Phones</h1>
+      <h1 className={styles.title}>Latest {`${items[0].category}`}</h1>
       <div className={styles.productListContainer}>
         {items &&
           items.map((item, i) => (

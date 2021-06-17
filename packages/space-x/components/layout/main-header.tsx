@@ -63,7 +63,11 @@ const MainHeader = () => {
               </Button>
             )}
             {userId && (
-              <Button icon={<SignOutIcon />} onClick={signOutHandler} title="sign out">
+              <Button
+                icon={<SignOutIcon />}
+                onClick={signOutHandler}
+                title="sign out"
+              >
                 Sign out
               </Button>
             )}

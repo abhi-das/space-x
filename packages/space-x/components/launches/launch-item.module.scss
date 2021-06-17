@@ -9,14 +9,14 @@
   padding: $baseline;
   & .imgContent {
     display: block;
-      & img {
-        width: 100%;
-        object-fit: cover;
-      }
-      &:focus {
-        outline: 1px dotted $theme-green-d-1;
-      }
+    & img {
+      width: 100%;
+      object-fit: cover;
     }
+    &:focus {
+      outline: 1px dotted $theme-green-d-1;
+    }
+  }
 
   & .content {
     width: 100%;

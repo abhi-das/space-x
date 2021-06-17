@@ -64,7 +64,9 @@ const Signin = () => {
             </label>
           </div>
           <div className={`${style.formGroup} ${style.btnContainer}`}>
-            <Button link="/signup" title="sign up">Sign-up</Button>
+            <Button link="/signup" title="sign up">
+              Sign-up
+            </Button>
             <Button title="sign in">Sign-in</Button>
           </div>
         </form>

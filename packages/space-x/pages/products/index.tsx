@@ -42,7 +42,23 @@ interface ProductAttrs {
   error?: ResError;
 }
 
+export enum ProductCategoryType {
+  PHONE = "PHONE",
+  REFRIGERATOR = "REFRIGERATOR",
+  AC = "AC",
+  TELEVISION = "TELEVISION",
+}
+
 type ProductsProps = ProductAttrs;
+
+const getProductByCategory = (
+  items: Array<ProductItem>,
+  category: ProductCategoryType
+): Array<ProductItem> => {
+  return items.filter(
+    (itm) => itm.category.toLowerCase() === category.toLowerCase()
+  );
+};
 
 const Products = (props: ProductsProps) => {
   const { items, error } = props;
@@ -53,7 +69,19 @@ const Products = (props: ProductsProps) => {
         <meta name="description" content="Products for sale" />
       </Head>
       <section className={globalStyles.container}>
-        {items && items.length > 0 && <ProductList items={items} />}
+        {items && items.length > 0 && (
+          <ProductList
+            items={getProductByCategory(items, ProductCategoryType.PHONE)}
+          />
+        )}
+        {items && items.length > 0 && (
+          <ProductList
+            items={getProductByCategory(
+              items,
+              ProductCategoryType.REFRIGERATOR
+            )}
+          />
+        )}
         {!items && <CtaLoader />}
         {error && <p className="error">{error.message}</p>}
       </section>
