@@ -161,6 +161,6 @@ Always run `heroku logs` once deployment is done to check if DB is connected and
 ## Morgan Package for Application Logger
 ## Environment NPM Package for secrets
 
-## Authors
+## Author
 
 [Abhishek Das](https://github.com/abhi-das)

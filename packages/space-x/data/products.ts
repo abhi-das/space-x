@@ -499,6 +499,386 @@ const products = [
         "comments": "comments",
         "rating": "4"
     }]
+}, {
+    "manufacturer": "Puma Sports India Pvt Ltd.",
+    "name": "Puma Men Black Velocity Nitro Running Shoes (13484306)",
+    "condition": "New",
+    "image": "images/ps13484306.webp",
+    "description": "Puma Men Black Velocity Nitro Foam light responsive new fit designed for comfort (13484306)",
+    "category": "Shoes",
+    "price": 118.67,
+    "countInStock": 5,
+    "rating": 4.4,
+    "numOfReviews": 80,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "4"
+    }]
+}, {
+    "manufacturer": "Adidas India Marketing Private Ltd.",
+    "name": "Adidas Men Blue & Pink",
+    "condition": "New",
+    "image": "images/as13444848.webp",
+    "description": "Adidas Men Blue & Pink Woven Design Stycon Primegreen Tennis Shoes (13444848)",
+    "category": "Shoes",
+    "price": 161.84,
+    "countInStock": 5,
+    "rating": 4,
+    "numOfReviews": 70,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "4"
+    }]
+}, {
+    "manufacturer": "Puma Sports India Pvt Ltd.",
+    "name": "Puma Men Black Sneakers",
+    "condition": "New",
+    "image": "images/ps11335336.webp",
+    "description": "Puma Men Black Sneakers (11335336)",
+    "category": "Shoes",
+    "price": 21.23,
+    "countInStock": 5,
+    "rating": 4.2,
+    "numOfReviews": 120,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "557"
+    }]
+}, {
+    "manufacturer": "Adidas India Marketing Private Ltd.",
+    "name": "Adidas Men Navy Blue & Grey Solid Bentton II Sports Sandals",
+    "condition": "New",
+    "image": "images/as11354016.webp",
+    "description": "Adidas Men Navy Blue & Grey Solid Bentton II Sports Sandals (11354016)",
+    "category": "Shoes",
+    "price": 21.23,
+    "countInStock": 5,
+    "rating": 4.2,
+    "numOfReviews": 102,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "114"
+    }]
+}, {
+    "manufacturer": "Fossil India Pvt. Ltd.",
+    "name": " Fossil Men Off-White Analogue Watch FS5439I_SOR",
+    "condition": "New",
+    "image": "images/fw9037081.webp",
+    "description": "Fossil Men Off-White Analogue Watch FS5439I_SOR (9037081)",
+    "category": "Watches",
+    "price": 121.51,
+    "countInStock": 5,
+    "rating": 4,
+    "numOfReviews": 52,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "15"
+    }]
+}, {
+    "manufacturer": "Fossil India Pvt. Ltd.",
+    "name": "Fossil The Minimalist Fs5304 Brown",
+    "condition": "New",
+    "image": "images/fw7928015.webp",
+    "description": "Fossil The Minimalist Fs5304 Brown/Blue Analog Watch (7928015)",
+    "category": "Watches",
+    "price": 121.53,
+    "countInStock": 5,
+    "rating": 3.8,
+    "numOfReviews": 20,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "19"
+    }]
+}, {
+    "manufacturer": "Fossil India Pvt. Ltd.",
+    "name": "Fossil Men Black Analogue Watch FS5305_SOR",
+    "condition": "New",
+    "image": "images/fw9037519.webp",
+    "description": "Fossil Men Black Analogue Watch FS5305_SOR (9037519)",
+    "category": "Watches",
+    "price": 121.53,
+    "countInStock": 5,
+    "rating": 4.4,
+    "numOfReviews": 59,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "14"
+    }]
+}, {
+    "manufacturer": "Titan Company Limited",
+    "name": "Titan Men White Analogue Watch",
+    "condition": "New",
+    "image": "images/tw10051959.webp",
+    "description": "Titan Men White Analogue Watch (10051959)",
+    "category": "Watches",
+    "price": 125.64,
+    "countInStock": 5,
+    "rating": 4,
+    "numOfReviews": 20,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Titan Company Limited",
+    "name": "Titan Edge Unisex White Analogue watch NL1683WL02",
+    "condition": "New",
+    "image": "images/tw10052231.webp",
+    "description": "Titan Edge Unisex White Analogue watch NL1683WL02 (10052231)",
+    "category": "Watches",
+    "price": 162.20,
+    "countInStock": 5,
+    "rating": 4,
+    "numOfReviews": 15,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Titan Company Limited",
+    "name": "Titan Ceramics Men Black Analogue watch NL90014KC01",
+    "condition": "New",
+    "image": "images/tw1453804.webp",
+    "description": "Titan Ceramics Men Black Analogue watch NL90014KC01 (1453804)",
+    "category": "Watches",
+    "price": 168.99,
+    "countInStock": 5,
+    "rating": 3.6,
+    "numOfReviews": 25,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "7"
+    }]
+}, {
+    "manufacturer": "Intercraft Trading Company Pvt Ltd.",
+    "name": "KENZO Women JEU DAMOUR Eau de Parfum",
+    "condition": "New",
+    "image": "images/kp2229647.webp",
+    "description": "KENZO Women JEU DAMOUR Eau de Parfum 100 ml (2229647)",
+    "category": "Perfume",
+    "price": 117.04,
+    "countInStock": 5,
+    "rating": 4.6,
+    "numOfReviews": 149,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Bvlgari Parfumes",
+    "name": "Bvlgari Goldea Women The Roman Night Eau De Parfum",
+    "condition": "New",
+    "image": "images/bp10001975.webp",
+    "description": "Bvlgari Goldea Women The Roman Night Eau De Parfum 75 ml (10001975)",
+    "category": "Perfume",
+    "price": 131.93,
+    "countInStock": 5,
+    "rating": 4.7,
+    "numOfReviews": 149,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "7"
+    }]
+}, {
+    "manufacturer": "Bvlgari Parfumes",
+    "name": "Bvlgari Vapo Intence Eau Parfumee Au The Noir Eau de Cologne",
+    "condition": "New",
+    "image": "images/bp13104944.webp",
+    "description": "Bvlgari Vapo Intence Eau Parfumee Au The Noir Eau de Cologne 150 ml (13104944)",
+    "category": "Perfume",
+    "price": 142.05,
+    "countInStock": 5,
+    "rating": 4.5,
+    "numOfReviews": 50,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Bvlgari Parfumes",
+    "name": "Bvlgari Women Splendida Rose Eau De Parfum",
+    "condition": "New",
+    "image": "images/bp2277401.webp",
+    "description": "Bvlgari Women Splendida Rose Eau De Parfum 100 ml (2277401)",
+    "category": "Perfume",
+    "price": 142.05,
+    "countInStock": 5,
+    "rating": 4.5,
+    "numOfReviews": 50,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Ferragamo Parfumes",
+    "name": "Salvatore Ferragamo Women Set of 2 Perfumes",
+    "condition": "New",
+    "image": "images/fp4324337.webp",
+    "description": "Salvatore Ferragamo Women Set of 2 Perfumes (4324337)",
+    "category": "Perfume",
+    "price": 162.44,
+    "countInStock": 5,
+    "rating": 3.9,
+    "numOfReviews": 8,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "8"
+    }]
+}, {
+    "manufacturer": "Puma Sports India Pvt Ltd.",
+    "name": "Puma Unisex Polarised Sunglasses",
+    "condition": "New",
+    "image": "images/ps1408546.webp",
+    "description": "Puma Unisex Polarised Sunglasses 91084301 (1408546)",
+    "category": "Sunglasses",
+    "price": 175.99,
+    "countInStock": 5,
+    "rating": 4.5,
+    "numOfReviews": 5,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "PIONEER EXPORTS LTD.",
+    "name": "WROGN Unisex Rectangle Sunglasses",
+    "condition": "New",
+    "image": "images/ws2385276.webp",
+    "description": "WROGN Unisex Rectangle Sunglasses MFB-PN-CY-51430 (2385276)",
+    "category": "Sunglasses",
+    "price": 20.08,
+    "countInStock": 5,
+    "rating": 4.4,
+    "numOfReviews": 124,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Safari Industries India (LTD)",
+    "name": "Safari Unisex Black Regloss Anti-Scratch Small Trolley Suitcase",
+    "condition": "New",
+    "image": "images/st1850663.webp",
+    "description": "Safari Unisex Black Regloss Anti-Scratch Small Trolley Suitcase (1850663)",
+    "category": "Luggages",
+    "price": 35.55,
+    "countInStock": 5,
+    "rating": 4.3,
+    "numOfReviews": 719,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Safari Industries India (LTD)",
+    "name": "Safari Unisex Multi Printed Trolley Bag",
+    "condition": "New",
+    "image": "images/st10686490.webp",
+    "description": "Safari Unisex Multi Printed Trolley Bag (10686490)",
+    "category": "Luggages",
+    "price": 32.65,
+    "countInStock": 5,
+    "rating": 4.2,
+    "numOfReviews": 494,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
+}, {
+    "manufacturer": "Safari Industries India (LTD)",
+    "name": "Safari Unisex Blue Textured Anti-Scratch Large Hard-Sided Trolley Suitcase",
+    "condition": "New",
+    "image": "images/st13789694.webp",
+    "description": "Safari Unisex Blue Textured Anti-Scratch Large Hard-Sided Trolley Suitcase (13789694)",
+    "category": "Luggages",
+    "price": 56.60,
+    "countInStock": 5,
+    "rating": 4,
+    "numOfReviews": 25,
+    "shippingAvailable": "STANDARD_SHIPPING",
+    "shippingCost": "Free Shipping",
+    "returnPolicy": "30 Days Return Policy",
+    "reviews":[{
+        "name": "user",
+        "comments": "comments",
+        "rating": "5"
+    }]
 }];
 
 export default products;

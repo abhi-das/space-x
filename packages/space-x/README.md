@@ -104,7 +104,7 @@ This is awesome because not only does ESLint identify ways to make code better, 
 
 None of the rules depend on each other, they all function independently, and some rules can even fix the code themselves to fall in line with the prescribed rules.
 
-## Authors
+## Author
 
 [Abhishek Das](https://github.com/abhi-das)
 
